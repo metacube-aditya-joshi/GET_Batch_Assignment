@@ -13,6 +13,10 @@ class JobScheduler {
 
     void menu(Scanner inputStream) {
 
+	processCreation(inputStream);
+	for (Job j : inputTime)
+	    System.out.println(j.arrivalTime + " " + j.burstTime);
+
 	System.out.println("Enter the functionality you want to perform :");
 	System.out.println("1. calculate Completion Time");
 	System.out.println("2. calculate Waiting Time");
@@ -29,22 +33,53 @@ class JobScheduler {
     private void functionSelector(String choice) {
 	FirstComeFirstServe scheduler = new FirstComeFirstServe();
 	switch (choice) {
-	case "1":
+	case "1": {
 	    scheduler.completionTime(inputTime);
-	case "2":
+	    break;
+	}
+	case "2": {
 	    scheduler.waitingTime(inputTime);
-	case "3":
+	    break;
+	}
+	case "3": {
 	    scheduler.turnAroundTime(inputTime);
-	case "4":
+	    break;
+	}
+	case "4": {
 	    scheduler.avgWaitingTime(inputTime);
-	case "5":
+	    break;
+	}
+	case "5": {
 	    scheduler.maxWaitingTime(inputTime);
+	    break;
+	}
 	case "6":
 	    break;
-	default:
+	default: {
 	    System.out.println("Invalid Choice!!");
+	    break;
+	}
 	}
 
+    }
+
+    private void processCreation(Scanner inputStream) {
+
+	System.out.println("Enter the arrival time and burst time for process :");
+	boolean isDone = false;
+
+	while (!isDone) {
+	    int arrivalTime = inputStream.nextInt();
+	    int burstTime = inputStream.nextInt();
+	    Job newJob = new Job(arrivalTime, burstTime);
+	    inputTime.add(newJob);
+
+	    System.out.print("want to add more jobs => yes or no : ");
+	    String opt = inputStream.next();
+	    if (!opt.equals("yes"))
+		return;
+
+	}
     }
 
 }

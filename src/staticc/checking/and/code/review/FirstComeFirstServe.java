@@ -22,16 +22,16 @@ class FirstComeFirstServe {
 
     void waitingTime(ArrayList<Job> inputTime) {
 	for (int index = 0; index < inputTime.size(); index++) {
-	    int waitingTime = inputTime.get(index).waitingTime;
-	    int burstTime = inputTime.get(index).burstTime;
+	    int waitingTime = inputTime.get(index).getWaitingTime();
+	    int burstTime = inputTime.get(index).getBurstTime();
 	    int prevWaitingTime;
 	    if (index == 0)
 		prevWaitingTime = 0;
 	    else
-		prevWaitingTime = inputTime.get(index - 1).waitingTime;
+		prevWaitingTime = inputTime.get(index - 1).getWaitingTime();
 
 	    waitingTime = Math.abs(prevWaitingTime - burstTime);
-
+	    inputTime.get(index).setWaitingTime(waitingTime);
 	}
 	for (Job job : inputTime) {
 	    System.out.println("Job Waiting time :" + job.waitingTime);
@@ -41,10 +41,11 @@ class FirstComeFirstServe {
 
     void turnAroundTime(ArrayList<Job> inputTime) {
 	for (int index = 0; index < inputTime.size(); index++) {
-	    int turnAroundTime = inputTime.get(index).turnAroundTime;
-	    int completionTime = inputTime.get(index).completionTime;
-	    int arrivalTime = inputTime.get(index).arrivalTime;
+	    int turnAroundTime = inputTime.get(index).getTurnAroundTime();
+	    int completionTime = inputTime.get(index).getCompletionTime();
+	    int arrivalTime = inputTime.get(index).getArrivalTime();
 	    turnAroundTime = completionTime - arrivalTime;
+	    inputTime.get(index).setTurnAroundTime(turnAroundTime);
 	}
 	for (Job job : inputTime) {
 	    System.out.println("Job Turn Around Time :" + job.turnAroundTime);
@@ -55,7 +56,7 @@ class FirstComeFirstServe {
 	int totalNumberOfProcess = inputTime.size();
 	int totalWaitingTime = 0;
 	for (int index = 0; index < inputTime.size(); index++) {
-	    int waitingTime = inputTime.get(index).waitingTime;
+	    int waitingTime = inputTime.get(index).getWaitingTime();
 	    totalWaitingTime += waitingTime;
 	}
 
@@ -67,7 +68,7 @@ class FirstComeFirstServe {
     void maxWaitingTime(ArrayList<Job> inputTime) {
 	int maxWaitingTime = 0;
 	for (int index = 0; index < inputTime.size(); index++) {
-	    int waitingTime = inputTime.get(index).waitingTime;
+	    int waitingTime = inputTime.get(index).getWaitingTime();
 	    maxWaitingTime = Math.max(maxWaitingTime, waitingTime);
 	}
 

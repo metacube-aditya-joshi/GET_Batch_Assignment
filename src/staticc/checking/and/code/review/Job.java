@@ -8,8 +8,8 @@ class Job {
     int waitingTime;
 
     Job(int arrivalTime, int burstTime) {
-	  setBurstTime( burstTime);
-	  setArrivalTime(arrivalTime);
+	setBurstTime( burstTime);
+	setArrivalTime(arrivalTime);
     }
 
     /**
