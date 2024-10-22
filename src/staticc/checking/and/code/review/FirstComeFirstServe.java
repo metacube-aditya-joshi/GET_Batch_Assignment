@@ -7,12 +7,14 @@ class FirstComeFirstServe {
     void completionTime(ArrayList<Job> inputTime) {
 	for (int index = 0; index < inputTime.size(); index++) {
 	    int completionTime = inputTime.get(index).getCompletionTime();
-	    if (inputTime.get(index).arrivalTime == 0)
+	    if ( index==0 ||inputTime.get(index).arrivalTime == 0)
 		inputTime.get(index).completionTime = inputTime.get(index).getBurstTime();
+	    else {
 
-	    int burstTime = inputTime.get(index).getBurstTime();
-	    completionTime = inputTime.get(index - 1).getCompletionTime() + burstTime;
-	    inputTime.get(index).setCompletionTime(completionTime);
+		    int burstTime = inputTime.get(index).getBurstTime();
+		    completionTime = inputTime.get(index - 1).getCompletionTime() + burstTime;
+		    inputTime.get(index).setCompletionTime(completionTime);
+	    }
 	}
 	for (Job job : inputTime) {
 	    System.out.println("Job Completion time :" + job.completionTime);

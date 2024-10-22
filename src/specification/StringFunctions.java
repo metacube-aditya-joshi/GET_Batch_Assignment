@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 class StringFunctions {
 
+	
     boolean strCompare(Scanner inputStream) {
 	try {
 

@@ -142,6 +142,11 @@ class HexCalc {
 	return hexString.reverse().toString();
     }
 
+    /*
+     * convert hexadecimal string to decimal value
+     * @param - hex - hexadecimal number string
+     * @return - decimalValue - decimal value of the hex string  
+     */
     private int manualHexToDecimal(String hex) {
 	// TODO Auto-generated method stub
 	hex = hex.toUpperCase();
@@ -159,6 +164,11 @@ class HexCalc {
 	return decimalValue;
     }
 
+    /*
+     * convert hexadecimal string to decimal value
+     * @param - hex - hexadecimal number string
+     * @return - decimalValue - decimal value of the hex string  
+     */
     private int hexCharToDecimal(char hexChar) {
 	if (hexChar >= '0' && hexChar <= '9')
 	    return hexChar - '0';
