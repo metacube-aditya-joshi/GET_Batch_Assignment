@@ -1,0 +1,5 @@
+package specification;
+
+class Area {
+
+}
