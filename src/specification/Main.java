@@ -32,7 +32,7 @@ public class Main {
 		break;
 	    }
 	    case "3": {
-		new Area();
+		new AreaOfShapes().menu(inputStream);
 		check = false;
 		break;
 	    }
