@@ -31,7 +31,9 @@ class StringFunctions {
 	StringBuilder reverseStr = new StringBuilder();
 
 	for (int index = 0; index < str.length(); index++) {
-	    reverseStr.append(str.charAt(index));
+
+	    //reverseStr.append(str.charAt(index));
+	    reverseStr.insert(0, str.charAt(index));
 	}
 	return reverseStr.toString();
     }
