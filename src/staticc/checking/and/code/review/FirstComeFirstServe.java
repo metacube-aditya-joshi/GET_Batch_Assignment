@@ -26,13 +26,15 @@ class FirstComeFirstServe {
 	for (int index = 0; index < inputTime.size(); index++) {
 	    int waitingTime = inputTime.get(index).getWaitingTime();
 	    int burstTime = inputTime.get(index).getBurstTime();
-	    int prevWaitingTime;
+	    int prevWaitingTime=0;
 	    if (index == 0)
-		prevWaitingTime = 0;
-	    else
+		inputTime.get(index).setWaitingTime(0);
+	    else {
 		prevWaitingTime = inputTime.get(index - 1).getWaitingTime();
+		waitingTime = Math.abs(prevWaitingTime - burstTime);
+	    }
 
-	    waitingTime = Math.abs(prevWaitingTime - burstTime);
+	    
 	    inputTime.get(index).setWaitingTime(waitingTime);
 	}
 	for (Job job : inputTime) {
@@ -42,6 +44,7 @@ class FirstComeFirstServe {
     }
 
     void turnAroundTime(ArrayList<Job> inputTime) {
+	 completionTime(inputTime);
 	for (int index = 0; index < inputTime.size(); index++) {
 	    int turnAroundTime = inputTime.get(index).getTurnAroundTime();
 	    int completionTime = inputTime.get(index).getCompletionTime();

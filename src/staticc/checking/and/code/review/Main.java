@@ -19,28 +19,22 @@ public class Main {
 
 	    }
 	    options = inputStream.nextLine();
-	    switch (options) {
-	    case "1": {
+
+	    if(options.equals("1"))
+	    {
 		new HexCalc().menu(inputStream);
 		check = false;
-		break;
-	    }
 
-	    case "2": {
+	    }else if(options.equals("2")) {
 		new JobScheduler().menu(inputStream);
 		check = false;
-		break;
 	    }
-	    case "3": {
+	    else if(options.equals("3")) {
+		break;
+		
+	    }else {
 		check = true;
-		break;
-	    }
-	    default: {
-		check = true;
-		System.out.println("Enter Valid Options");
-		break;
-	    }
-
+		System.out.println("Enter Valid Options (menu)");
 	    }
 
 	}

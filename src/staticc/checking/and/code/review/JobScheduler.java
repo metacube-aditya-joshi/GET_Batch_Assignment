@@ -25,43 +25,44 @@ class JobScheduler {
 	System.out.println("5. calculate Max Waiting Time");
 	System.out.println("6. exit");
 
-	int choice = inputStream.nextInt();
+	String choice = inputStream.nextLine();
 	functionSelector(choice);
 
     }
 
-    private void functionSelector(int choice) {
+    private void functionSelector(String choice) {
 	FirstComeFirstServe scheduler = new FirstComeFirstServe();
-	switch (choice) {
-	case 1: {
+
+	if (choice.equals("1")) {
+
 	    scheduler.completionTime(inputTime);
-	    break;
-	}
-	case 2: {
+
+	} else if (choice.equals("2")) {
+
 	    scheduler.waitingTime(inputTime);
-	    break;
-	}
-	case 3: {
+
+	} else if (choice.equals("3")) {
+
 	    scheduler.turnAroundTime(inputTime);
-	    break;
-	}
-	case 4: {
+
+	} else if (choice.equals("4")) {
+
 	    scheduler.avgWaitingTime(inputTime);
-	    break;
-	}
-	case 5: {
+
+	} else if (choice.equals("5")) {
+
 	    scheduler.maxWaitingTime(inputTime);
-	    break;
-	}
-	case 6:
-	    break;
-	default: {
-	    System.out.println("Invalid Choice!!");
-	    break;
-	}
+
+	} else if (choice.equals("6")) {
+	    System.out.println("Exiting !!");
+	} else {
+
+	    System.out.println("Enter Valid Options (fcfs)");
 	}
 
     }
+
+
 
     private void processCreation(Scanner inputStream) {
 

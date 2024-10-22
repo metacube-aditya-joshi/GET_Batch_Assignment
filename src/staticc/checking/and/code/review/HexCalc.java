@@ -10,7 +10,7 @@ class HexCalc {
 
 	System.out.println("Enter the functionality you want to perform :");
 	System.out.println("1. Addition");
-	System.out.println("2. Deletion");
+	System.out.println("2. Subtraction");
 	System.out.println("3. Multiplication");
 	System.out.println("4. Division");
 	System.out.println("5. Equality");
@@ -20,11 +20,15 @@ class HexCalc {
 
 	String choice = inputStream.nextLine();
 
-	System.out.print("Enter First String: ");
-	String hex1 = inputStream.next();
+	if (choice.equals("8")) {
+	    return;
+	}
+	    System.out.print("Enter First String: ");
+	    String hex1 = inputStream.next();
 
-	System.out.print("Enter Second String: ");
-	String hex2 = inputStream.next();
+	    System.out.print("Enter Second String: ");
+	    String hex2 = inputStream.next();
+	
 
 	functionSelector(choice, hex1, hex2);
 
@@ -144,8 +148,10 @@ class HexCalc {
 
     /*
      * convert hexadecimal string to decimal value
+     * 
      * @param - hex - hexadecimal number string
-     * @return - decimalValue - decimal value of the hex string  
+     * 
+     * @return - decimalValue - decimal value of the hex string
      */
     private int manualHexToDecimal(String hex) {
 	// TODO Auto-generated method stub
@@ -166,8 +172,10 @@ class HexCalc {
 
     /*
      * convert hexadecimal string to decimal value
+     * 
      * @param - hex - hexadecimal number string
-     * @return - decimalValue - decimal value of the hex string  
+     * 
+     * @return - decimalValue - decimal value of the hex string
      */
     private int hexCharToDecimal(char hexChar) {
 	if (hexChar >= '0' && hexChar <= '9')
