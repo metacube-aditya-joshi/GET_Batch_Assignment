@@ -6,8 +6,14 @@ import java.util.Scanner;
 
 class MarkSheet {
 
-    ArrayList<Student> students;
+    ArrayList<Student> students; // To store all students' data
 
+    /**
+     * {@summary : takes all the grade of student , sum it up and returns average}
+     * 
+     * @param : Take ArrayList of Students
+     * @return : the average grades of students
+     */
     double averageGrades(ArrayList<Student> students) {
 	try {
 
@@ -27,6 +33,12 @@ class MarkSheet {
 	}
     }
 
+    /**
+     * {@summary : takes all the grade of student , returns maximum grade}
+     * 
+     * @param {List}: Take ArrayList of Students
+     * @return {int} : the Maximum grade among students
+     */
     int maximumGrades(ArrayList<Student> students) {
 	try {
 	    if (students.size() == 0)
@@ -43,22 +55,35 @@ class MarkSheet {
 
     }
 
+    /**
+     * {@summary : takes all the grade of student , returns minimum grade}
+     * 
+     * @param : Take ArrayList of Students
+     * @return : the minimum grade among students
+     */
     int minimumGrades(ArrayList<Student> students) {
 	try {
+	    if (students.size() == 0)
+		throw new ArithmeticException("No Students are there to calculate minimum grades !!");
 
+	    int minGrade = 101;
+	    for (Student s : students) {
+		minGrade = Math.min(minGrade, s.getGrades());
+	    }
+	    return minGrade;
 	} catch (Error e) {
 	    throw new Error(e.getMessage());
 	}
-	if (students.size() == 0)
-	    throw new ArithmeticException("No Students are there to calculate minimum grades !!");
 
-	int minGrade = 0;
-	for (Student s : students) {
-	    minGrade = Math.min(minGrade, s.getGrades());
-	}
-	return minGrade;
     }
 
+    /**
+     * {@summary : takes all the grade of student , returns the percentage of
+     * students passed}
+     * 
+     * @param : Take ArrayList of Students
+     * @return : double the percentage of students passed
+     */
     double percentStudents(ArrayList<Student> students) {
 	try {
 	    if (students.size() == 0)
@@ -70,7 +95,7 @@ class MarkSheet {
 		if (s.getGrades() >= 40)
 		    passedStudents++;
 	    }
-	    percentage = passedStudents / students.size();
+	    percentage = passedStudents / students.size() * 100;
 
 	    return percentage;
 	} catch (Error e) {
@@ -79,6 +104,12 @@ class MarkSheet {
 
     }
 
+    /**
+     * a function to take dynamic input from displaying certain options
+     * 
+     * @param inputStream
+     * @return
+     */
     void menu(Scanner inputStream) {
 	try {
 	    System.out.println("Enter the number of Students : ");
@@ -99,8 +130,8 @@ class MarkSheet {
 
 	    System.out.println("Enter the choice : ");
 	    System.out.println("1. Average of Grades ");
-	    System.out.println("2. Maimum of Grades ");
-	    System.out.println("3. Minmum of Grades ");
+	    System.out.println("2. Maximum of Grades ");
+	    System.out.println("3. Minimum of Grades ");
 	    System.out.println("4. Percentage of Students Passed ");
 	    System.out.println("5. Exit");
 	    int option = inputStream.nextInt();
@@ -113,6 +144,11 @@ class MarkSheet {
 
     }
 
+    /**
+     * function to select the options given by user from menu
+     * 
+     * @param choice
+     */
     private void functionSelector(int choice) {
 	try {
 	    Formatter fm = new Formatter();
@@ -121,20 +157,20 @@ class MarkSheet {
 	    case 1: {
 		// Format 4 decimal places
 		fm.format("%.2f", averageGrades(students));
-		System.out.print("Average Grafe : " + fm);
+		System.out.println("Average Grade : " + fm);
 		break;
 	    }
 	    case 2: {
-		System.out.print(maximumGrades(students));
+		System.out.println("Maximum Grade: " + maximumGrades(students));
 		break;
 	    }
 	    case 3: {
-		System.out.print(minimumGrades(students));
+		System.out.println("Minimum Grade: " + minimumGrades(students));
 		break;
 	    }
 	    case 4: {
 		fm.format("%.2f", percentStudents(students));
-		System.out.print("Average Grafe : " + fm);
+		System.out.println("Percentage of Student Passed : " + fm);
 		break;
 	    }
 	    case 5: {

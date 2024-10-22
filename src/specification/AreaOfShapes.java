@@ -5,12 +5,13 @@ import java.util.Scanner;
 class AreaOfShapes {
     double calculatedArea;
     final static double PI = 3.14;
-//    enum Shapes {
-//	  LOW,
-//	  MEDIUM,
-//	  HIGH
-//	}
+    
 
+    /**
+     * {@summary : take dimensions and calculate the area of either triangle or rectangle specified by user }
+     * @param :  Take double params : width and height and a String shape to identify the shape whose area is to be calculated 
+     * @return : area of the specified shape
+     */
     double area(double width, double height, String shape) {
 	try {
 	    if (width == 0 || height == 0)
@@ -31,10 +32,16 @@ class AreaOfShapes {
 
     }
 
+    /**
+     * {@summary : take dimension and calculate the area of either square or circle specified by user }
+     * @param :  Take double param : width  and a String shape to identify the shape whose area is to be calculated 
+     * @return : area of the specified shape
+     */
     double area(double width, String shape) {
 	try {
 	    if (width == 0)
 		throw new ArithmeticException("Invalid Value of Width");
+	    
 	    if (shape.equalsIgnoreCase("square"))
 		setCalculatedArea(width * width);
 
@@ -49,6 +56,11 @@ class AreaOfShapes {
 
     }
 
+    /**
+     * {@summary : Used to display selection menu to user }
+     * @param :  Scanner Class object
+     * @return : null
+     */
     void menu(Scanner inputStream) {
 	try {
 	    System.out.println("Enter the Shape  : ");
@@ -66,6 +78,11 @@ class AreaOfShapes {
 
     }
 
+    /**
+     * {@summary : Used to pass the choice of user and select that function to execute }
+     * @param :  Scanner Class object and integer choice
+     * @return : null
+     */
     private void functionSelector(int choice, Scanner inputStream) {
 	try {
 	    switch (choice) {

@@ -10,6 +10,7 @@ public class Main {
 	String options = "";
 	boolean check = true;
 	try {
+	    // An Option Menu to take dynamic input from user.
 	    while (!"4".equalsIgnoreCase(options)) {
 		if (check) {
 		    System.out.println("Enter the choice");
