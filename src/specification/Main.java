@@ -17,34 +17,39 @@ public class Main {
 		    System.out.println("1. String Functions");
 		    System.out.println("2. MarkSheet ");
 		    System.out.println("3. Area Calculator");
-
+		    System.out.println("4.  Exit");
 		}
-		
+
 		options = inputStream.nextLine();
-		switch (options) {
-		case "1": {
+
+		if (options.equalsIgnoreCase("1")) {
+
 		    new StringFunctions().menu(inputStream);
-		    
 		    check = false;
 		    break;
-		}
 
-		case "2": {
+		} else if (options.equalsIgnoreCase("2")) {
+
 		    new MarkSheet().menu(inputStream);
 		    check = false;
 		    break;
-		}
-		case "3": {
+
+		} else if (options.equalsIgnoreCase("3")) {
+
 		    new AreaOfShapes().menu(inputStream);
 		    check = false;
 		    break;
-		}
-		default: {
+
+		} else if (options.equalsIgnoreCase("4")) {
+
+		    check = true;
+		    break;
+
+		} else {
 
 		    System.out.println("Enter Valid Options");
 		    check = true;
 		    break;
-		}
 
 		}
 

@@ -14,12 +14,15 @@ class StringFunctions {
 	try {
 	    inputStream.nextLine();
 	    System.out.println("Enter the String 1 : ");
-	    String str1 = inputStream.next();
+	    String str1 = inputStream.nextLine();
+
+	    if (str1 == null || str1.isBlank()) {
+		throw new IllegalArgumentException("Empty String is not allowed");
+	    }
 
 	    System.out.println("Enter the String 2 : ");
-	    String str2 = inputStream.next();
-
-	    if (str1 == null || str2 == null || str1.isBlank() || str2.isBlank()) {
+	    String str2 = inputStream.nextLine();
+	    if (str2 == null || str2.isBlank()) {
 		throw new IllegalArgumentException("Empty String is not allowed");
 	    }
 	    if (str1.length() != str2.length())
@@ -78,15 +81,13 @@ class StringFunctions {
 	    inputStream.nextLine();
 
 	    System.out.print("Enter the String  : ");
-	    String str = inputStream.nextLine();
+	    String str = inputStream.next();
 
+	    StringBuilder reverseCaseStr = new StringBuilder();
 	    if (str == null || str.isBlank()) {
-		inputStream.close();
 		throw new IllegalArgumentException("Empty String is not allowed");
 
 	    }
-
-	    StringBuilder reverseCaseStr = new StringBuilder();
 	    for (int idx = 0; idx < str.length(); idx++) {
 
 		char character = str.charAt(idx);
@@ -121,10 +122,13 @@ class StringFunctions {
      * @param inputStream
      * @return String : return longest word
      */
+
+    // check functionallity
     String longestSubstring(Scanner inputStream) {
 
 	try {
 	    System.out.println("Enter the String  : ");
+	    
 	    String str = inputStream.nextLine();
 
 	    int longest = 0;
@@ -195,31 +199,38 @@ class StringFunctions {
     private void functionSelector(int choice, Scanner inputStream) {
 
 	try {
-	    switch (choice) {
-	    case 1: {
-		System.out.println(strCompare(inputStream));
-		break;
-	    }
-	    case 2: {
-		System.out.println(reverseString(inputStream));
-		break;
-	    }
-	    case 3: {
-		System.out.println(reverseCase(inputStream));
-		break;
-	    }
-	    case 4: {
-		System.out.println(longestSubstring(inputStream));
-		break;
-	    }
-	    case 5: {
-		break;
-	    }
 
-	    default: {
-		System.out.println("Invalid Choice!!");
-		break;
+	    if (choice == 1) {
+		
+		System.out.println(strCompare(inputStream));
+		menu(inputStream);
+		
+	
+	    } else if (choice == 2) {
+		
+		System.out.println(reverseString(inputStream));
+		menu(inputStream);
+	
+	    
+	    } else if (choice == 3) {
+		
+		System.out.println(reverseCase(inputStream));
+		menu(inputStream);
+		
+	    
+	    } else if (choice == 4) {
+		
+		System.out.println(longestSubstring(inputStream));
+		menu(inputStream);
+		
+	    
+	    } else if(choice==5){
+		
+		System.out.println("Exiting !!");
+		
 	    }
+	    else {
+		System.out.println("Enter Valid options !!");
 	    }
 	} catch (Error e) {
 	    throw new Error(e.getMessage());

@@ -84,6 +84,7 @@ class MarkSheet {
      * @param : Take ArrayList of Students
      * @return : double the percentage of students passed
      */
+    // have to do some modifitcations
     double percentStudents(ArrayList<Student> students) {
 	try {
 	    if (students.size() == 0)
@@ -95,7 +96,9 @@ class MarkSheet {
 		if (s.getGrades() >= 40)
 		    passedStudents++;
 	    }
-	    percentage = passedStudents / students.size() * 100;
+
+	    percentage = (passedStudents * 100) / students.size();
+	    ;
 
 	    return percentage;
 	} catch (Error e) {
@@ -113,7 +116,14 @@ class MarkSheet {
     void menu(Scanner inputStream) {
 	try {
 	    System.out.println("Enter the number of Students : ");
-	    int numberOfStudents = inputStream.nextInt();
+	    String inputStudents = inputStream.nextLine();
+	    if (inputStudents == null) {
+		throw new IllegalArgumentException("Enter valid number !!");
+	    }
+	    int numberOfStudents = Integer.parseInt(inputStudents);
+	    if (numberOfStudents == 0) {
+		throw new IllegalArgumentException("Enter valid number !!");
+	    }
 
 	    students = new ArrayList<>(numberOfStudents);
 

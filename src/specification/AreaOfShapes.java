@@ -5,11 +5,13 @@ import java.util.Scanner;
 class AreaOfShapes {
     double calculatedArea;
     final static double PI = 3.14;
-    
 
     /**
-     * {@summary : take dimensions and calculate the area of either triangle or rectangle specified by user }
-     * @param :  Take double params : width and height and a String shape to identify the shape whose area is to be calculated 
+     * {@summary : take dimensions and calculate the area of either triangle or
+     * rectangle specified by user }
+     * 
+     * @param : Take double params : width and height and a String shape to identify
+     *          the shape whose area is to be calculated
      * @return : area of the specified shape
      */
     double area(double width, double height, String shape) {
@@ -33,15 +35,18 @@ class AreaOfShapes {
     }
 
     /**
-     * {@summary : take dimension and calculate the area of either square or circle specified by user }
-     * @param :  Take double param : width  and a String shape to identify the shape whose area is to be calculated 
+     * {@summary : take dimension and calculate the area of either square or circle
+     * specified by user }
+     * 
+     * @param : Take double param : width and a String shape to identify the shape
+     *          whose area is to be calculated
      * @return : area of the specified shape
      */
     double area(double width, String shape) {
 	try {
 	    if (width == 0)
 		throw new ArithmeticException("Invalid Value of Width");
-	    
+
 	    if (shape.equalsIgnoreCase("square"))
 		setCalculatedArea(width * width);
 
@@ -58,7 +63,8 @@ class AreaOfShapes {
 
     /**
      * {@summary : Used to display selection menu to user }
-     * @param :  Scanner Class object
+     * 
+     * @param : Scanner Class object
      * @return : null
      */
     void menu(Scanner inputStream) {
@@ -69,7 +75,14 @@ class AreaOfShapes {
 	    System.out.println("3. Square");
 	    System.out.println("4. Circle ");
 	    System.out.println("5. Exit");
-	    int option = inputStream.nextInt();
+	    String input = inputStream.nextLine();
+	    if (input.isBlank() || input == null) {
+		throw new IllegalArgumentException("Enter valid number !!");
+	    }
+	    int option = Integer.parseInt(input);
+	    if (option == 0) {
+		throw new IllegalArgumentException("Enter valid number !!");
+	    }
 
 	    functionSelector(option, inputStream);
 	} catch (Error e) {
@@ -79,8 +92,10 @@ class AreaOfShapes {
     }
 
     /**
-     * {@summary : Used to pass the choice of user and select that function to execute }
-     * @param :  Scanner Class object and integer choice
+     * {@summary : Used to pass the choice of user and select that function to
+     * execute }
+     * 
+     * @param : Scanner Class object and integer choice
      * @return : null
      */
     private void functionSelector(int choice, Scanner inputStream) {
@@ -88,28 +103,57 @@ class AreaOfShapes {
 	    switch (choice) {
 	    case 1: {
 		System.out.println("Enter Width and Height :");
-		double width = inputStream.nextInt();
-		double height = inputStream.nextInt();
+		String inputWidth = inputStream.next();
+		String inputHeight = inputStream.next();
+		if (inputWidth.isBlank() || inputHeight.isBlank()) {
+		    throw new IllegalArgumentException("Enter valid number !!");
+		}
+		double width = Double.parseDouble(inputWidth);
+		double height = Double.parseDouble(inputHeight);
+		if (height == 0 || width == 0) {
+		    throw new IllegalArgumentException("Enter valid number !!");
+		}
 		System.out.println(area(width, height, "Triangle"));
 		break;
 	    }
 	    case 2: {
 		System.out.println("Enter Width and Height :");
-		double width = inputStream.nextInt();
-		double height = inputStream.nextInt();
+		String inputWidth = inputStream.nextLine();
+		String inputHeight = inputStream.nextLine();
+		if (inputWidth.isBlank() || inputHeight.isBlank()) {
+		    throw new IllegalArgumentException("Enter valid number !!");
+		}
+		double width = Double.parseDouble(inputWidth);
+		double height = Double.parseDouble(inputHeight);
+		if (height == 0 || width == 0) {
+		    throw new IllegalArgumentException("Enter valid number !!");
+		}
 		System.out.println(area(width, height, "Rectangle"));
 		break;
 	    }
 	    case 3: {
 		System.out.println("Enter Width  :");
-		double width = inputStream.nextInt();
-
+		String inputWidth = inputStream.nextLine();
+		if (inputWidth.isBlank()) {
+		    throw new IllegalArgumentException("Enter valid number !!");
+		}
+		double width = Double.parseDouble(inputWidth);
+		if (width == 0) {
+		    throw new IllegalArgumentException("Enter valid number !!");
+		}
 		System.out.println(area(width, "Square"));
 		break;
 	    }
 	    case 4: {
 		System.out.println("Enter Width  :");
-		double width = inputStream.nextInt();
+		String inputWidth = inputStream.nextLine();
+		if (inputWidth.isBlank()) {
+		    throw new IllegalArgumentException("Enter valid number !!");
+		}
+		double width = Double.parseDouble(inputWidth);
+		if (width == 0) {
+		    throw new IllegalArgumentException("Enter valid number !!");
+		}
 
 		System.out.println(area(width, "Circle"));
 		break;
