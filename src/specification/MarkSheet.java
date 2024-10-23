@@ -97,7 +97,7 @@ class MarkSheet {
 		    passedStudents++;
 	    }
 
-	    percentage = (passedStudents * 100) / students.size();
+	    percentage = (double)(passedStudents * 100) / students.size();
 	    ;
 
 	    return percentage;

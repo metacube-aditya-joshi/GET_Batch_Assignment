@@ -61,6 +61,7 @@ class StringFunctions {
 	    for (int index = 0; index < str.length(); index++) {
 
 		// reverseStr.append(str.charAt(index));
+		
 		reverseStr.insert(0, str.charAt(index));
 	    }
 	    return reverseStr.toString();
@@ -128,9 +129,9 @@ class StringFunctions {
 
 	try {
 	    System.out.println("Enter the String  : ");
-	    
+	    inputStream.nextLine();
 	    String str = inputStream.nextLine();
-
+ System.out.println(str);
 	    int longest = 0;
 	    int lastSpace = 0;
 	    int idx;
@@ -158,10 +159,10 @@ class StringFunctions {
 
 		}
 	    }
-	    for (int len = maxLength; len <= maxLength + longest; len++) {
+	    for (int len = maxLength; len <= maxLength + longest-1; len++) {
 		longestString.append(str.charAt(len));
 	    }
-	    System.out.println(longestString);
+	   
 	    return longestString.toString();
 	} catch (Error e) {
 	    throw new Error(e.getMessage());
