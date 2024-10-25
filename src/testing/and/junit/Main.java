@@ -1,7 +1,7 @@
 package testing.and.junit;
 
 import java.util.Scanner;
-
+import testing.and.junit.ArrayFunctions;
 class Main {
 
     public static void main(String[] args) throws Exception {

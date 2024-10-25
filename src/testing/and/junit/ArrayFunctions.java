@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import java.util.Scanner;
 
- class ArrayFunctions {
+public class ArrayFunctions {
 
     /**
      * function takes and integer array and calculates the largest mirror present in
