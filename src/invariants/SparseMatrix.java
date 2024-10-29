@@ -84,7 +84,7 @@ public final class SparseMatrix {
      * @param sparseMatrix2 the matrix to be added
      * @throws CustomException if the matrices have different dimensions or if an error occurs during addition
      */
-    public void addTwoMatrices(int[][] sparseMatrix2) throws CustomException {
+    public int[][] addTwoMatrices(int[][] sparseMatrix2) throws CustomException {
 
 	try {
 	    if (this.sparseMatrix.length != sparseMatrix2.length
@@ -102,6 +102,7 @@ public final class SparseMatrix {
 	    }
 
 	    displayMatrix(tempMatrix);
+		return tempMatrix;
 
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -116,10 +117,12 @@ public final class SparseMatrix {
      * @param sparseMatrix2 the matrix to be multiplied
      * @throws CustomException if the matrices cannot be multiplied or if an error occurs during multiplication
      */
-    public void multipyTwoMatrices(int[][] sparseMatrix2) throws CustomException {
+    public int[][] multipyTwoMatrices(int[][] sparseMatrix2) throws CustomException {
+		
 	try {
 	    int firstCol = this.sparseMatrix[0].length;
 	    int secondRow = sparseMatrix2.length;
+		
 
 	    if (firstCol != secondRow)
 		throw new Exception();
@@ -135,11 +138,13 @@ public final class SparseMatrix {
 		}
 	    }
 	    displayMatrix(multMatrix);
-
+		
+		return multMatrix;
 	} catch (Exception e) {
 	    e.printStackTrace();
 	    throw new CustomException("Error in Multiply two matrix funciton ");
 	}
+	
     }
 
 }

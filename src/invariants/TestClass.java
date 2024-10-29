@@ -36,25 +36,25 @@ public class TestClass {
 	assertEquals("This Matrix is Symmetrical", symMatrix.isMatrixSymmetrical());
     }
 
-//    @Test
-//    public void testAddTwoMatrices() throws CustomException {
-//	int[][] matrix = { { 0, 0, 3 }, { 0, 0, 0 }, { 4, 0, 0 } };
-//	sparseMatrix = new SparseMatrix(matrix);
-//	int[][] matrixToAdd = { { 1, 0, 0 }, { 0, 0, 0 }, { 0, 0, 2 } };
-//	sparseMatrix.addTwoMatrices(matrixToAdd);
-//	int[][] expected = { { 1, 0, 3 }, { 0, 0, 0 }, { 4, 0, 2 } };
-//	assertArrayEquals(expected, sparseMatrix.sparseMatrix);
-//	
-//    }
+   @Test
+   public void testAddTwoMatrices() throws CustomException {
+	int[][] matrix = { { 0, 0, 3 }, { 0, 0, 0 }, { 4, 0, 0 } };
+	sparseMatrix = new SparseMatrix(matrix);
+	int[][] matrixToAdd = { { 1, 0, 0 }, { 0, 0, 0 }, { 0, 0, 2 } };
+	
+	int[][] expected = { { 1, 0, 3 }, { 0, 0, 0 }, { 4, 0, 2 } };
+	assertArrayEquals(expected, sparseMatrix.addTwoMatrices(matrixToAdd));
+	
+   }
 
     @Test
     public void testMultiplyTwoMatrices() throws CustomException {
 	int[][] matrix = { { 0, 0, 3 }, { 0, 0, 0 }, { 4, 0, 0 } };
 	sparseMatrix = new SparseMatrix(matrix);
 	int[][] matrixToMultiply = { { 1, 0, 0 }, { 0, 1, 0 }, { 0, 0, 1 } };
-	sparseMatrix.multipyTwoMatrices(matrixToMultiply);
+	
 	int[][] expected = { { 0, 0, 3 }, { 0, 0, 0 }, { 4, 0, 0 } };
-	assertArrayEquals(expected, sparseMatrix.sparseMatrix);
+	assertArrayEquals(expected, sparseMatrix.multipyTwoMatrices(matrixToMultiply));
     }
 
 }
