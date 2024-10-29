@@ -1,4 +1,4 @@
-package invariants;
+package invarients.adt;
 
 public final class SparseMatrix {
     final int[][] sparseMatrix;
@@ -30,19 +30,25 @@ public final class SparseMatrix {
 
 	/**
      * Transposes the current sparse matrix.
+	 * @throws CustomException 
      */
-    public void transposeMatrix() {
-
-	for (int row = 0; row < sparseMatrix.length; row++) {
-	    for (int col = row; col < sparseMatrix[0].length; col++) {
-		int swapElement = this.sparseMatrix[row][col];
-		this.sparseMatrix[row][col] = this.sparseMatrix[col][row];
-		this.sparseMatrix[col][row] = swapElement;
+    public SparseMatrix transposeMatrix() throws CustomException {
+	    if (sparseMatrix == null || sparseMatrix.length == 0) {
+	        throw new CustomException("The sparse matrix is null or empty.");
 	    }
-	}
-	displayMatrix(sparseMatrix);
 
-    }
+	    int[][] newSparseMatrix = new int[sparseMatrix[0].length][sparseMatrix.length];
+	    for (int row = 0; row < sparseMatrix.length; row++) {
+	        for (int col = 0; col < sparseMatrix[0].length; col++) {
+	            newSparseMatrix[col][row] = this.sparseMatrix[row][col];
+	        }
+	    }
+	    
+	    
+	    SparseMatrix transposedMatrix = new SparseMatrix(newSparseMatrix);
+	    return transposedMatrix;
+	}
+
 
 	 /**
      * Displays the given matrix in a formatted manner.
