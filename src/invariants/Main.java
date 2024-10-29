@@ -4,6 +4,12 @@ import java.util.Scanner;
 
 public class Main {
 
+    /**
+     * The entry point of the application.
+     *
+     * @param args command-line arguments (not used)
+     * @throws CustomException if an error occurs during matrix operations or input handling
+     */
     public static void main(String[] args) throws CustomException {
 
 	try (Scanner inputScanner = new Scanner(System.in)) {
@@ -61,6 +67,12 @@ public class Main {
 
     }
 
+    /**
+     * Generates a sparse matrix based on user input.
+     *
+     * @param inputScanner the Scanner object for reading user input
+     * @return a 2D array representing the sparse matrix
+     */
     static int[][] generateSparseMatrix(Scanner inputScanner) {
 
 	int[][] sparseMatrix = null;

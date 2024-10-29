@@ -3,15 +3,24 @@ package invariants;
 public final class SparseMatrix {
     final int[][] sparseMatrix;
 
+
+	/**
+     * Constructs a SparseMatrix from a given 2D array.
+     *
+     * @param sparseMatrix a 2D array representing the sparse matrix
+     * @throws CustomException if the input matrix is null or if an error occurs during construction
+     */
     public SparseMatrix(int[][] sparseMatrix) throws CustomException {
 
 	try {
 	    this.sparseMatrix = new int[sparseMatrix.length][sparseMatrix[0].length];
 	    for (int row = 0; row < sparseMatrix.length; row++) {
 		for (int col = 0; col < sparseMatrix[0].length; col++) {
-		    this.sparseMatrix[row][col] = sparseMatrix[row][col];
+		    if (sparseMatrix[row][col] != 0)
+			this.sparseMatrix[row][col] = sparseMatrix[row][col];
 		}
 	    }
+	    displayMatrix(this.sparseMatrix);
 	} catch (NullPointerException e) {
 	    e.printStackTrace();
 	    throw new CustomException("Error in Constuctor");
@@ -19,6 +28,9 @@ public final class SparseMatrix {
 
     }
 
+	/**
+     * Transposes the current sparse matrix.
+     */
     public void transposeMatrix() {
 
 	for (int row = 0; row < sparseMatrix.length; row++) {
@@ -32,18 +44,28 @@ public final class SparseMatrix {
 
     }
 
+	 /**
+     * Displays the given matrix in a formatted manner.
+     *
+     * @param sparseMatrix the matrix to be displayed
+     */
     private void displayMatrix(int[][] sparseMatrix) {
 	for (int row = 0; row < sparseMatrix.length; row++) {
-	   
+
 	    for (int col = 0; col < sparseMatrix[0].length; col++) {
-		System.out.print("| " + this.sparseMatrix[row][col]);
+		System.out.print("| " + sparseMatrix[row][col]);
 	    }
 	    System.out.println();
-	    
+
 	}
 
     }
 
+	/**
+     * Checks if the current sparse matrix is symmetrical.
+     *
+     * @return a string indicating whether the matrix is symmetrical or not
+     */
     public String isMatrixSymmetrical() {
 
 	for (int row = 0; row < sparseMatrix.length; row++) {
@@ -56,6 +78,12 @@ public final class SparseMatrix {
 
     }
 
+	 /**
+     * Adds another sparse matrix to the current matrix.
+     *
+     * @param sparseMatrix2 the matrix to be added
+     * @throws CustomException if the matrices have different dimensions or if an error occurs during addition
+     */
     public void addTwoMatrices(int[][] sparseMatrix2) throws CustomException {
 
 	try {
@@ -68,6 +96,7 @@ public final class SparseMatrix {
 
 	    for (int row = 0; row < sparseMatrix.length; row++) {
 		for (int col = 0; col < sparseMatrix[0].length; col++) {
+		    System.out.println((this.sparseMatrix[row][col] + sparseMatrix2[row][col]));
 		    tempMatrix[row][col] = (this.sparseMatrix[row][col] + sparseMatrix2[row][col]);
 		}
 	    }
@@ -81,6 +110,12 @@ public final class SparseMatrix {
 	}
     }
 
+	/**
+     * Multiplies the current sparse matrix with another matrix.
+     *
+     * @param sparseMatrix2 the matrix to be multiplied
+     * @throws CustomException if the matrices cannot be multiplied or if an error occurs during multiplication
+     */
     public void multipyTwoMatrices(int[][] sparseMatrix2) throws CustomException {
 	try {
 	    int firstCol = this.sparseMatrix[0].length;
