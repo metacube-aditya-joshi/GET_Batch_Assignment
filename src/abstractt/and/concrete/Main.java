@@ -3,7 +3,7 @@ package abstractt.and.concrete;
 import java.util.Scanner;
 
 class Main {
-    public static void main() throws Exception {
+	public static void main(String[] args) throws Exception {
 
 	try (Scanner inputScanner = new Scanner(System.in)) {
 	    String optionString = inputScanner.next();
