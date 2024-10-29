@@ -1,4 +1,4 @@
-package invarients.adt;
+package invariants;
 
 public final class SparseMatrix {
     final int[][] sparseMatrix;
@@ -36,6 +36,8 @@ public final class SparseMatrix {
 	    if (sparseMatrix == null || sparseMatrix.length == 0) {
 	        throw new CustomException("The sparse matrix is null or empty.");
 	    }
+		if(sparseMatrix[0].length!=sparseMatrix.length)
+		 throw new CustomException("Dimension of the array is not valid to carry out transpose!!");
 
 	    int[][] newSparseMatrix = new int[sparseMatrix[0].length][sparseMatrix.length];
 	    for (int row = 0; row < sparseMatrix.length; row++) {
