@@ -96,7 +96,7 @@ public final class SparseMatrix {
 
 	    for (int row = 0; row < sparseMatrix.length; row++) {
 		for (int col = 0; col < sparseMatrix[0].length; col++) {
-		    System.out.println((this.sparseMatrix[row][col] + sparseMatrix2[row][col]));
+		   
 		    tempMatrix[row][col] = (this.sparseMatrix[row][col] + sparseMatrix2[row][col]);
 		}
 	    }
