@@ -24,6 +24,7 @@ public class Main {
 		System.out.println("3. Add two matrices");
 		System.out.println("4. Multiply two matrices");
 		System.out.println("5. Exit");
+		
 		int options = inputScanner.nextInt();
 
 		if (options == 0)

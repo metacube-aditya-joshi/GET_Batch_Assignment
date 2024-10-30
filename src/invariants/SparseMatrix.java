@@ -32,7 +32,7 @@ public final class SparseMatrix {
      * Transposes the current sparse matrix.
 	 * @throws CustomException 
      */
-    public SparseMatrix transposeMatrix() throws CustomException {
+    public int[][] transposeMatrix() throws CustomException {
 	    if (sparseMatrix == null || sparseMatrix.length == 0) {
 	        throw new CustomException("The sparse matrix is null or empty.");
 	    }
@@ -48,7 +48,7 @@ public final class SparseMatrix {
 	    
 	    
 	    SparseMatrix transposedMatrix = new SparseMatrix(newSparseMatrix);
-	    return transposedMatrix;
+	    return newSparseMatrix;
 	}
 
 

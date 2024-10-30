@@ -20,10 +20,11 @@ public class TestClass {
 	int[][] matrix = { { 0, 0, 3 }, { 0, 0, 0 }, { 4, 0, 0 } };
 	sparseMatrix = new SparseMatrix(matrix);
 	sparseMatrix.transposeMatrix();
-	
+	int [][] generated=sparseMatrix.transposeMatrix();
 	int[][] expected = { { 0, 0, 4 }, { 0, 0, 0 }, { 3, 0, 0 } };
-	assertArrayEquals(expected, sparseMatrix.sparseMatrix);
+	assertArrayEquals(expected, generated);
     }
+
 
     @Test
     public void testIsMatrixSymmetrical() throws CustomException {
