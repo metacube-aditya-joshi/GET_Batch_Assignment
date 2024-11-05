@@ -69,15 +69,14 @@ public class Main {
 
     }
 
-    private static void addEmployeeToDepartment(Scanner inputScanner) {
+    private static void addEmployeeToDepartment(Scanner inputScanner) throws CustomException {
 	try {
 	    System.out.println("Enter Department Name :");
 	    String depNameString = inputScanner.nextLine();
 	    Department department = findDepartmentByName(depNameString);
 
 	    if (department == null) {
-		System.out.println("Department not found");
-		return;
+		addDepartment(inputScanner);
 	    }
 	    System.out.println("Enter Employee type(Developer/Manager/QA");
 	    String empTypeString = inputScanner.nextLine();
@@ -105,7 +104,7 @@ public class Main {
 	    System.out.println("Employee " + empNameString + " added to departement " + depNameString);
 
 	} catch (Exception e) {
-	    // TODO: handle exception
+	    throw new CustomException("Error in adding employees");
 	}
     }
 
@@ -143,14 +142,18 @@ public class Main {
 	return null;
     }
 
-    private static void listAllEmployees() {
-	System.out.println("List of All the Employees");
-	for (Employee employee : organisation.getAllEmployees()) {
-	    System.out.println("ID :" + employee.getEmpId());
-	    System.out.println("Name :" + employee.getNameString());
-	    System.out.println("Department :" + getDepartmentNameForEmployee(employee));
-	    System.out.println();
+    private static void listAllEmployees() throws CustomException {
+	try {
+	    System.out.println("List of All the Employees");
+		for (Employee employee : organisation.getAllEmployees()) {
+		    System.out.println("ID :" + employee.getEmpId());
+		    System.out.println("Name :" + employee.getNameString());
+		    System.out.println("Department :" + getDepartmentNameForEmployee(employee));
+		    System.out.println();
 
+		}
+	} catch (Exception e) {
+	   throw new CustomException("Error in fetching all employees");
 	}
     }
 
