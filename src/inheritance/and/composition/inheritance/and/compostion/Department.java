@@ -11,7 +11,7 @@ class Department {
 	this.setNameOfDepartementString(nameOfDepartementString);
     }
 
-    public boolean join(Employee employee)
+    public  boolean join(Employee employee)
     {
 	return employees.add(employee);
     }
