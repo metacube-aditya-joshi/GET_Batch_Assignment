@@ -4,98 +4,73 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rectangle implements Shape {
-
     private Point origin;
     private double length;
     private double breadth;
     private long timestamp;
-    private List<Integer> sides = new ArrayList<Integer>();
-    private List<Point> shapeVertexes;
+    private List<Point> vertices = new ArrayList<>();
 
-    public Rectangle(Point origin2, List<Double> parameters) throws CustomException {
-	if (origin == null || parameters == null) {
-	    throw new CustomException("Origin or parameter list is null");
-	}
-	this.origin = origin2;
-	this.setLength(parameters.get(0));
-	this.setLength(parameters.get(1));
-	this.setTimestamp(new java.util.Date().getTime());
-	makeVertexes();
+    public Rectangle(Point origin, List<Double> parameters) {
+        this.origin = origin;
+        this.length = parameters.get(0);
+        this.breadth = parameters.get(1);
+        this.timestamp = System.currentTimeMillis();
+        createVertices();
     }
 
-    private void makeVertexes() {
-
-	Point p1 = new Point(origin.getX(), origin.getY());
-	Point p2 = new Point(origin.getX() + sides.get(0), origin.getY());
-	Point p3 = new Point(origin.getX() + sides.get(0), origin.getY() + sides.get(1));
-	Point p4 = new Point(origin.getX(), origin.getY() + sides.get(1));
-
-	shapeVertexes.add(p1);
-	shapeVertexes.add(p2);
-	shapeVertexes.add(p3);
-	shapeVertexes.add(p4);
-    }
-
-    public List<Point> getVertexes() {
-	List<Point> copyShapeVertexes = new ArrayList<Point>();
-	for (Point p : shapeVertexes) {
-	    copyShapeVertexes.add(p);
-	}
-	return copyShapeVertexes;
-    }
-
-    public Shape.ShapeType getShapeType() {
-	return Shape.ShapeType.RECTANGLE;
+    private void createVertices() {
+        vertices.add(new Point(origin.getX(), origin.getY()));
+        vertices.add(new Point(origin.getX() + length, origin.getY()));
+        vertices.add(new Point(origin.getX() + length, origin.getY() + breadth));
+        vertices.add(new Point(origin.getX(), origin.getY() + breadth));
     }
 
     @Override
     public double getArea() {
-
-	return getLength() * getBreadth();
+        return length * breadth;
     }
 
     @Override
     public double getPerimeter() {
-	// TODO Auto-generated method stub
-	return 2 * (getBreadth() + getLength());
+        return 2 * (length + breadth);
     }
 
     @Override
     public Point getOrigin() {
-
-	return origin;
+        return origin;
     }
 
     @Override
     public boolean isPointEnclosed(Point point) {
-	// TODO Auto-generated method stub
-	return false;
+        return point.getX() >= origin.getX() && point.getX() <= origin.getX() + length &&
+                point.getY() >= origin.getY() && point.getY() <= origin.getY() + breadth;
     }
 
+    @Override
+    public List<Point> getVertices() {
+        return new ArrayList<>(vertices);
+    }
+
+    @Override
+    public ShapeType getShapeType() {
+        return ShapeType.RECTANGLE;
+    }
+
+    @Override
     public long getTimestamp() {
-	return timestamp;
+        return timestamp;
     }
 
-    public void setTimestamp(long timestamp) {
-	this.timestamp = timestamp;
+    @Override
+    public void display() {
+        System.out.println("Shape Type: Rectangle");
+        System.out.println("Area: " + getArea());
+        System.out.println("Perimeter: " + getPerimeter());
+        System.out.println("Origin: (" + origin.getX() + ", " + origin.getY() + ")");
+        System.out.print("Vertexes: ");
+        for (Point p : vertices) {
+            System.out.print("(" + p.getX() + ", " + p.getY() + ") ");
+        }
+        System.out.println("\nTimestamp: " + timestamp);
     }
-
-    public double getLength() {
-	return length;
-    }
-
-    public void setLength(double length) {
-	this.length = length;
-    }
-
-    public double getBreadth() {
-	return breadth;
-    }
-
-    public void setBreadth(double breadth) {
-	this.breadth = breadth;
-    }
-
-    // Constructor and methods implementation
 }
-
