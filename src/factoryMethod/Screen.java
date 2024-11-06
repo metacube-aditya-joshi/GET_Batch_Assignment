@@ -1,98 +1,64 @@
 package factoryMethod;
 
-
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Screen {
-    private int xMax = 0;
-    private int yMax = 0;
-    private List<Shape> shapes;
+    private static final double XMAX = 1000;
+    private static final double YMAX = 1000;
+    private List<Shape> shapes = new ArrayList<>();
 
-    public Screen(int xMax, int yMax) {
-	this.xMax = Math.abs(yMax);
-	this.yMax = Math.abs(yMax);
-	shapes = new ArrayList<Shape>();
+    public void addShape(Shape shape) {
+        if (shape.getOrigin().getX() < 0 || shape.getOrigin().getX() > XMAX ||
+                shape.getOrigin().getY() < 0 || shape.getOrigin().getY() > YMAX) {
+            throw new IllegalArgumentException("Shape is out of bounds");
+        }
+        shapes.add(shape);
+    }
+    public void displayShapes() {
+        if (shapes.isEmpty()) {
+            System.out.println("No shapes on the screen.");
+        } else {
+            for (Shape shape : shapes) {
+                shape.display();
+                System.out.println("-------------------------------------------------");
+            }
+        }
+    }
+    public void deleteShape(Shape shape) {
+        shapes.remove(shape);
     }
 
-    public void addShape(Shape.ShapeType shape) throws CustomException {
-	try (Scanner inputScanner = new Scanner(System.in)) {
-
-	    int noOfSides = 0;
-	    if (shape == Shape.ShapeType.RECTANGLE || shape == Shape.ShapeType.POLYGON) {
-		noOfSides = 2;
-	    } else {
-		noOfSides = 1;
-	    }
-
-	    System.out.println("Enter X and Y Coordinates of origin for the shape :");
-	    double xCoordinate = inputScanner.nextDouble();
-	    double yCoordinate = inputScanner.nextDouble();
-
-	    List<Double> sides = new ArrayList<>(noOfSides);
-	    for (int i = 0; i < noOfSides; i++) {
-		if (shape == Shape.ShapeType.POLYGON) {
-		    System.out.print("Enter the number of sides in the " + shape + " : ");
-		} else {
-		    System.out.print("Enter the length of side " + (i + 1) + " for " + shape + " : ");
-		}
-
-		Double side = inputScanner.nextDouble();
-		sides.add(side);
-	    }
-
-	    Point p = new Point(xCoordinate, yCoordinate);
-	    Shape newShape = ShapeFactory.createShape(shape, p, sides);
-
-	    boolean isShapeInbound = isShapeInbound(newShape);
-
-	    if (isShapeInbound) {
-		System.out.println("Added " + shape + " at origin (" + p.getX() + "," + p.getY() + ")\n");
-		shapes.add(newShape);
-	    } else {
-
-		throw new CustomException(
-			"Cannot add " + shape + " to screen : Shape out of bounds for (" + xMax + "," + yMax + ")\n");
-
-	    }
-
-	} catch (Exception e) {
-	    throw new CustomException("Cannot create the shape");
-	}
-
+    public void deleteShapesOfType(Shape.ShapeType type) {
+        shapes.removeIf(shape -> shape.getShapeType() == type);
     }
 
-    public Shape getShape(int index) throws CustomException {
-	if (shapes.size() == 0) {
-	    throw new CustomException("No shapes on screen to be fetched");
-	}
-
-	return shapes.get(index);
+    public List<Shape> getShapesSortedByArea() {
+        shapes.sort(Comparator.comparingDouble(Shape::getArea));
+        return new ArrayList<>(shapes);
     }
 
-    public void deleteAllShapeTypes(Shape.ShapeType shapeType) {
-	for (int i = 0; i < shapes.size(); i++) {
-	    Shape.ShapeType currentShapeType = shapes.get(i).getShapeType();
-	    if (currentShapeType == shapeType) {
-		shapes.remove(i);
-	    }
-	}
+    public List<Shape> getShapesSortedByPerimeter() {
+        shapes.sort(Comparator.comparingDouble(Shape::getPerimeter));
+        return new ArrayList<>(shapes);
     }
 
-    public boolean isShapeInbound(Shape shape) {
-	if (shape == null)
-	    return false;
-	List<Point> allShapeVertex = shape.getVertexes();
-	if (allShapeVertex.size() == 0 || allShapeVertex == null)
-	    return false;
+    public List<Shape> getShapesSortedByTimestamp() {
+        shapes.sort(Comparator.comparingLong(Shape::getTimestamp));
+        return new ArrayList<>(shapes);
+    }
 
-	for (Point point : allShapeVertex) {
-	    if (point.getX() > xMax || point.getY() > yMax || point.getX() < 0 || point.getY() < 0)
-		return false;
-	}
+    public List<Shape> getShapesSortedByOriginDistance() {
+        shapes.sort(Comparator.comparingDouble(shape -> shape.getOrigin().distanceTo(new Point(0, 0))));
+        return new ArrayList<>(shapes);
+    }
 
-	return true;
+    public List<Shape> getShapesEnclosingPoint(Point point) {
+        List<Shape> enclosedShapes = new ArrayList<>();
+        for (Shape shape : shapes) {
+            if (shape.isPointEnclosed(point)) {
+                enclosedShapes.add(shape);
+            }
+        }
+        return enclosedShapes;
     }
 }

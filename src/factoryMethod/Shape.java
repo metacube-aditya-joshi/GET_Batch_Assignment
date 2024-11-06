@@ -2,13 +2,12 @@ package factoryMethod;
 
 import java.util.List;
 
-public interface  Shape {
-
+public interface Shape {
     double getArea();
     double getPerimeter();
     Point getOrigin();
     boolean isPointEnclosed(Point point);
-    
+
     enum ShapeType {
         SQUARE,
         RECTANGLE,
@@ -17,8 +16,8 @@ public interface  Shape {
         POLYGON
     }
 
-    List<Point> getVertexes();
+    List<Point> getVertices();
     ShapeType getShapeType();
-    
-    
+    long getTimestamp();
+    void display();
 }

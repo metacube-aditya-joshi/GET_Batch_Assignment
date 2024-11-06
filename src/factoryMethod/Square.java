@@ -1,6 +1,5 @@
 package factoryMethod;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,73 +7,69 @@ public class Square implements Shape {
     private Point origin;
     private double sideLength;
     private long timestamp;
-    private List<Integer> sides = new ArrayList<Integer>();
-    private List<Point> shapeVertexes;
+    private List<Point> vertices = new ArrayList<>();
 
-    public Square(Point origin, List<Double> parameters) throws CustomException {
-	if (origin == null || parameters == null) {
-	    throw new CustomException("Origin or parameter list is null");
-	}
-	this.origin = origin;
-	this.sideLength = parameters.get(0);
-	this.setTimestamp(new java.util.Date().getTime());
-	makeVertexes();
+    public Square(Point origin, List<Double> parameters) {
+        this.origin = origin;
+        this.sideLength = parameters.get(0);
+        this.timestamp = System.currentTimeMillis();
+        createVertices();
     }
 
-    private void makeVertexes() {
-
-	Point p1 = new Point(origin.getX(), origin.getY());
-	Point p2 = new Point(origin.getX() + sides.get(0), origin.getY());
-	Point p3 = new Point(origin.getX() + sides.get(0), origin.getY() + sides.get(1));
-	Point p4 = new Point(origin.getX(), origin.getY() + sides.get(1));
-
-	shapeVertexes.add(p1);
-	shapeVertexes.add(p2);
-	shapeVertexes.add(p3);
-	shapeVertexes.add(p4);
+    private void createVertices() {
+        vertices.add(new Point(origin.getX(), origin.getY()));
+        vertices.add(new Point(origin.getX() + sideLength, origin.getY()));
+        vertices.add(new Point(origin.getX() + sideLength, origin.getY() + sideLength));
+        vertices.add(new Point(origin.getX(), origin.getY() + sideLength));
     }
 
-    public List<Point> getVertexes() {
-	List<Point> copyShapeVertexes = new ArrayList<Point>();
-	for (Point p : shapeVertexes) {
-	    copyShapeVertexes.add(p);
-	}
-	return copyShapeVertexes;
-    }
-
-    public Shape.ShapeType getShapeType() {
-	return Shape.ShapeType.SQUARE;
+    @Override
+    public void display() {
+        System.out.println("Shape Type: Square");
+        System.out.println("Area: " + getArea());
+        System.out.println("Perimeter: " + getPerimeter());
+        System.out.println("Origin: (" + origin.getX() + ", " + origin.getY() + ")");
+        System.out.print("Vertexes: ");
+        for (Point p : vertices) {
+            System.out.print("(" + p.getX() + ", " + p.getY() + ") ");
+        }
+        System.out.println("\nTimestamp: " + timestamp);
     }
 
     @Override
     public double getArea() {
-	return sideLength * sideLength;
+        return sideLength * sideLength;
     }
 
     @Override
     public double getPerimeter() {
-	return 4 * sideLength;
+        return 4 * sideLength;
     }
 
     @Override
     public Point getOrigin() {
-
-	return origin;
+        return origin;
     }
 
     @Override
     public boolean isPointEnclosed(Point point) {
-
-	return false;
+        return point.getX() >= origin.getX() && point.getX() <= origin.getX() + sideLength &&
+                point.getY() >= origin.getY() && point.getY() <= origin.getY() + sideLength;
     }
 
+    @Override
+    public List<Point> getVertices() {
+        return new ArrayList<>(vertices);
+    }
+
+    @Override
+    public ShapeType getShapeType() {
+        return ShapeType.SQUARE;
+    }
+
+    @Override
     public long getTimestamp() {
-	return timestamp;
+        return timestamp;
     }
-
-    public void setTimestamp(long timestamp) {
-	this.timestamp = timestamp;
-    }
-
-    // Constructor and methods implementation
 }
+

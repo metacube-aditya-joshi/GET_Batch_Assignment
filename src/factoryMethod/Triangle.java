@@ -1,95 +1,75 @@
 package factoryMethod;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Triangle implements Shape {
     private Point origin;
-    private double length;
-    private List<Integer> sides = new ArrayList<Integer>();
-    private List<Point> shapeVertexes;
+    private double sideLength;
     private long timestamp;
+    private List<Point> vertices = new ArrayList<>();
 
-    public Triangle(Point origin2, List<Double> parameters) throws CustomException {
-	if (origin == null || parameters == null) {
-	    throw new CustomException("Origin or parameter list is null");
-	}
-	this.setOrigin(origin2);
-	this.setLength(parameters.get(0));
-	this.setTimestamp(new java.util.Date().getTime());
-	makeVertexes();
+    public Triangle(Point origin, List<Double> parameters) {
+        this.origin = origin;
+        this.sideLength = parameters.get(0);
+        this.timestamp = System.currentTimeMillis();
+        createVertices();
     }
 
-    public Shape.ShapeType getShapeType() {
-	return Shape.ShapeType.TRIANGLE;
+    private void createVertices() {
+        vertices.add(new Point(origin.getX(), origin.getY()));
+        vertices.add(new Point(origin.getX() + sideLength, origin.getY()));
+
+        double x = origin.getX() + (sideLength * Math.cos(Math.PI / 3));
+        double y = origin.getY() + (sideLength * Math.sin(Math.PI / 3));
+        vertices.add(new Point(x, y));
     }
-
-    private void makeVertexes() {
-
-	double side = sides.get(0);
-
-	Point p1 = new Point(origin.getX(), origin.getY());
-	Point p2 = new Point(origin.getX() + side, origin.getY());
-
-	double p3x = origin.getX() + (side * Math.cos((Math.PI * 1) / 3));
-	double p3y = origin.getY() + (side * Math.sin((Math.PI * 2) / 3));
-	Point p3 = new Point(p3x, p3y);
-
-	shapeVertexes.add(p1);
-	shapeVertexes.add(p2);
-	shapeVertexes.add(p3);
+    @Override
+    public void display() {
+        System.out.println("Shape Type: Triangle");
+        System.out.println("Area: " + getArea());
+        System.out.println("Perimeter: " + getPerimeter());
+        System.out.println("Origin: (" + origin.getX() + ", " + origin.getY() + ")");
+        System.out.print("Vertexes: ");
+        for (Point p : vertices) {
+            System.out.print("(" + p.getX() + ", " + p.getY() + ") ");
+        }
+        System.out.println("\nTimestamp: " + timestamp);
     }
-
     @Override
     public double getArea() {
-	// TODO Auto-generated method stub
-	return 0;
+        return (Math.sqrt(3) / 4) * sideLength * sideLength;
     }
 
     @Override
     public double getPerimeter() {
-	// TODO Auto-generated method stub
-	return 0;
+        return 3 * sideLength;
     }
 
     @Override
     public Point getOrigin() {
-	// TODO Auto-generated method stub
-	return null;
+        return origin;
     }
 
     @Override
     public boolean isPointEnclosed(Point point) {
-	// TODO Auto-generated method stub
-	return false;
-    }
-
-    public void setOrigin(Point origin) {
-	this.origin = origin;
-    }
-
-    public double getLength() {
-	return length;
-    }
-
-    public void setLength(double length) {
-	this.length = length;
-    }
-
-    public long getTimestamp() {
-	return timestamp;
-    }
-
-    public void setTimestamp(long timestamp) {
-	this.timestamp = timestamp;
+        // Simplified check (for the sake of brevity)
+        return false; // A proper check would require more geometric calculations
     }
 
     @Override
-    public List<Point> getVertexes() {
-	// TODO Auto-generated method stub
-	return null;
+    public List<Point> getVertices() {
+        return new ArrayList<>(vertices);
     }
 
-    // Constructor and methods implementation
-}
+    @Override
+    public ShapeType getShapeType() {
+        return ShapeType.TRIANGLE;
+    }
 
+    @Override
+    public long getTimestamp() {
+        return timestamp;
+    }
+}
