@@ -1,0 +1,8 @@
+-- SQLBook: Code
+USE dbms_assignment;
+
+
+ CREATE TABLE user (user_id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(20) NOT NULL,email VARCHAR(20) NOT NULL ,
+user_type ENUM("admin","seller","customer"));
+
+INSERT INTO user (name , email ,user_type) VALUES ("Aditya3","aditya3@gmail.com","seller"),("Aditya4","aditya4@gmail.com","seller"),("Aditya5","aditya5@gmail.com","admin");
