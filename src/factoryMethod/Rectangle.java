@@ -10,11 +10,17 @@ public class Rectangle implements Shape {
     private long timestamp;
     private List<Point> vertices = new ArrayList<>();
 
-    public Rectangle(Point origin, List<Double> parameters) {
+    public Rectangle(Point origin, List<Double> parameters) throws CustomException {
+        if(origin==null)
+         throw new CustomException("Cannot pass null Origin");
+
+         if(parameters==null || parameters.size()<2)
+         throw new CustomException("Cannot pass null Parameters or enter some values in it");
         this.origin = origin;
         this.length = parameters.get(0);
         this.breadth = parameters.get(1);
-        this.timestamp = System.currentTimeMillis();
+        this.timestamp = System.nanoTime();
+    
         createVertices();
     }
 
