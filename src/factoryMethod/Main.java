@@ -11,6 +11,7 @@ public class Main {
         while (true) {
             printMenu();
             int choice = scanner.nextInt();
+<<<<<<< Updated upstream
             scanner.nextLine();  // Consume newline character
 
             switch (choice) {
@@ -46,6 +47,47 @@ public class Main {
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
+=======
+            scanner.nextLine(); 
+            try {
+                switch (choice) {
+                    case 1:
+                        createShape();
+                        break;
+                    case 2:
+                        deleteShape();
+                        break;
+                    case 3:
+                        deleteShapesOfType();
+                        break;
+                    case 4:
+                        listShapesSortedByArea();
+                        break;
+                    case 5:
+                        listShapesSortedByPerimeter();
+                        break;
+                    case 6:
+                        listShapesSortedByTimestamp();
+                        break;
+                    case 7:
+                        listShapesSortedByOriginDistance();
+                        break;
+                    case 8:
+                        queryShapesEnclosingPoint();
+                        break;
+                    case 9:
+                        screen.displayShapes();
+                        break;
+                    case 10:
+                        System.out.println("Exiting...");
+                        return;
+                    default:
+                        System.out.println("Invalid choice. Please try again.");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new CustomException("Error while selecting from menu " + e.getMessage());
+>>>>>>> Stashed changes
             }
         }
     }
