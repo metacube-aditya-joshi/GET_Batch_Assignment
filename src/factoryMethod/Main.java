@@ -11,8 +11,7 @@ public class Main {
         while (true) {
             printMenu();
             int choice = scanner.nextInt();
-<<<<<<< HEAD
-<<<<<<< Updated upstream
+
             scanner.nextLine();  // Consume newline character
 
             switch (choice) {
@@ -48,12 +47,11 @@ public class Main {
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
-=======
+
             scanner.nextLine(); 
-=======
+
             scanner.nextLine(); // Consume newline character
 
->>>>>>> 16bca8bd92151b8be9730d67c0aa14cf32e4c93f
             try {
                 switch (choice) {
                     case 1:
@@ -92,12 +90,9 @@ public class Main {
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new CustomException("Error while selecting from menu " + e.getMessage());
-<<<<<<< HEAD
->>>>>>> Stashed changes
-=======
->>>>>>> 16bca8bd92151b8be9730d67c0aa14cf32e4c93f
+
             }
-        }
+            }}
     }
 
     private static void printMenu() {
