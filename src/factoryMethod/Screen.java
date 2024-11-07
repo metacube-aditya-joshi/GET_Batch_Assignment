@@ -3,20 +3,20 @@ package factoryMethod;
 import java.util.*;
 
 public class Screen {
-    private static final double XMAX = 1000;
-    private static final double YMAX = 1000;
+    public static final double XMAX = 1000;
+    public static final double YMAX = 1000;
     private List<Shape> shapes = new ArrayList<>();
 
-    public void addShape(Shape shape) {
+    public void addShape(Shape shape) throws CustomException {
         if (shape.getOrigin().getX() < 0 || shape.getOrigin().getX() > XMAX ||
                 shape.getOrigin().getY() < 0 || shape.getOrigin().getY() > YMAX) {
-            throw new IllegalArgumentException("Shape is out of bounds");
+            throw new CustomException("Shape is out of bounds");
         }
         shapes.add(shape);
     }
-    public void displayShapes() {
+    public void displayShapes() throws CustomException {
         if (shapes.isEmpty()) {
-            System.out.println("No shapes on the screen.");
+            throw new CustomException("No shapes on the screen.");
         } else {
             for (Shape shape : shapes) {
                 shape.display();

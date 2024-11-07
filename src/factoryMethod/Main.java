@@ -7,10 +7,11 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static Screen screen = new Screen();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CustomException {
         while (true) {
             printMenu();
             int choice = scanner.nextInt();
+<<<<<<< HEAD
 <<<<<<< Updated upstream
             scanner.nextLine();  // Consume newline character
 
@@ -49,6 +50,10 @@ public class Main {
                     System.out.println("Invalid choice. Please try again.");
 =======
             scanner.nextLine(); 
+=======
+            scanner.nextLine(); // Consume newline character
+
+>>>>>>> 16bca8bd92151b8be9730d67c0aa14cf32e4c93f
             try {
                 switch (choice) {
                     case 1:
@@ -87,7 +92,10 @@ public class Main {
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new CustomException("Error while selecting from menu " + e.getMessage());
+<<<<<<< HEAD
 >>>>>>> Stashed changes
+=======
+>>>>>>> 16bca8bd92151b8be9730d67c0aa14cf32e4c93f
             }
         }
     }
@@ -107,54 +115,72 @@ public class Main {
         System.out.print("Enter your choice: ");
     }
 
-    private static void createShape() {
+    private static void createShape() throws CustomException {
+
         System.out.println("Enter Shape Type (1. Square, 2. Rectangle, 3. Circle, 4. Triangle): ");
         int shapeTypeChoice = scanner.nextInt();
+
+        if(shapeTypeChoice<0 || shapeTypeChoice>4)
+         throw new CustomException("Choose Correct Shape type");
         scanner.nextLine(); // Consume newline
         System.out.print("Enter the X coordinate of the origin: ");
         double x = scanner.nextDouble();
+        if(x<0 || x>screen.XMAX)
+        throw new CustomException("Enter Correct X coordinate");
         System.out.print("Enter the Y coordinate of the origin: ");
         double y = scanner.nextDouble();
+        if(y<0 || y>screen.YMAX)
+        throw new CustomException("Enter Correct Y coordinate");
         scanner.nextLine(); // Consume newline
 
         Point origin = new Point(x, y);
         List<Double> parameters = new ArrayList<>();
 
-        switch (shapeTypeChoice) {
-            case 1: // Square
-                System.out.print("Enter the side length of the square: ");
-                parameters.add(scanner.nextDouble());
-                screen.addShape(ShapeFactory.createShape(Shape.ShapeType.SQUARE, origin, parameters));
-                break;
-            case 2: // Rectangle
-                System.out.print("Enter the length of the rectangle: ");
-                parameters.add(scanner.nextDouble());
-                System.out.print("Enter the breadth of the rectangle: ");
-                parameters.add(scanner.nextDouble());
-                screen.addShape(ShapeFactory.createShape(Shape.ShapeType.RECTANGLE, origin, parameters));
-                break;
-            case 3: // Circle
-                System.out.print("Enter the radius of the circle: ");
-                parameters.add(scanner.nextDouble());
-                screen.addShape(ShapeFactory.createShape(Shape.ShapeType.CIRCLE, origin, parameters));
-                break;
-            case 4: // Triangle
-                System.out.print("Enter the side length of the triangle: ");
-                parameters.add(scanner.nextDouble());
-                screen.addShape(ShapeFactory.createShape(Shape.ShapeType.TRIANGLE, origin, parameters));
-                break;
-            default:
-                System.out.println("Invalid choice for shape type.");
-        }
+        try {
+            switch (shapeTypeChoice) {
+                case 1: // Square
+                    System.out.print("Enter the side length of the square: ");
+                    parameters.add(scanner.nextDouble());
+                    screen.addShape(ShapeFactory.createShape(Shape.ShapeType.SQUARE, origin, parameters));
+                    break;
+                case 2: // Rectangle
+                    System.out.print("Enter the length of the rectangle: ");
+                    parameters.add(scanner.nextDouble());
+                    System.out.print("Enter the breadth of the rectangle: ");
+                    parameters.add(scanner.nextDouble());
+                    screen.addShape(ShapeFactory.createShape(Shape.ShapeType.RECTANGLE, origin, parameters));
+                    break;
+                case 3: // Circle
+                    System.out.print("Enter the radius of the circle: ");
+                    parameters.add(scanner.nextDouble());
+                    screen.addShape(ShapeFactory.createShape(Shape.ShapeType.CIRCLE, origin, parameters));
+                    break;
+                case 4: // Triangle
+                    System.out.print("Enter the side length of the triangle: ");
+                    parameters.add(scanner.nextDouble());
+                    screen.addShape(ShapeFactory.createShape(Shape.ShapeType.TRIANGLE, origin, parameters));
+                    break;
+                default:
+                    System.out.println("Invalid choice for shape type.");
+            }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new CustomException("Error while selecting shape" +  e.getMessage());
+        }
         System.out.println("Shape created and added to the screen.");
     }
 
-    private static void deleteShape() {
+    private static void deleteShape() throws CustomException {
         System.out.println("Enter Shape Type to delete (1. Square, 2. Rectangle, 3. Circle, 4. Triangle): ");
         int shapeTypeChoice = scanner.nextInt();
+        if(shapeTypeChoice<0 || shapeTypeChoice>4)
+         throw new CustomException("Choose Correct Shape type");
         scanner.nextLine(); // Consume newline
         Shape.ShapeType shapeType = getShapeTypeFromInput(shapeTypeChoice);
+
+        if(shapeType.equals(null))
+         throw new CustomException("Choose Correct Shape type");
 
         List<Shape> shapesToDelete = new ArrayList<>();
         for (Shape shape : screen.getShapesSortedByTimestamp()) {
@@ -164,7 +190,7 @@ public class Main {
         }
 
         if (shapesToDelete.isEmpty()) {
-            System.out.println("No shapes of this type found.");
+            throw new CustomException("No shapes of this type found.");
         } else {
             for (Shape shape : shapesToDelete) {
                 screen.deleteShape(shape);
@@ -173,11 +199,17 @@ public class Main {
         }
     }
 
-    private static void deleteShapesOfType() {
+    private static void deleteShapesOfType() throws CustomException {
         System.out.println("Enter Shape Type to delete all shapes (1. Square, 2. Rectangle, 3. Circle, 4. Triangle): ");
         int shapeTypeChoice = scanner.nextInt();
+        if(shapeTypeChoice<0 || shapeTypeChoice>4)
+         throw new CustomException("Choose Correct Shape type");
         scanner.nextLine(); // Consume newline
         Shape.ShapeType shapeType = getShapeTypeFromInput(shapeTypeChoice);
+
+        if(shapeType.equals(null))
+        throw new CustomException("Choose Correct Shape type");
+
 
         screen.deleteShapesOfType(shapeType);
         System.out.println("All shapes of type " + shapeType + " deleted.");
@@ -203,11 +235,15 @@ public class Main {
         printShapeList(shapes, "Origin Distance");
     }
 
-    private static void queryShapesEnclosingPoint() {
+    private static void queryShapesEnclosingPoint() throws CustomException {
         System.out.print("Enter the X coordinate of the point: ");
         double x = scanner.nextDouble();
+        if(x<0 || x>screen.XMAX)
+        throw new CustomException("Enter Correct X coordinate");
         System.out.print("Enter the Y coordinate of the point: ");
         double y = scanner.nextDouble();
+        if(y<0 || y>screen.YMAX)
+        throw new CustomException("Enter Correct Y coordinate");
         Point point = new Point(x, y);
 
         List<Shape> shapes = screen.getShapesEnclosingPoint(point);
@@ -234,10 +270,14 @@ public class Main {
 
     private static Shape.ShapeType getShapeTypeFromInput(int choice) {
         switch (choice) {
-            case 1: return Shape.ShapeType.SQUARE;
-            case 2: return Shape.ShapeType.RECTANGLE;
-            case 3: return Shape.ShapeType.CIRCLE;
-            case 4: return Shape.ShapeType.TRIANGLE;
+            case 1:
+                return Shape.ShapeType.SQUARE;
+            case 2:
+                return Shape.ShapeType.RECTANGLE;
+            case 3:
+                return Shape.ShapeType.CIRCLE;
+            case 4:
+                return Shape.ShapeType.TRIANGLE;
             default:
                 System.out.println("Invalid shape type.");
                 return null;

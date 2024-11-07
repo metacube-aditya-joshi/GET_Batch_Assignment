@@ -10,10 +10,15 @@ public class Circle implements Shape {
     private double radius;
     private long timestamp;
 
-    public Circle(Point origin, List<Double> parameters) {
+    public Circle(Point origin, List<Double> parameters) throws CustomException {
+        if(origin==null)
+         throw new CustomException("Cannot pass null Origin");
+
+         if(parameters==null || parameters.size()<1)
+         throw new CustomException("Cannot pass null Parameters or enter some values in it");
         this.origin = origin;
         this.radius = parameters.get(0);
-        this.timestamp = System.currentTimeMillis();
+        this.timestamp = System.nanoTime();
     }
     @Override
     public void display() {
