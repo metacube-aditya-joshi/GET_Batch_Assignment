@@ -19,7 +19,8 @@ public class Rectangle implements Shape {
         this.origin = origin;
         this.length = parameters.get(0);
         this.breadth = parameters.get(1);
-        this.timestamp = System.currentTimeMillis();
+        this.timestamp = System.nanoTime();
+    
         createVertices();
     }
 

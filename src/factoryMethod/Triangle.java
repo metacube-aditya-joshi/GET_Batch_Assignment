@@ -10,10 +10,16 @@ public class Triangle implements Shape {
     private long timestamp;
     private List<Point> vertices = new ArrayList<>();
 
-    public Triangle(Point origin, List<Double> parameters) {
+    public Triangle(Point origin, List<Double> parameters) throws CustomException {
+        if(origin==null)
+        throw new CustomException("Cannot pass null Origin");
+
+        if(parameters==null || parameters.size()<1)
+        throw new CustomException("Cannot pass null Parameters or enter some values in it");
         this.origin = origin;
         this.sideLength = parameters.get(0);
-        this.timestamp = System.currentTimeMillis();
+        this.timestamp = System.nanoTime();
+    
         createVertices();
     }
 

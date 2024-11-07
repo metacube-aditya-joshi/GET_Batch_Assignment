@@ -17,7 +17,8 @@ public class Square implements Shape {
          throw new CustomException("Cannot pass null Parameters or enter some values in it");
         this.origin = origin;
         this.sideLength = parameters.get(0);
-        this.timestamp = System.currentTimeMillis();
+        this.timestamp = System.nanoTime();
+    
         createVertices();
     }
 

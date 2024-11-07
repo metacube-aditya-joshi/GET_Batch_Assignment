@@ -126,11 +126,16 @@ public class Main {
         System.out.println("Shape created and added to the screen.");
     }
 
-    private static void deleteShape() {
+    private static void deleteShape() throws CustomException {
         System.out.println("Enter Shape Type to delete (1. Square, 2. Rectangle, 3. Circle, 4. Triangle): ");
         int shapeTypeChoice = scanner.nextInt();
+        if(shapeTypeChoice<0 || shapeTypeChoice>4)
+         throw new CustomException("Choose Correct Shape type");
         scanner.nextLine(); // Consume newline
         Shape.ShapeType shapeType = getShapeTypeFromInput(shapeTypeChoice);
+
+        if(shapeType.equals(null))
+         throw new CustomException("Choose Correct Shape type");
 
         List<Shape> shapesToDelete = new ArrayList<>();
         for (Shape shape : screen.getShapesSortedByTimestamp()) {
@@ -140,7 +145,7 @@ public class Main {
         }
 
         if (shapesToDelete.isEmpty()) {
-            System.out.println("No shapes of this type found.");
+            throw new CustomException("No shapes of this type found.");
         } else {
             for (Shape shape : shapesToDelete) {
                 screen.deleteShape(shape);
@@ -149,11 +154,17 @@ public class Main {
         }
     }
 
-    private static void deleteShapesOfType() {
+    private static void deleteShapesOfType() throws CustomException {
         System.out.println("Enter Shape Type to delete all shapes (1. Square, 2. Rectangle, 3. Circle, 4. Triangle): ");
         int shapeTypeChoice = scanner.nextInt();
+        if(shapeTypeChoice<0 || shapeTypeChoice>4)
+         throw new CustomException("Choose Correct Shape type");
         scanner.nextLine(); // Consume newline
         Shape.ShapeType shapeType = getShapeTypeFromInput(shapeTypeChoice);
+
+        if(shapeType.equals(null))
+        throw new CustomException("Choose Correct Shape type");
+
 
         screen.deleteShapesOfType(shapeType);
         System.out.println("All shapes of type " + shapeType + " deleted.");
@@ -179,11 +190,15 @@ public class Main {
         printShapeList(shapes, "Origin Distance");
     }
 
-    private static void queryShapesEnclosingPoint() {
+    private static void queryShapesEnclosingPoint() throws CustomException {
         System.out.print("Enter the X coordinate of the point: ");
         double x = scanner.nextDouble();
+        if(x<0 || x>screen.XMAX)
+        throw new CustomException("Enter Correct X coordinate");
         System.out.print("Enter the Y coordinate of the point: ");
         double y = scanner.nextDouble();
+        if(y<0 || y>screen.YMAX)
+        throw new CustomException("Enter Correct Y coordinate");
         Point point = new Point(x, y);
 
         List<Shape> shapes = screen.getShapesEnclosingPoint(point);
