@@ -1,8 +1,59 @@
 -- SQLBook: Code
 USE dbms_assignment;
 
-
+-- User Table 
  CREATE TABLE user (user_id INT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(20) NOT NULL,email VARCHAR(20) NOT NULL ,
 user_type ENUM("admin","seller","customer"));
 
-INSERT INTO user (name , email ,user_type) VALUES ("Aditya3","aditya3@gmail.com","seller"),("Aditya4","aditya4@gmail.com","seller"),("Aditya5","aditya5@gmail.com","admin");
+INSERT INTO user (name , email ,user_type) VALUES 
+("Aditya3","aditya3@gmail.com","seller"),
+("Aditya4","aditya4@gmail.com","seller"),
+("Aditya5","aditya5@gmail.com","admin");
+
+-- SQLBook: Code
+-- Order Table
+
+CREATE TABLE orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    order_date TIMESTAMP NOT NULL,
+    status ENUM('in processing', 'not delivered', 'delivered'),
+    FOREIGN KEY (user_id) REFERENCES user(user_id)  -- Assuming you have a users table
+);
+
+INSERT INTO orders (user_id, order_date, status) VALUES 
+(1, CURRENT_TIMESTAMP(), "delivered"),
+(2, CURRENT_TIMESTAMP(), "in processing"),
+(3, CURRENT_TIMESTAMP(), "not delivered"),
+(4, CURRENT_TIMESTAMP(), "delivered"),
+(1, CURRENT_TIMESTAMP(), "not delivered"),
+(1, CURRENT_TIMESTAMP(), "not delivered");
+
+
+-- SQLBook: Code
+-- Product Table
+
+CREATE TABLE products (product_id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(20) NOT NULL,
+price INT NOT NULL,  
+description VARCHAR(50) NOT Null, 
+stock_qauntity INT NOT NULL);
+
+INSERT INTO products (name,price,description,stock_qauntity) VALUES
+("Bag",1500,"Sturdy bag",10),
+("Purse",2000,"Elegant",20),
+("Boots",1000,"Black",30),
+("Boots",1000,"Black",30),
+("Boots",1000,"Black",30);
+
+-- SQLBook: Code
+-- Category Table
+
+CREATE TABLE category (category_id INT PRIMARY KEY AUTO_INCREMENT,name VARCHAR(20) NOT NULL,product_id INT NOT NULL,FOREIGN KEY(product_id) REFERENCES products(product_id));
+
+INSERT INTO category (name,product_id) VALUES
+("Bag",1),
+("Accessories",2),
+("Footwear",3),
+("Footwear",3),
+("Footwear",3);
