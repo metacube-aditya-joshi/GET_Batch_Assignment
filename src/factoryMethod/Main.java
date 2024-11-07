@@ -71,13 +71,21 @@ public class Main {
     }
 
     private static void createShape() throws CustomException {
+
         System.out.println("Enter Shape Type (1. Square, 2. Rectangle, 3. Circle, 4. Triangle): ");
         int shapeTypeChoice = scanner.nextInt();
+
+        if(shapeTypeChoice<0 || shapeTypeChoice>4)
+         throw new CustomException("Choose Correct Shape type");
         scanner.nextLine(); // Consume newline
         System.out.print("Enter the X coordinate of the origin: ");
         double x = scanner.nextDouble();
+        if(x<0 || x>screen.XMAX)
+        throw new CustomException("Enter Correct X coordinate");
         System.out.print("Enter the Y coordinate of the origin: ");
         double y = scanner.nextDouble();
+        if(y<0 || y>screen.YMAX)
+        throw new CustomException("Enter Correct Y coordinate");
         scanner.nextLine(); // Consume newline
 
         Point origin = new Point(x, y);
@@ -113,7 +121,7 @@ public class Main {
 
         } catch (Exception e) {
             e.printStackTrace();
-            throw new CustomException("Error while selecting shape" + shapeTypeChoice + " " + e.getMessage());
+            throw new CustomException("Error while selecting shape" +  e.getMessage());
         }
         System.out.println("Shape created and added to the screen.");
     }

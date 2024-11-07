@@ -3,8 +3,8 @@ package factoryMethod;
 import java.util.*;
 
 public class Screen {
-    private static final double XMAX = 1000;
-    private static final double YMAX = 1000;
+    public static final double XMAX = 1000;
+    public static final double YMAX = 1000;
     private List<Shape> shapes = new ArrayList<>();
 
     public void addShape(Shape shape) {
