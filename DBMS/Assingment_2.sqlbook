@@ -398,3 +398,15 @@ SELECT order_id , status , user_id  FROM orders
 WHERE (status="delivered" AND order_id='8');
 
 --Display list of order items along with order placed date which fall between Rs 20 to Rs 50 price.
+SELEC~T 
+    o.order_date,
+    p.name,
+    p.price
+FROM 
+    orders o
+    JOIN order_items oi ON o.order_id = oi.order_id
+    JOIN products p ON oi.product_id = p.product_id
+WHERE 
+    p.price BETWEEN 20 AND 50
+ORDER BY 
+    o.order_date DESC;
