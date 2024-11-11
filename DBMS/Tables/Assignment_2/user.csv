@@ -1,0 +1,53 @@
+user_id,name,email,user_type,address_id
+1,John Doe,johndoe@example.com,customer,1
+2,Jane Smith,janesmith@example.com,seller,2
+3,Bob Johnson,bobjohnson@example.com,admin,3
+4,Alice Williams,alicew@example.com,customer,4
+5,Charlie Brown,charlieb@example.com,seller,5
+6,Diana Prince,dianap@example.com,customer,6
+7,Clark Kent,clarkk@example.com,admin,7
+8,Peter Parker,peterp@example.com,customer,8
+9,Harry Potter,harryp@example.com,customer,9
+10,Emma Watson,emmaw@example.com,seller,10
+11,Luke Skywalker,lukes@example.com,admin,11
+12,Leia Organa,leiao@example.com,customer,12
+13,Thor Odinson,thoro@example.com,seller,13
+14,Steve Rogers,stever@example.com,admin,14
+15,Peter Quill,peterq@example.com,customer,15
+16,Black Widow,natashar@example.com,seller,16
+17,Doctor Strange,doctorst@example.com,admin,17
+18,Wonder Woman,ww@example.com,customer,18
+19,The Flash,flash@example.com,seller,19
+20,Green Lantern,gl@example.com,admin,20
+21,Harley Quinn,harleyq@example.com,customer,21
+22,Joker,joker@example.com,seller,22
+23,Catwoman,catwoman@example.com,customer,23
+24,Lex Luthor,lexl@example.com,admin,24
+25,Alfred Pennyworth,alfredp@example.com,seller,25
+26,James Bond,jamesb@example.com,customer,26
+27,Indiana Jones,indianaj@example.com,seller,27
+28,Jack Sparrow,jacks@example.com,customer,28
+29,Shrek,shrek@example.com,admin,29
+30,Fiona,fiona@example.com,customer,30
+31,Donkey,donkey@example.com,seller,31
+32,Simba,simba@example.com,customer,32
+33,Nala,nala@example.com,seller,33
+34,Mufasa,mufasa@example.com,admin,34
+35,Scar,scar@example.com,customer,35
+36,Woody,woody@example.com,seller,36
+37,Buzz Lightyear,buzzl@example.com,admin,37
+38,Lightning McQueen,lightning@example.com,customer,38
+39,Elsa,elsa@example.com,seller,39
+40,Anna,anna@example.com,customer,40
+41,Olaf,olaf@example.com,admin,41
+42,Kristoff,kris@example.com,seller,42
+43,Sven,sven@example.com,customer,43
+44,Peter Pan,peterp@example.com,admin,44
+45,Wendy Darling,wendyd@example.com,seller,45
+46,Captain Hook,hook@example.com,customer,46
+47,Robin Hood,robinh@example.com,admin,47
+48,Merry,mer@example.com,seller,48
+49,Pippin,pippin@example.com,customer,49
+50,Gandalf,gandalf@example.com,admin,50
+51,Aragorn,aragorn@example.com,seller,51
+52,Legolas,legolas@example.com,customer,52
