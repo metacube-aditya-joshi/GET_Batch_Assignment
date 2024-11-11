@@ -5,77 +5,50 @@ USE dbms_assignment;
 
 CREATE TABLE products (
     product_id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(20) NOT NULL,
+    name VARCHAR(50) NOT NULL,
     price INT NOT NULL,  
     description VARCHAR(50) NOT NULL,
     stock_quantity INT NOT NULL,
     image_id INT NOT NULL,
+    category_id INT NOT NULL,
+    FOREIGN KEY (category_id) REFERENCES category (category_id),
     FOREIGN KEY (image_id) REFERENCES images (image_id)
 );
 
 
--- product data insertion
-INSERT INTO products (name, price, description, stock_quantity, image_id) VALUES
-('Product A', 100, 'Description for Product A', 50, 1),
-('Product B', 150, 'Description for Product B', 30, 2),
-('Product C', 200, 'Description for Product C', 20, 3),
-('Product D', 250, 'Description for Product D', 15, 4),
-('Product E', 300, 'Description for Product E', 10, 5),
-('Product F', 120, 'Description for Product F', 40, 6),
-('Product G', 180, 'Description for Product G', 25, 7),
-('Product H', 220, 'Description for Product H', 35, 8),
-('Product I', 90, 'Description for Product I', 60, 9),
-('Product J', 130, 'Description for Product J', 45, 10),
-('Product K', 160, 'Description for Product K', 55, 11),
-('Product L', 210, 'Description for Product L', 20, 12),
-('Product M', 240, 'Description for Product M', 15, 13),
-('Product N', 270, 'Description for Product N', 5, 14),
-('Product O', 300, 'Description for Product O', 8, 15),
-('Product P', 110, 'Description for Product P', 50, 16),
-('Product Q', 140, 'Description for Product Q', 30, 17),
-('Product R', 190, 'Description for Product R', 25, 18),
-('Product S', 230, 'Description for Product S', 35, 19),
-('Product T', 80, 'Description for Product T', 60, 20),
-('Product U', 170, 'Description for Product U', 40, 21),
-('Product V', 200, 'Description for Product V', 20, 22),
-('Product W', 250, 'Description for Product W', 15, 23),
-('Product X', 300, 'Description for Product X', 10, 24),
-('Product Y', 120, 'Description for Product Y', 40, 25),
-('Product Z', 150, 'Description for Product Z', 30, 26),
-('Product AA', 180, 'Description for Product AA', 25, 27),
-('Product AB', 210, 'Description for Product AB', 20, 28),
-('Product AC', 240, 'Description for Product AC', 15, 29),
-('Product AD', 270, 'Description for Product AD', 5, 30),
-('Product AE', 300, 'Description for Product AE', 8, 31),
-('Product AF', 110, 'Description for Product AF', 50, 32),
-('Product AG', 140, 'Description for Product AG', 30, 33),
-('Product AH', 190, 'Description for Product AH', 25, 34),
-('Product AI', 230, 'Description for Product AI', 35, 35),
-('Product AJ', 80, 'Description for Product AJ', 60, 36),
-('Product AK', 170, 'Description for Product AK', 40, 37),
-('Product AL', 200, 'Description for Product AL', 20, 38),
-('Product AM', 250, 'Description for Product AM', 15, 39),
-('Product AN', 300, 'Description for Product AN', 10, 40),
-('Product AO', 120, 'Description for Product AO', 40, 41),
-('Product AP', 150, 'Description for Product AP', 30, 42),
-('Product AQ', 180, 'Description for Product AQ', 25, 43),
-('Product AR', 210, 'Description for Product AR', 20, 44),
-('Product AS', 240, 'Description for Product AS', 15, 45),
-('Product AT', 270, 'Description for Product AT', 5, 46),
-('Product AU', 300, 'Description for Product AU', 8, 47),
-('Product AV', 110, 'Description for Product AV', 50, 48),
-('Product AW', 140, 'Description for Product AW', 30, 49),
-('Product AX', 190, 'Description for Product AX', 25, 50),
-('Product AY', 230, 'Description for Product AY', 35, 51),
-('Product AZ', 80, 'Description for Product AZ', 60, 52),
-('Product BA', 170, 'Description for Product BA', 40, 53),
-('Product BB', 200, 'Description for Product BB', 20, 54),
-('Product BC', 250, 'Description for Product BC', 15, 55),
-('Product BD', 300, 'Description for Product BD', 10, 56),
-('Product BE', 120, 'Description for Product BE', 40, 57),
-('Product BF', 150, 'Description for Product BF', 30, 58),
-('Product BG', 180, 'Description for Product BG', 25, 59),
-('Product BH', 210, 'Description for Product BH', 20, 60);
+-- Inserting 30 products into the products table with image_id limited to 20
+INSERT INTO products (name, price, description, stock_quantity, image_id, category_id) VALUES
+("iPhone 13", 999, "Latest Apple smartphone", 50, 1, 7),
+("Samsung Galaxy S21", 799, "Latest Samsung smartphone", 30, 2, 7),
+("Gaming Chair", 199, "Comfortable gaming chair", 20, 3, 3),
+("Garden Shovel", 25, "Durable garden shovel", 100, 4, 2),
+("Rolex Watch", 5000, "Luxury wristwatch", 10, 5, 8),
+("PlayStation 5", 499, "Next-gen gaming console", 15, 6, 4),
+("Call of Duty: Vanguard", 60, "Popular FPS game", 40, 7, 4),
+("Halo Infinite", 60, "Latest Halo game", 35, 8, 4),
+("Pen", 2, "Blue ink pen", 200, 9, 5),
+("Pencil", 1, "Standard graphite pencil", 150, 10, 5),
+("MacBook Pro", 1299, "High-performance laptop", 25, 11, 9),
+("Dell XPS 13", 999, "Compact and powerful laptop", 20, 12, 9),
+("Lenovo ThinkPad", 899, "Business laptop with great battery life", 15, 13, 9),
+("HP Spectre x360", 1099, "2-in-1 convertible laptop", 10, 14, 9),
+("LG OLED TV", 1499, "Stunning 4K OLED TV", 5, 15, 1),
+("Sony WH-1000XM4", 349, "Noise-canceling headphones", 30, 16, 1),
+("Samsung Galaxy Tab", 499, "Versatile tablet for work and play", 20, 17, 1),
+("Apple Watch", 399, "Smartwatch with fitness tracking", 25, 18, 8),
+("Shovel", 25, "Durable garden shovel", 100, 19, 2),
+("Bathroom Scale", 29, "Digital bathroom scale", 50, 20, 6),
+("Car Vacuum Cleaner", 49, "Portable car vacuum cleaner", 40, 1, 10),
+("Electric Kettle", 39, "Fast boiling electric kettle", 60, 2, 11),
+("Soap", 3, "Moisturizing hand soap", 200, 3, 6),
+("Dishwasher", 499, "High-efficiency dishwasher", 10, 4, 11),
+("Gaming Mouse", 59, "High precision gaming mouse", 30, 5, 1),
+("Wireless Charger", 29, "Fast wireless charging pad", 100, 6, 1),
+("Office Chair", 149, "Ergonomic office chair", 20, 7, 3),
+("Garden Hose", 35, "Durable garden hose", 80, 8, 2),
+("Laptop Stand", 45, "Adjustable laptop stand", 50, 9, 9),
+("Smartphone Case", 15, "Protective case for smartphones", 150, 10, 7);
+
 
 -- SQLBook: Code
 -- Address Table
@@ -89,110 +62,27 @@ CREATE Table shipping_address (
 );
 
 -- address data insertion
-
 INSERT INTO shipping_address (address_line, city, state, pincode) VALUES
-('123 Elm St', 'Springfield', 'Illinois', 62701),
-('456 Oak St', 'Madison', 'Wisconsin', 53703),
-('789 Pine St', 'Austin', 'Texas', 73301),
-('101 Maple St', 'Seattle', 'Washington', 98101),
-('202 Birch St', 'Denver', 'Colorado', 80201),
-('303 Cedar St', 'Phoenix', 'Arizona', 85001),
-('404 Walnut St', 'Portland', 'Oregon', 97201),
-('505 Cherry St', 'Miami', 'Florida', 33101),
-('606 Ash St', 'Atlanta', 'Georgia', 30301),
-('707 Spruce St', 'Boston', 'Massachusetts', 02101),
-('808 Fir St', 'New York', 'New York', 10001),
-('909 Palm St', 'Los Angeles', 'California', 90001),
-('111 Cypress St', 'Chicago', 'Illinois', 60601),
-('222 Willow St', 'San Francisco', 'California', 94101),
-('333 Poplar St', 'Dallas', 'Texas', 75201),
-('444 Magnolia St', 'Houston', 'Texas', 77001),
-('555 Chestnut St', 'Philadelphia', 'Pennsylvania', 19101),
-('666 Dogwood St', 'San Diego', 'California', 92101),
-('777 Redwood St', 'Las Vegas', 'Nevada', 89101),
-('888 Larch St', 'Orlando', 'Florida', 32801),
-('999 Sequoia St', 'Charlotte', 'North Carolina', 28201),
-('1010 Hemlock St', 'Indianapolis', 'Indiana', 46201),
-('1111 Fir St', 'Columbus', 'Ohio', 43201),
-('1212 Spruce St', 'Nashville', 'Tennessee', 37201),
-('1313 Cedar St', 'Baltimore', 'Maryland', 21201),
-('1414 Pine St', 'Milwaukee', 'Wisconsin', 53201),
-('1515 Oak St', 'Kansas City', 'Missouri', 64101),
-('1616 Maple St', 'Salt Lake City', 'Utah', 84101),
-('1717 Birch St', 'Cincinnati', 'Ohio', 45201),
-('1818 Cherry St', 'Virginia Beach', 'Virginia', 23450),
-('1919 Walnut St', 'Atlanta', 'Georgia', 30301),
-('2020 Ash St', 'Tucson', 'Arizona', 85701),
-('2121 Elm St', 'Fresno', 'California', 93701),
-('2222 Oak St', 'Sacramento', 'California', 95801),
-('2323 Pine St', 'Long Beach', 'California', 90801),
-('2424 Maple St', 'Kansas City', 'Kansas', 66101),
-('2525 Cedar St', 'Mesa', 'Arizona', 85201),
-('2626 Spruce St', 'Virginia Beach', 'Virginia', 23451),
-('2727 Fir St', 'Atlanta', 'Georgia', 30302),
-('2828 Cherry St', 'Colorado Springs', 'Colorado', 80901),
-('2929 Willow St', 'Omaha', 'Nebraska', 68101),
-('3030 Poplar St', 'Raleigh', 'North Carolina', 27601),
-('3131 Hemlock St', 'Miami', 'Florida', 33102),
-('3232 Redwood St', 'Cleveland', 'Ohio', 44101),
-('3333 Dogwood St', 'Tulsa', 'Oklahoma', 74101),
-('3434 Larch St', 'Oakland', 'California', 94601),
-('3535 Chestnut St', 'Minneapolis', 'Minnesota', 55401),
-('3636 Magnolia St', 'Wichita', 'Kansas', 67201),
-('3737 Cypress St', 'New Orleans', 'Louisiana', 70112),
-('3838 Ash St', 'Arlington', 'Texas', 76010),
-('3939 Fir St', 'Bakersfield', 'California', 93301),
-('4040 Spruce St', 'Tampa', 'Florida', 33601),
-('4141 Pine St', 'Honolulu', 'Hawaii', 96801),
-('4242 Oak St', 'Anaheim', 'California', 92801),
-('4343 Maple St', 'Santa Ana', 'California', 92701),
-('4444 Cedar St', 'Corpus Christi', 'Texas', 78401),
-('4545 Walnut St', 'Riverside', 'California', 92501),
-('4646 Cherry St', 'Stockton', 'California', 95201),
-('4747 Ash St', 'Henderson', 'Nevada', 89014),
-('4848 Fir St', 'St. Louis', 'Missouri', 63101),
-('4949 Spruce St', 'Pittsburgh', 'Pennsylvania', 15201),
-('5050 Pine St', 'Cincinnati', 'Ohio', 45202),
-('5151 Maple St', 'Anchorage', 'Alaska', 99501),
-('5252 Cedar St', 'Greensboro', 'North Carolina', 27401),
-('5353 Oak St', 'Plano', 'Texas', 75023),
-('5454 Birch St', 'Lincoln', 'Nebraska', 68501),
-('5555 Elm St', 'Orlando', 'Florida', 32802),
-('5656 Dogwood St', 'Chula Vista', 'California', 91910),
-('5757 Larch St', 'Jersey City', 'New Jersey', 07302),
-('5858 Hemlock St', 'Fort Worth', 'Texas', 76101),
-('5959 Redwood St', 'Buffalo', 'New York', 14201),
-('6060 Magnolia St', 'St. Paul', 'Minnesota', 55101),
-('6161 Cypress St', 'Chandler', 'Arizona', 85224),
-('6262 Ash St', 'Laredo', 'Texas', 78040),
-('6363 Fir St', 'Madison', 'Wisconsin', 53704),
-('6464 Spruce St', 'Durham', 'North Carolina', 27701),
-('6565 Pine St', 'Irvine', 'California', 92602),
-('6666 Oak St', 'Chesapeake', 'Virginia', 23320),
-('6767 Maple St', 'Scottsdale', 'Arizona', 85250),
-('6868 Cedar St', 'Glendale', 'California', 91201),
-('6969 Walnut St', 'Reno', 'Nevada', 89501),
-('7070 Cherry St', 'Gilbert', 'Arizona', 85233),
-('7171 Ash St', 'Hialeah', 'Florida', 33010),
-('7272 Fir St', 'Garland', 'Texas', 75040),
-('7373 Spruce St', 'Boise', 'Idaho', 83701),
-('7474 Pine St', 'Baton Rouge', 'Louisiana', 70801),
-('7575 Maple St', 'Tallahassee', 'Florida', 32301),
-('7676 Cedar St', 'Des Moines', 'Iowa', 50301),
-('7777 Walnut St', 'Mobile', 'Alabama', 36601),
-('7878 Cherry St', 'Grand Rapids', 'Michigan', 49501),
-('7979 Ash St', 'Salt Lake City', 'Utah', 84102),
-('8080 Fir St', 'Huntington Beach', 'California', 92647),
-('8181 Spruce St', 'Overland Park', 'Kansas', 66204),
-('8282 Pine St', 'Knoxville', 'Tennessee', 37901),
-('8383 Oak St', 'Worcester', 'Massachusetts', 01601),
-('8484 Maple St', 'Vancouver', 'Washington', 98660),
-('8585 Cedar St', 'Tempe', 'Arizona', 85280),
-('8686 Walnut St', 'Cape Coral', 'Florida', 33904),
-('8787 Cherry St', 'Sioux Falls', 'South Dakota', 57101),
-('8888 Ash St', 'Springfield', 'Massachusetts', 01101),
-('8989 Fir St', 'Peoria', 'Illinois', 61601),
-('9090 Spruce St', 'Jackson', 'Mississippi', 39201);
+("123 Main St", "New York", "New York", 10001),
+("456 Elm St", "Los Angeles", "California", 90001),
+("789 Oak St", "Chicago", "Illinois", 60601),
+("101 Pine St", "Houston", "Texas", 77001),
+("202 Maple St", "Phoenix", "Arizona", 85001),
+("303 Cedar St", "Philadelphia", "Pennsylvania", 19101),
+("404 Birch St", "San Antonio", "Texas", 78201),
+("505 Walnut St", "San Diego", "California", 92101),
+("606 Cherry St", "Dallas", "Texas", 75201),
+("707 Spruce St", "San Jose", "California", 95101),
+("808 Ash St", "Austin", "Texas", 73301),
+("909 Willow St", "Jacksonville", "Florida", 32099),
+("111 Fir St", "San Francisco", "California", 94101),
+("222 Poplar St", "Columbus", "Ohio", 43201),
+("333 Chestnut St", "Fort Worth", "Texas", 76101),
+("444 Sycamore St", "Indianapolis", "Indiana", 46201),
+("555 Hickory St", "Charlotte", "North Carolina", 28201),
+("666 Spruce St", "Seattle", "Washington", 98101),
+("777 Redwood St", "Denver", "Colorado", 80201),
+("888 Palm St", "Washington", "D.C.", 20001);
 -- SQLBook: Code
 -- User Table
 CREATE TABLE user (
@@ -204,233 +94,137 @@ CREATE TABLE user (
     FOREIGN KEY (address_id) REFERENCES shipping_address (address_id)
 );
 
--- user data insertion
 INSERT INTO user (name, email, user_type, address_id) VALUES
-('Alice Johnson', 'alice.johnson@example.com', 'customer', 1),
-('Bob Smith', 'bob.smith@example.com', 'seller', 2),
-('Charlie Brown', 'charlie.brown@example.com', 'customer', 3),
-('Diana Prince', 'diana.prince@example.com', 'admin', 4),
-('Ethan Hunt', 'ethan.hunt@example.com', 'customer', 5),
-('Fiona Green', 'fiona.green@example.com', 'seller', 6),
-('George Washington', 'george.washington@example.com', 'customer', 7),
-('Hannah Montana', 'hannah.montana@example.com', 'customer', 8),
-('Ian Malcolm', 'ian.malcolm@example.com', 'admin', 9),
-('Julia Roberts', 'julia.roberts@example.com', 'seller', 10),
-('Kevin Bacon', 'kevin.bacon@example.com', 'customer', 11),
-('Laura Croft', 'laura.croft@example.com', 'customer', 12),
-('Mike Wazowski', 'mike.wazowski@example.com', 'seller', 13),
-('Nina Simone', 'nina.simone@example.com', 'customer', 14),
-('Oscar Wilde', 'oscar.wilde@example.com', 'admin', 15),
-('Paula Abdul', 'paula.abdul@example.com', 'customer', 16),
-('Quentin Tarantino', 'quentin.tarantino@example.com', 'seller', 17),
-('Rachel Green', 'rachel.green@example.com', 'customer', 18),
-('Steve Jobs', 'steve.jobs@example.com', 'admin', 19),
-('Tina Fey', 'tina.fey@example.com', 'customer', 20),
-('Ursula K. Le Guin', 'ursula.leguin@example.com', 'seller', 21),
-('Victor Hugo', 'victor.hugo@example.com', 'customer', 22),
-('Wendy Williams', 'wendy.williams@example.com', 'customer', 23),
-('Xena Warrior', 'xena.warrior@example.com', 'admin', 24),
-('Yoda Jedi', 'yoda.jedi@example.com', 'seller', 25),
-('Zara Larsson', 'zara.larsson@example.com', 'customer', 26),
-('Alice Cooper', 'alice.cooper@example.com', 'customer', 27),
-('Bob Marley', 'bob.marley@example.com', 'seller', 28),
-('Charlie Chaplin', 'charlie.chaplin@example.com', 'customer', 29),
-('Daisy Ridley', 'daisy.ridley@example.com', 'admin', 30),
-('Eli Manning', 'eli.manning@example.com', 'customer', 31),
-('Felicity Jones', 'felicity.jones@example.com', 'seller', 32),
-('Gordon Ramsay', 'gordon.ramsay@example.com', 'customer', 33),
-('Hugh Jackman', 'hugh.jackman@example.com', 'customer', 34),
-('Isla Fisher', 'isla.fisher@example.com', 'admin', 35),
-('Jack Black', 'jack.black@example.com', 'seller', 36),
-('Kylie Jenner', 'kylie.jenner@example.com', 'customer', 37),
-('Liam Neeson', 'liam.neeson@example.com', 'customer', 38),
-('Megan Fox', 'megan.fox@example.com', 'seller', 39),
-('Nicolas Cage', 'nicolas.cage@example.com', 'admin', 40),
-('Olivia Wilde', 'olivia.wilde@example.com', 'customer', 41),
-('Pablo Picasso', 'pablo.picasso@example.com', 'customer', 42),
-('Queen Latifah', 'queen.latifah@example.com', 'seller', 43),
-('Ryan Gosling', 'ryan.gosling@example.com', 'customer', 44),
-('Selena Gomez', 'selena.gomez@example.com', 'admin', 45),
-('Tom Hanks', 'tom.hanks@example.com', 'customer', 46),
-('Uma Thurman', 'uma.thurman@example.com', 'seller', 47),
-('Vin Diesel', 'vin.diesel@example.com', 'customer', 48),
-('Will Smith', 'will.smith@example.com', 'admin', 49),
-('Xander Cage', 'xander.cage@example.com', 'customer', 50),
-('Yasmine Bleeth', 'yasmine.bleeth@example.com', 'customer', 51),
-('Zach Galifianakis', 'zach.galifianakis@example.com', 'seller', 52),
-('Ava Gardner', 'ava.gardner@example.com', 'customer', 53),
-('Brad Pitt', 'brad.pitt@example.com', 'admin', 54),
-('Cameron Diaz', 'cameron.diaz@example.com', 'customer', 55),
-('Daniel Craig', 'daniel.craig@example.com', 'seller', 56),
-('Eva Mendes', 'eva.mendes@example.com', 'customer', 57),
-('Freddie Mercury', 'freddie.mercury@example.com', 'admin', 58),
-('Gina Rodriguez', 'gina.rodriguez@example.com', 'customer', 59),
-('Henry Cavill', 'henry.cavill@example.com', 'seller', 60),
-('Isabella Rossellini', 'isabella.rossellini@example.com', 'customer', 61),
-('James Dean', 'james.dean@example.com', 'admin', 62),
-('Katherine Hepburn', 'katherine.hepburn@example.com', 'customer', 63),
-('Leonardo DiCaprio', 'leonardo.dicaprio@example.com', 'seller', 64),
-('Meryl Streep', 'meryl.streep@example.com', 'customer', 65),
-('Natalie Portman', 'natalie.portman@example.com', 'admin', 66),
-('Owen Wilson', 'owen.wilson@example.com', 'customer', 67),
-('Penelope Cruz', 'penelope.cruz@example.com', 'seller', 68),
-('Quincy Jones', 'quincy.jones@example.com', 'customer', 69),
-('Rihanna Fenty', 'rihanna.fenty@example.com', 'admin', 70),
-('Sharon Stone', 'sharon.stone@example.com', 'customer', 71),
-('Tina Turner', 'tina.turner@example.com', 'seller', 72),
-('Usher Raymond', 'usher.raymond@example.com', 'customer', 73),
-('Vera Wang', 'vera.wang@example.com', 'admin', 74),
-('Whitney Houston', 'whitney.houston@example.com', 'customer', 75),
-('Xiomara Castro', 'xiomara.castro@example.com', 'seller', 76),
-('Yoko Ono', 'yoko.ono@example.com', 'customer', 77),
-('Zoe Saldana', 'zoe.saldana@example.com', 'admin', 78);
+("Alice Johnson", "alice.johnson@example.com", "customer", 1),
+("Bob Smith", "bob.smith@example.com", "seller", 2),
+("Charlie Brown", "charlie.brown@example.com", "customer", 3),
+("Diana Prince", "diana.prince@example.com", "admin", 4),
+("Ethan Hunt", "ethan.hunt@example.com", "customer", 5),
+("Fiona Gallagher", "fiona.gallagher@example.com", "seller", 6),
+("George Costanza", "george.costanza@example.com", "customer", 7),
+("Hannah Baker", "hannah.baker@example.com", "admin", 8),
+("Ian Malcolm", "ian.malcolm@example.com", "customer", 9),
+("Julia Roberts", "julia.roberts@example.com", "seller", 10),
+("Kevin Spacey", "kevin.spacey@example.com", "customer", 11),
+("Laura Croft", "laura.croft@example.com", "admin", 12),
+("Michael Scott", "michael.scott@example.com", "customer", 13),
+("Nina Simone", "nina.simone@example.com", "seller", 14),
+("Oscar Isaac", "oscar.isaac@example.com", "customer", 15),
+("Paula Patton", "paula.patton@example.com", "admin", 16),
+("Quentin Tarantino", "quentin.tarantino@example.com", "customer", 17),
+("Rachel Green", "rachel.green@example.com", "seller", 18),
+("Steve Rogers", "steve.rogers@example.com", "customer", 19),
+("Tina Fey", "tina.fey@example.com", "admin", 20);
+
+
 -- SQLBook: Code
 -- Category Table
-
+use  dbms_assignment;
 CREATE TABLE category (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
-    product_id INT NOT NULL ,
-    FOREIGN KEY (product_id) REFERENCES products(product_id) 
+    parent_category VARCHAR(50) DEFAULT(   
+        "Top Category"
+    )
 );
-
--- category data insertion
-INSERT INTO category (name, product_id) VALUES
-('Electronics', 1),
-('Home Appliances', 2),
-('Furniture', 3),
-('Clothing', 4),
-('Footwear', 5),
-('Books', 6),
-('Toys', 7),
-('Sports Equipment', 8),
-('Beauty Products', 9),
-('Automotive', 10),
-('Gardening', 11),
-('Kitchenware', 12),
-('Jewelry', 13),
-('Watches', 14),
-('Health & Personal Care', 15),
-('Pet Supplies', 16),
-('Office Supplies', 17),
-('Musical Instruments', 18),
-('Video Games', 19),
-('Software', 20),
-('Photography', 21),
-('Travel Accessories', 22),
-('Outdoor Gear', 23),
-('Home Decor', 24),
-('Bedding', 25),
-('Luggage', 26),
-('Stationery', 27),
-('Craft Supplies', 28),
-('Party Supplies', 29),
-('Fitness Equipment', 30),
-('Baby Products', 31),
-('Grocery', 32),
-('Beverages', 33),
-('Snacks', 34),
-('Condiments', 35),
-('Frozen Foods', 36),
-('Canned Goods', 37),
-('Dairy Products', 38),
-('Meat & Seafood', 39),
-('Bakery', 40),
-('Organic Products', 41),
-('Vitamins & Supplements', 42),
-('Cleaning Supplies', 43),
-('Laundry Supplies', 44),
-('Paper Products', 45),
-('Household Items', 46),
-('Seasonal Items', 47),
-('Gift Cards', 48),
-('Digital Products', 49),
-('Subscriptions', 50),
-('Memberships', 51),
-('Experiences', 52),
-('Services', 53),
-('Custom Products', 54),
-('Limited Edition', 55),
-('Collectibles', 56),
-('Vintage Items', 57),
-('Art Supplies', 58),
-('DIY Kits', 59),
-('Subscription Boxes', 60);
+drop TABLE category;
+INSERT INTO category (name) VALUES
+("Electronics"),
+("Gardening"),
+("Furniture"),
+("Video Games"),
+("Stationary"),
+("Home essentitals");
+INSERT INTO category (name, parent_category) VALUES
+("Mobile", "Electronics"),
+("Watches", "Electronics"),
+("Chair", "Furniture"),
+("Shovel", "Gardening"),
+("Call of Duty", "Video Games"),
+("Halo", "Video Games"),
+("Pen", "Stationary"),
+("Pencil", "Stationary"),
+("Home Applicances","Electronics"),
+("Car Appliances","Electronics"),
+("Soap","Home essentitals"),
+("Bathroom Equpment","Home essentitals"),
+("Laptops","Electronics"),
+("lenovo","Laptops"),
+("hp","Laptops"),
+("mi","Mobile"),
+("apple","Mobile");
 -- SQLBook: Code
 -- Order Table
 
 CREATE TABLE orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT, -- order id
     user_id INT NOT NULL, -- user id
-    order_date TIMESTAMP NOT NULL, -- order date
+    order_date TIMESTAMP NOT NULL DEFAULT(CURRENT_TIMESTAMP), -- order date
     status ENUM(
         'in processing',
         'not delivered',
         'delivered'
     ), -- status
     address_id INT NOT NULL, -- address id
-    product_id INT NOT NULL, -- product id 
-    FOREIGN KEY (user_id) REFERENCES user (user_id),
-    FOREIGN KEY (address_id) REFERENCES shipping_address (address_id),
-    FOREIGN KEY (product_id) REFERENCES products (product_id)
+    FOREIGN KEY (user_id) REFERENCES user(user_id),
+    FOREIGN KEY (address_id) REFERENCES shipping_address (address_id)
 );
 
 
 -- order data insertion
+INSERT INTO orders (user_id, order_date, status, address_id) VALUES
+(1, CURRENT_TIMESTAMP, 'delivered', 1),
+(1, CURRENT_TIMESTAMP, 'in processing', 1),
+(2, CURRENT_TIMESTAMP, 'not delivered', 2),
+(2, CURRENT_TIMESTAMP, 'delivered', 2),
+(3, CURRENT_TIMESTAMP, 'in processing', 3),
+(3, CURRENT_TIMESTAMP, 'delivered', 3),
+(4, CURRENT_TIMESTAMP, 'not delivered', 4),
+(4, CURRENT_TIMESTAMP, 'delivered', 4),
+(5, CURRENT_TIMESTAMP, 'in processing', 5),
+(5, CURRENT_TIMESTAMP, 'delivered', 5),
+(6, CURRENT_TIMESTAMP, 'not delivered', 6),
+(6, CURRENT_TIMESTAMP, 'delivered', 6),
+(7, CURRENT_TIMESTAMP, 'in processing', 7),
+(7, CURRENT_TIMESTAMP, 'delivered', 7),
+(8, CURRENT_TIMESTAMP, 'not delivered', 8),
+(8, CURRENT_TIMESTAMP, 'delivered', 8),
+(9, CURRENT_TIMESTAMP, 'in processing', 9),
+(9, CURRENT_TIMESTAMP, 'delivered', 9),
+(10, CURRENT_TIMESTAMP, 'not delivered', 10),
+(10, CURRENT_TIMESTAMP, 'delivered', 10),
+(11, CURRENT_TIMESTAMP, 'in processing', 1),
+(11, CURRENT_TIMESTAMP, 'delivered', 1),
+(12, CURRENT_TIMESTAMP, 'not delivered', 2),
+(12, CURRENT_TIMESTAMP, 'delivered', 2),
+(13, CURRENT_TIMESTAMP, 'in processing', 3),
+(13, CURRENT_TIMESTAMP, 'delivered', 3),
+(14, CURRENT_TIMESTAMP, 'not delivered', 4),
+(14, CURRENT_TIMESTAMP, 'delivered', 4),
+(15, CURRENT_TIMESTAMP, 'in processing', 5),
+(15, CURRENT_TIMESTAMP, 'delivered', 5),
+(16, CURRENT_TIMESTAMP, 'not delivered', 6),
+(16, CURRENT_TIMESTAMP, 'delivered', 6),
+(17, CURRENT_TIMESTAMP, 'in processing', 7),
+(17, CURRENT_TIMESTAMP, 'delivered', 7),
+(18, CURRENT_TIMESTAMP, 'not delivered', 8),
+(18, CURRENT_TIMESTAMP, 'delivered', 8),
+(19, CURRENT_TIMESTAMP, 'in processing', 9),
+(19, CURRENT_TIMESTAMP, 'delivered', 9),
+(20, CURRENT_TIMESTAMP, 'not delivered', 10),
+(20, CURRENT_TIMESTAMP, 'delivered', 10),
+(1, CURRENT_TIMESTAMP, 'in processing', 1),
+(2, CURRENT_TIMESTAMP, 'delivered', 2),
+(3, CURRENT_TIMESTAMP, 'not delivered', 3),
+(4, CURRENT_TIMESTAMP, 'delivered', 4),
+(5, CURRENT_TIMESTAMP, 'in processing', 5),
+(6, CURRENT_TIMESTAMP, 'delivered', 6),
+(7, CURRENT_TIMESTAMP, 'not delivered', 7),
+(8, CURRENT_TIMESTAMP, 'delivered', 8),
+(9, CURRENT_TIMESTAMP, 'in processing', 9),
+(10, CURRENT_TIMESTAMP, 'delivered', 10);
 
-INSERT INTO orders (user_id, order_date, status, address_id, product_id) VALUES
-(1, '2023-10-01 10:00:00', 'delivered', 1, 1),
-(2, '2023-10-02 11:30:00', 'in processing', 2, 2),
-(3, '2023-10-03 12:45:00', 'not delivered', 3, 3),
-(4, '2023-10-04 14:00:00', 'delivered', 4, 4),
-(5, '2023-10-05 15:15:00', 'in processing', 5, 5),
-(6, '2023-10-06 16:30:00', 'delivered', 6, 6),
-(7, '2023-10-07 17:45:00', 'not delivered', 7, 7),
-(8, '2023-10-08 18:00:00', 'delivered', 8, 8),
-(9, '2023-10-09 19:15:00', 'in processing', 9, 9),
-(10, '2023-10-10 20:30:00', 'delivered', 10, 10),
-(11, '2023-10-11 21:45:00', 'not delivered', 11, 11),
-(12, '2023-10-12 22:00:00', 'delivered', 12, 12),
-(13, '2023-10-13 23:15:00', 'in processing', 13, 13),
-(14, '2023-10-14 09:30:00', 'delivered', 14, 14),
-(15, '2023-10-15 10:45:00', 'not delivered', 15, 15),
-(16, '2023-10-16 11:00:00', 'delivered', 16, 16),
-(17, '2023-10-17 12:15:00', 'in processing', 17, 17),
-(18, '2023-10-18 13:30:00', 'delivered', 18, 18),
-(19, '2023-10-19 14:45:00', 'not delivered', 19, 19),
-(20, '2023-10-20 15:00:00', 'delivered', 20, 20),
-(21, '2023-10-21 16:15:00', 'in processing', 21, 21),
-(22, '2023-10-22 17:30:00', 'delivered', 22, 22),
-(23, '2023-10-23 18:45:00', 'not delivered', 23, 23),
-(24, '2023-10-24 19:00:00', 'delivered', 24, 24),
-(25, '2023-10-25 20:15:00', 'in processing', 25, 25),
-(26, '2023-10-26 21:30:00', 'delivered', 26, 26),
-(27, '2023-10-27 22:45:00', 'not delivered', 27, 27),
-(28, '2023-10-28 09:00:00', 'delivered', 28, 28),
-(29, '2023-10-29 10:15:00', 'in processing', 29, 29),
-(30, '2023-10-30 11:30:00', 'delivered', 30, 30),
-(31, '2023-10-31 12:45:00', 'not delivered', 31, 31),
-(32, '2023-11-01 14:00:00', 'delivered', 32, 32),
-(33, '2023-11-02 15:15:00', 'in processing', 33, 33),
-(34, '2023-11-03 16:30:00', 'delivered', 34, 34),
-(35, '2023-11-04 17:45:00', 'not delivered', 35, 35),
-(36, '2023-11-05 18:00:00', 'delivered', 36, 36),
-(37, '2023-11-06 19:15:00', 'in processing', 37, 37),
-(38, '2023-11-07 20:30:00', 'delivered', 38, 38),
-(39, '2023-11-08 21:45:00', 'not delivered', 39, 39),
-(40, '2023-11-09 22:00:00', 'delivered', 40, 40),
-(41, '2023-11-10 09:30:00', 'in processing', 41, 41),
-(42, '2023-11-11 10:45:00', 'delivered', 42, 42),
-(43, '2023-11-12 11:00:00', 'not delivered', 43, 43),
-(44, '2023-11-13 12:15:00', 'delivered', 44, 44),
-(45, '2023-11-14 13:30:00', 'in processing', 45, 45),
-(46, '2023-11-15 14:45:00', 'delivered', 46, 46),
-(47, '2023-11-16 15:00:00', 'not delivered', 47, 47),
-(48, '2023-11-17 16:15:00', 'delivered', 48, 48),
-(49, '2023-11-18 17:30:00', 'in processing', 49, 49),
-(50, '2023-11-19 18:45:00', 'delivered', 50, 50),
-(51, '2023-11-20 19:00:00', 'not delivered', 51, 51),
-(52, '2023-11-21 20:15:00', 'delivered', 52, 52);
+
 
 -- SQLBook: Code
 -- Image Table
@@ -442,66 +236,37 @@ CREATe TABLE images (
 
 -- image data insertion
 INSERT INTO images (image_url) VALUES
-('https://example.com/images/product1.jpg'),
-('https://example.com/images/product2.jpg'),
-('https://example.com/images/product3.jpg'),
-('https://example.com/images/product4.jpg'),
-('https://example.com/images/product5.jpg'),
-('https://example.com/images/product6.jpg'),
-('https://example.com/images/product7.jpg'),
-('https://example.com/images/product8.jpg'),
-('https://example.com/images/product9.jpg'),
-('https://example.com/images/product10.jpg'),
-('https://example.com/images/product11.jpg'),
-('https://example.com/images/product12.jpg'),
-('https://example.com/images/product13.jpg'),
-('https://example.com/images/product14.jpg'),
-('https://example.com/images/product15.jpg'),
-('https://example.com/images/product16.jpg'),
-('https://example.com/images/product17.jpg'),
-('https://example.com/images/product18.jpg'),
-('https://example.com/images/product19.jpg'),
-('https://example.com/images/product20.jpg'),
-('https://example.com/images/product21.jpg'),
-('https://example.com/images/product22.jpg'),
-('https://example.com/images/product23.jpg'),
-('https://example.com/images/product24.jpg'),
-('https://example.com/images/product25.jpg'),
-('https://example.com/images/product26.jpg'),
-('https://example.com/images/product27.jpg'),
-('https://example.com/images/product28.jpg'),
-('https://example.com/images/product29.jpg'),
-('https://example.com/images/product30.jpg'),
-('https://example.com/images/product31.jpg'),
-('https://example.com/images/product32.jpg'),
-('https://example.com/images/product33.jpg'),
-('https://example.com/images/product34.jpg'),
-('https://example.com/images/product35.jpg'),
-('https://example.com/images/product36.jpg'),
-('https://example.com/images/product37.jpg'),
-('https://example.com/images/product38.jpg'),
-('https://example.com/images/product39.jpg'),
-('https://example.com/images/product40.jpg'),
-('https://example.com/images/product41.jpg'),
-('https://example.com/images/product42.jpg'),
-('https://example.com/images/product43.jpg'),
-('https://example.com/images/product44.jpg'),
-('https://example.com/images/product45.jpg'),
-('https://example.com/images/product46.jpg'),
-('https://example.com/images/product47.jpg'),
-('https://example.com/images/product48.jpg'),
-('https://example.com/images/product49.jpg'),
-('https://example.com/images/product50.jpg'),
-('https://example.com/images/product51.jpg'),
-('https://example.com/images/product52.jpg'),
-('https://example.com/images/product53.jpg'),
-('https://example.com/images/product54.jpg'),
-('https://example.com/images/product55.jpg'),
-('https://example.com/images/product56.jpg'),
-('https://example.com/images/product57.jpg'),
-('https://example.com/images/product58.jpg'),
-('https://example.com/images/product59.jpg'),
-('https://example.com/images/product60.jpg');
+("image1"),
+("image2"),
+("image3"),
+("image4"),
+("image5"),
+("image6"),
+("image7"),
+("image8"),
+("image9"),
+("image10"),
+("image11"),
+("image12"),
+("image13"),
+("image14"),
+("image15"),
+("image16"),
+("image17"),
+("image18"),
+("image19"),
+("image20");
+-- SQLBook: Code
+-- order items
+CREATE TABLE order_items (
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    FOREIGN KEY (product_id) REFERENCES products (product_id),
+    FOREIGN KEY (order_id) REFERENCES orders (order_id)
+)
+
+INSERT INTO order_items (order_id, product_id) VALUES 
+()
 -- SQLBook: Code
 -- Assignment 2 
 
@@ -528,10 +293,17 @@ WHERE p.image_id IS NULL;
 
 
 --Display all Id, Title and Parent Category Title for all the Categories listed, sorted by Parent Category Title and then Category Title. (If Category is top category then Parent Category Title column should display “Top Category” as value.)
-SELECT c.category_id AS Id, c.name AS Title, 
-       COALESCE((SELECT name FROM category WHERE category_id = c.product_id), 'Top Category') AS Parent_Category_Title
-FROM category c
-ORDER BY Parent_Category_Title, Title;
+
+SELECT category_id,name,parent_category
+from category
+ORDER BY
+    CASE
+        WHEN parent_category = 'Top Category' THEN 0
+        ELSE 1
+    END,
+    name;
+
+
 
 
 --Display Id, Title, Parent Category Title of all the leaf Categories (categories which are not parent of any other category)
@@ -546,7 +318,7 @@ WHERE NOT EXISTS (SELECT 1 FROM category c2 WHERE c2.product_id = c.category_id)
 SELECT p.name AS Product_Title, p.price, p.description
 FROM products p
 JOIN category c ON p.product_id = c.product_id
-WHERE c.name = 'Mobile';
+WHERE c.name = 'Clothing';
 
 
 --Display the list of Products whose Quantity on hand (Inventory) is under 50.
@@ -554,5 +326,41 @@ SELECT p.product_id AS Id, p.name AS Title, p.stock_quantity
 FROM products p
 WHERE p.stock_quantity < 50;
 
+
 -- SQLBook: Code
-SHOW VARIABLES LIKE 'secure_file_priv';
+-- Assignment 3
+
+--Display Recent 50 Orders placed (Id, Order Date, Order Total).
+
+
+
+
+--Display 10 most expensive Orders.
+
+--Display all the Orders which are placed more than 10 days old and one or more items from those orders are still not shipped.
+SELECT * FROM orders
+where (CURRENT_TIMESTAMP - order_date > 10) AND (status = "in processing");
+
+--Display list of shoppers which haven't ordered anything since last month.
+SELECT u.user_id,u.name
+FROM user u
+WHERE  u.user_id NOT IN (
+        SELECT o.user_id FROM orders o
+        WHERE 
+            o.order_date <= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 1 MONTH)
+    );
+
+--Display list of shopper along with orders placed by them in last 15 days. 
+SELECT u.user_id,u.name
+FROM user u
+WHERE  u.user_id  IN (
+        SELECT o.user_id FROM orders o
+        WHERE 
+            o.order_date <= DATE_SUB(CURRENT_TIMESTAMP, INTERVAL 15 DAY)
+    );
+
+-- Display list of order items which are in “shipped” state for particular Order Id (i.e.: 1020))
+SELECT order_id , status , user_id  FROM orders 
+WHERE (status="delivered" AND order_id='8');
+
+--Display list of order items along with order placed date which fall between Rs 20 to Rs 50 price.
