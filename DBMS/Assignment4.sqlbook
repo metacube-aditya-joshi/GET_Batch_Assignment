@@ -1,0 +1,105 @@
+-- SQLBook: Code
+-- Assignment 1:
+
+-- Create a function to calculate number of orders in a month. Month and year will be input parameter to function.
+
+CREATE FUNCTION numberOfOrdersInMonth(month INT, year INT)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE count_of_orders INT;
+    SET count_of_orders = (SELECT COUNT(*) FROM orders 
+                           WHERE MONTH(orders.order_date) = month 
+                           AND YEAR(orders.order_date) = year);
+    RETURN count_of_orders;
+END
+
+SELECT `numberOfOrdersInMonth`(MONTH(order_date),YEAR(order_date)) from orders limit 1;
+
+-- SQLBook: Code
+CREATE VIEW order_month_table AS
+SELECT 
+    MONTH(o.order_date) AS order_month,
+    COUNT(oi.product_id) AS order_frequency
+FROM products p
+LEFT JOIN order_items oi ON p.product_id = oi.product_id
+LEFT JOIN orders o ON oi.order_id = o.order_id
+WHERE YEAR(o.order_date) = 2024 -- Replace with the desired year
+GROUP BY order_month
+ORDER BY order_frequency DESC
+LIMIT 1;
+
+select * from order_month_table;
+
+--Create a function to return month in a year having maximum orders. Year will be input parameter.
+CREATE FUNCTION maxOrdersInMonth(year INT)
+RETURNS INT
+DETERMINISTIC
+BEGIN
+    DECLARE max_order_in_month INT;
+    SET max_order_in_month = (select order_month from order_month_table);
+    RETURN max_order_in_month;
+END
+
+-- SQLBook: Code
+
+-- Assignment 2:
+Create VIew product_full_details As
+    SELECT 
+    p.product_id,
+    p.name AS ProductName,
+    MONTH(o.order_date) AS OrderMonth,
+    YEAR(o.order_date) AS OrderYear,
+    DAY(o.order_date) AS OrderDay,
+    p.price,
+    COUNT(oi.product_id) AS Quantity
+FROM 
+    orders o
+    JOIN order_items oi ON o.order_id = oi.order_id
+    JOIN products p ON oi.product_id = p.product_id
+GROUP BY
+    p.product_id, p.name, MONTH(o.order_date), YEAR(o.order_date), p.price,DAY(o.order_date)
+
+-- Create a Stored procedure to retrieve average sales of each product in a month. Month and year will be input parameter to function.
+CREATE PROCEDURE GetProductSalesAverage
+    @Month INT,
+    @Year INT
+AS
+BEGIN
+    SELECT 
+        ProductName
+    FROM 
+        product_full_details
+    WHERE
+        OrderMonth = @Month
+    AND OrderYear = @Year
+    GROUP BY
+        ProductName;
+END;
+
+   
+
+-- SQLBook: Code
+-- Create a stored procedure to retrieve table having order detail with status for a given period. Start date and end date will be input parameter. Put validation on input dates like start date is less than end date. If start date is greater than end date take first date of month as start date.
+
+CREATE Procedure getProductsAccordingDate(
+    @startDate INT,
+    @endDate INT
+)
+AS
+BEGIN 
+    IF @startDate < 1 OR @startDate > 31 AND @endDate < 1 OR @endDate > 31
+    BEGIN
+        RAISERROR('Invalid month value. Month must be between 1 and 12.', 16, 1);
+        RETURN;
+    END
+    SELECT *
+    FROM product_full_details
+    WHERE `OrderDay` BETWEEN @startDate AND @endDate
+END;
+-- SQLBook: Code
+-- Assignment 3:
+
+-- Identify the columns require indexing in order, product, category tables and create indexes.
+in order we can do indexing for the order_id column as it will help us to fetch the order more efficiently ,
+same goes for the category and product table as well
