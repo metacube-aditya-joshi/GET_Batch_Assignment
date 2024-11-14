@@ -18,36 +18,36 @@ CREATE TABLE products (
 
 -- Inserting 30 products into the products table with image_id limited to 20
 INSERT INTO products (name, price, description, stock_quantity, image_id, category_id) VALUES
-("iPhone 13", 999, "Latest Apple smartphone", 50, 1, 7),
-("Samsung Galaxy S21", 799, "Latest Samsung smartphone", 30, 2, 7),
-("Gaming Chair", 199, "Comfortable gaming chair", 20, 3, 3),
-("Garden Shovel", 25, "Durable garden shovel", 100, 4, 2),
-("Rolex Watch", 5000, "Luxury wristwatch", 10, 5, 8),
-("PlayStation 5", 499, "Next-gen gaming console", 15, 6, 4),
-("Call of Duty: Vanguard", 60, "Popular FPS game", 40, 7, 4),
-("Halo Infinite", 60, "Latest Halo game", 35, 8, 4),
-("Pen", 2, "Blue ink pen", 200, 9, 5),
-("Pencil", 1, "Standard graphite pencil", 150, 10, 5),
-("MacBook Pro", 1299, "High-performance laptop", 25, 11, 9),
-("Dell XPS 13", 999, "Compact and powerful laptop", 20, 12, 9),
-("Lenovo ThinkPad", 899, "Business laptop with great battery life", 15, 13, 9),
-("HP Spectre x360", 1099, "2-in-1 convertible laptop", 10, 14, 9),
-("LG OLED TV", 1499, "Stunning 4K OLED TV", 5, 15, 1),
-("Sony WH-1000XM4", 349, "Noise-canceling headphones", 30, 16, 1),
-("Samsung Galaxy Tab", 499, "Versatile tablet for work and play", 20, 17, 1),
-("Apple Watch", 399, "Smartwatch with fitness tracking", 25, 18, 8),
-("Shovel", 25, "Durable garden shovel", 100, 19, 2),
-("Bathroom Scale", 29, "Digital bathroom scale", 50, 20, 6),
-("Car Vacuum Cleaner", 49, "Portable car vacuum cleaner", 40, 1, 10),
-("Electric Kettle", 39, "Fast boiling electric kettle", 60, 2, 11),
-("Soap", 3, "Moisturizing hand soap", 200, 3, 6),
-("Dishwasher", 499, "High-efficiency dishwasher", 10, 4, 11),
-("Gaming Mouse", 59, "High precision gaming mouse", 30, 5, 1),
-("Wireless Charger", 29, "Fast wireless charging pad", 100, 6, 1),
-("Office Chair", 149, "Ergonomic office chair", 20, 7, 3),
-("Garden Hose", 35, "Durable garden hose", 80, 8, 2),
-("Laptop Stand", 45, "Adjustable laptop stand", 50, 9, 9),
-("Smartphone Case", 15, "Protective case for smartphones", 150, 10, 7);
+(iPhone 13, 999, Latest Apple smartphone, 50, 1, 7),
+(Samsung Galaxy S21, 799, Latest Samsung smartphone, 30, 2, 7),
+(Gaming Chair, 199, Comfortable gaming chair, 20, 3, 3),
+(Garden Shovel, 25, Durable garden shovel, 100, 4, 2),
+(Rolex Watch, 5000, Luxury wristwatch, 10, 5, 8),
+(PlayStation 5, 499, Next-gen gaming console, 15, 6, 4),
+(Call of Duty: Vanguard, 60, Popular FPS game, 40, 7, 4),
+(Halo Infinite, 60, Latest Halo game, 35, 8, 4),
+(Pen, 2, Blue ink pen, 200, 9, 5),
+(Pencil, 1, Standard graphite pencil, 150, 10, 5),
+(MacBook Pro, 1299, High-performance laptop, 25, 11, 9),
+(Dell XPS 13, 999, Compact and powerful laptop, 20, 12, 9),
+(Lenovo ThinkPad, 899, Business laptop with great battery life, 15, 13, 9),
+(HP Spectre x360, 1099, 2-in-1 convertible laptop, 10, 14, 9),
+(LG OLED TV, 1499, Stunning 4K OLED TV, 5, 15, 1),
+(Sony WH-1000XM4, 349, Noise-canceling headphones, 30, 16, 1),
+(Samsung Galaxy Tab, 499, Versatile tablet for work and play, 20, 17, 1),
+(Apple Watch, 399, Smartwatch with fitness tracking, 25, 18, 8),
+(Shovel, 25, Durable garden shovel, 100, 19, 2),
+(Bathroom Scale, 29, Digital bathroom scale, 50, 20, 6),
+(Car Vacuum Cleaner, 49, Portable car vacuum cleaner, 40, 1, 10),
+(Electric Kettle, 39, Fast boiling electric kettle, 60, 2, 11),
+(Soap, 3, Moisturizing hand soap, 200, 3, 6),
+(Dishwasher, 499, High-efficiency dishwasher, 10, 4, 11),
+(Gaming Mouse, 59, High precision gaming mouse, 30, 5, 1),
+(Wireless Charger, 29, Fast wireless charging pad, 100, 6, 1),
+(Office Chair, 149, Ergonomic office chair, 20, 7, 3),
+(Garden Hose, 35, Durable garden hose, 80, 8, 2),
+(Laptop Stand, 45, Adjustable laptop stand, 50, 9, 9),
+(Smartphone Case, 15, Protective case for smartphones, 150, 10, 7);
 
 
 -- SQLBook: Code
@@ -63,58 +63,58 @@ CREATE Table shipping_address (
 
 -- address data insertion
 INSERT INTO shipping_address (address_line, city, state, pincode) VALUES
-("123 Main St", "New York", "New York", 10001),
-("456 Elm St", "Los Angeles", "California", 90001),
-("789 Oak St", "Chicago", "Illinois", 60601),
-("101 Pine St", "Houston", "Texas", 77001),
-("202 Maple St", "Phoenix", "Arizona", 85001),
-("303 Cedar St", "Philadelphia", "Pennsylvania", 19101),
-("404 Birch St", "San Antonio", "Texas", 78201),
-("505 Walnut St", "San Diego", "California", 92101),
-("606 Cherry St", "Dallas", "Texas", 75201),
-("707 Spruce St", "San Jose", "California", 95101),
-("808 Ash St", "Austin", "Texas", 73301),
-("909 Willow St", "Jacksonville", "Florida", 32099),
-("111 Fir St", "San Francisco", "California", 94101),
-("222 Poplar St", "Columbus", "Ohio", 43201),
-("333 Chestnut St", "Fort Worth", "Texas", 76101),
-("444 Sycamore St", "Indianapolis", "Indiana", 46201),
-("555 Hickory St", "Charlotte", "North Carolina", 28201),
-("666 Spruce St", "Seattle", "Washington", 98101),
-("777 Redwood St", "Denver", "Colorado", 80201),
-("888 Palm St", "Washington", "D.C.", 20001);
+(123 Main St, New York, New York, 10001),
+(456 Elm St, Los Angeles, California, 90001),
+(789 Oak St, Chicago, Illinois, 60601),
+(101 Pine St, Houston, Texas, 77001),
+(202 Maple St, Phoenix, Arizona, 85001),
+(303 Cedar St, Philadelphia, Pennsylvania, 19101),
+(404 Birch St, San Antonio, Texas, 78201),
+(505 Walnut St, San Diego, California, 92101),
+(606 Cherry St, Dallas, Texas, 75201),
+(707 Spruce St, San Jose, California, 95101),
+(808 Ash St, Austin, Texas, 73301),
+(909 Willow St, Jacksonville, Florida, 32099),
+(111 Fir St, San Francisco, California, 94101),
+(222 Poplar St, Columbus, Ohio, 43201),
+(333 Chestnut St, Fort Worth, Texas, 76101),
+(444 Sycamore St, Indianapolis, Indiana, 46201),
+(555 Hickory St, Charlotte, North Carolina, 28201),
+(666 Spruce St, Seattle, Washington, 98101),
+(777 Redwood St, Denver, Colorado, 80201),
+(888 Palm St, Washington, D.C., 20001);
 -- SQLBook: Code
 -- User Table
 CREATE TABLE user (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL, 
     email VARCHAR(50) NOT NULL, 
-    user_type ENUM("admin", "seller", "customer"), 
+    user_type ENUM(admin, seller, customer), 
     address_id INT NOT NULL, 
     FOREIGN KEY (address_id) REFERENCES shipping_address (address_id)
 );
 
 INSERT INTO user (name, email, user_type, address_id) VALUES
-("Alice Johnson", "alice.johnson@example.com", "customer", 1),
-("Bob Smith", "bob.smith@example.com", "seller", 2),
-("Charlie Brown", "charlie.brown@example.com", "customer", 3),
-("Diana Prince", "diana.prince@example.com", "admin", 4),
-("Ethan Hunt", "ethan.hunt@example.com", "customer", 5),
-("Fiona Gallagher", "fiona.gallagher@example.com", "seller", 6),
-("George Costanza", "george.costanza@example.com", "customer", 7),
-("Hannah Baker", "hannah.baker@example.com", "admin", 8),
-("Ian Malcolm", "ian.malcolm@example.com", "customer", 9),
-("Julia Roberts", "julia.roberts@example.com", "seller", 10),
-("Kevin Spacey", "kevin.spacey@example.com", "customer", 11),
-("Laura Croft", "laura.croft@example.com", "admin", 12),
-("Michael Scott", "michael.scott@example.com", "customer", 13),
-("Nina Simone", "nina.simone@example.com", "seller", 14),
-("Oscar Isaac", "oscar.isaac@example.com", "customer", 15),
-("Paula Patton", "paula.patton@example.com", "admin", 16),
-("Quentin Tarantino", "quentin.tarantino@example.com", "customer", 17),
-("Rachel Green", "rachel.green@example.com", "seller", 18),
-("Steve Rogers", "steve.rogers@example.com", "customer", 19),
-("Tina Fey", "tina.fey@example.com", "admin", 20);
+(Alice Johnson, alice.johnson@example.com, customer, 1),
+(Bob Smith, bob.smith@example.com, seller, 2),
+(Charlie Brown, charlie.brown@example.com, customer, 3),
+(Diana Prince, diana.prince@example.com, admin, 4),
+(Ethan Hunt, ethan.hunt@example.com, customer, 5),
+(Fiona Gallagher, fiona.gallagher@example.com, seller, 6),
+(George Costanza, george.costanza@example.com, customer, 7),
+(Hannah Baker, hannah.baker@example.com, admin, 8),
+(Ian Malcolm, ian.malcolm@example.com, customer, 9),
+(Julia Roberts, julia.roberts@example.com, seller, 10),
+(Kevin Spacey, kevin.spacey@example.com, customer, 11),
+(Laura Croft, laura.croft@example.com, admin, 12),
+(Michael Scott, michael.scott@example.com, customer, 13),
+(Nina Simone, nina.simone@example.com, seller, 14),
+(Oscar Isaac, oscar.isaac@example.com, customer, 15),
+(Paula Patton, paula.patton@example.com, admin, 16),
+(Quentin Tarantino, quentin.tarantino@example.com, customer, 17),
+(Rachel Green, rachel.green@example.com, seller, 18),
+(Steve Rogers, steve.rogers@example.com, customer, 19),
+(Tina Fey, tina.fey@example.com, admin, 20);
 
 
 -- SQLBook: Code
@@ -124,35 +124,35 @@ CREATE TABLE category (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(50) NOT NULL,
     parent_category VARCHAR(50) DEFAULT(   
-        "Top Category"
+        Top Category
     )
 );
 drop TABLE category;
 INSERT INTO category (name) VALUES
-("Electronics"),
-("Gardening"),
-("Furniture"),
-("Video Games"),
-("Stationary"),
-("Home essentitals");
+(Electronics),
+(Gardening),
+(Furniture),
+(Video Games),
+(Stationary),
+(Home essentitals);
 INSERT INTO category (name, parent_category) VALUES
-("Mobile", "Electronics"),
-("Watches", "Electronics"),
-("Chair", "Furniture"),
-("Shovel", "Gardening"),
-("Call of Duty", "Video Games"),
-("Halo", "Video Games"),
-("Pen", "Stationary"),
-("Pencil", "Stationary"),
-("Home Applicances","Electronics"),
-("Car Appliances","Electronics"),
-("Soap","Home essentitals"),
-("Bathroom Equpment","Home essentitals"),
-("Laptops","Electronics"),
-("lenovo","Laptops"),
-("hp","Laptops"),
-("mi","Mobile"),
-("apple","Mobile");
+(Mobile, Electronics),
+(Watches, Electronics),
+(Chair, Furniture),
+(Shovel, Gardening),
+(Call of Duty, Video Games),
+(Halo, Video Games),
+(Pen, Stationary),
+(Pencil, Stationary),
+(Home Applicances,Electronics),
+(Car Appliances,Electronics),
+(Soap,Home essentitals),
+(Bathroom Equpment,Home essentitals),
+(Laptops,Electronics),
+(lenovo,Laptops),
+(hp,Laptops),
+(mi,Mobile),
+(apple,Mobile);
 -- SQLBook: Code
 -- Order Table
 
@@ -236,26 +236,28 @@ CREATe TABLE images (
 
 -- image data insertion
 INSERT INTO images (image_url) VALUES
-("image1"),
-("image2"),
-("image3"),
-("image4"),
-("image5"),
-("image6"),
-("image7"),
-("image8"),
-("image9"),
-("image10"),
-("image11"),
-("image12"),
-("image13"),
-("image14"),
-("image15"),
-("image16"),
-("image17"),
-("image18"),
-("image19"),
-("image20");
+(image1),
+(image2),
+(image3),
+(image4),
+(image5),
+(image6),
+(image7),
+(image8),
+(image9),
+(image10),
+(image11),
+(image12),
+(image13),
+(image14),
+(image15),
+(image16),
+(image17),
+(image18),
+(image19),
+(image20);
+
+select max(image_id) from images
 -- SQLBook: Code
 -- order items
 CREATE TABLE order_items (
@@ -373,7 +375,7 @@ order_amount DESC
  Limit 10;
 --Display all the Orders which are placed more than 10 days old and one or more items from those orders are still not shipped.
 SELECT * FROM orders
-where (CURRENT_TIMESTAMP - order_date > 10) AND (status = "in processing");
+where (CURRENT_TIMESTAMP - order_date > 10) AND (status = in processing);
 
 --Display list of shoppers which haven't ordered anything since last month.
 SELECT u.user_id,u.name
@@ -395,7 +397,7 @@ WHERE  u.user_id  IN (
 
 -- Display list of order items which are in “shipped” state for particular Order Id (i.e.: 1020))
 SELECT order_id , status , user_id  FROM orders 
-WHERE (status="delivered" AND order_id='8');
+WHERE (status=delivered AND order_id='8');
 
 --Display list of order items along with order placed date which fall between Rs 20 to Rs 50 price.
 SELEC~T 
@@ -410,3 +412,10 @@ WHERE
     p.price BETWEEN 20 AND 50
 ORDER BY 
     o.order_date DESC;
+
+-- SQLBook: Code
+
+SELECT c.parent_category, count(c.name)
+from category c
+where c.name NOT IN (select parent_category from category where parent_category LIKE "Top Category")
+GROUP BY c.parent_category;

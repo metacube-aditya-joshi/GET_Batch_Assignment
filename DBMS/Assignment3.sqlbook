@@ -1,0 +1,45 @@
+-- SQLBook: Code
+-- Assignemnt 2 
+--Display the list of products (Id, Title, Count of Categories) which fall in more than one Category
+SELECT c.parent_category, count(c.name)
+from category c
+where c.name NOT IN (select parent_category from category where parent_category LIKE "Top Category")
+GROUP BY c.parent_category;
+
+--Display Count of products as per below price range:
+CREATE TABLE count_products (range_price VARCHAR(20), count INT) ;
+
+INSERT INTO count_products (range_price, count) VALUES
+("0 - 100", (SELECT COUNT(product_id) FROM products WHERE price BETWEEN 0 AND 100)),
+("101 - 500", (SELECT COUNT(product_id) FROM products WHERE price BETWEEN 100 AND 500)),
+("Above 500", (SELECT COUNT(product_id) FROM products WHERE price > 500));
+
+SELECT * FROM count_products;
+
+--Display the Categories along with number of products under each category.
+SELECT c.parent_category, count(c.name)
+from category c
+where c.name NOT IN (select parent_category from category where parent_category LIKE "Top Category")
+GROUP BY c.parent_category;
+-- SQLBook: Code
+--Assignment 3:
+
+--Display Shopper’s information along with number of orders he/she placed during last 30 days.
+
+
+--Display the top 10 Shoppers who generated maximum number of revenue in last 30 days.
+
+
+--Display top 20 Products which are ordered most in last 60 days along with numbers.
+
+
+--Display Monthly sales revenue of the StoreFront for last 6 months. It should display each month’s sale.
+
+
+--Mark the products as Inactive which are not ordered in last 90 days.
+
+
+--Given a category search keyword, display all the Products present in this category/categories. 
+
+
+--Display top 10 Items which were cancelled most.
