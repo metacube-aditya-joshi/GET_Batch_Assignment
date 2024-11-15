@@ -80,13 +80,42 @@ GROUP BY p.name, p.price
 ORDER BY  product_count,p.price DESC
 LIMIT 20;
 
-
-
 --Display Monthly sales revenue of the StoreFront for last 6 months. It should display each month’s sale.
-
+SELECT
+MONTHNAME(o.order_date) AS month_of_sale
+FROM
+orders o
+JOIN order_items oi ON o.order_id = oi.order_id
+JOIN products p ON oi.product_id = p.product_id
+WHERE
+o.status = 'delivered'
+AND o.order_date >= DATE_SUB(CURDATE(), INTERVAL 6 MONTH)
+GROUP BY
+month_of_sale
+ORDER BY
+month_of_sale DESC;
 --Mark the products as Inactive which are not ordered in last 90 days.
+ALTER TABLE products
+ADD COLUMN is_active TINYINT(1) DEFAULT 1;
+UPDATE products p
+SET p.is_active = 0
+WHERE p.product_id NOT IN (
+SELECT oi.product_id
+FROM order_items oi
+JOIN orders o ON oi.order_id = o.order_id
+WHERE o.order_date >= DATE_SUB(CURDATE(), INTERVAL 90 DAY)
+AND o.status = 'delivered'
+);
+
 
 --Given a category search keyword, display all the Products present in this category/categories.
+SELECT p.product_id, p.name, p.price, p.description, p.stock_quantity, p.image_id, c.name AS category_name
+FROM products p
+JOIN category c ON p.category_id = c.category_id
+WHERE c.name LIKE '%{search_keyword}%'
+   OR c.parent_category LIKE '%{search_keyword}%'
+ORDER BY p.name ASC;
+
 
 --Display top 10 Items which were cancelled most.
 SELECT p.name, COUNT(p.name) AS product_count, p.price, o.status
