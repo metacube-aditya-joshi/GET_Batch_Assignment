@@ -25,21 +25,117 @@ GROUP BY c.parent_category;
 --Assignment 3:
 
 --Display Shopper’s information along with number of orders he/she placed during last 30 days.
+SELECT u.user_id, u.name, p.name, p.price, o.order_date, sd.address_line, sd.city, sd.state
+FROM user AS u
+LEFT JOIN shipping_address AS sd ON u.address_id = sd.address_id
+LEFT JOIN orders AS o ON sd.address_id = o.address_id
+LEFT JOIN order_items AS oi ON o.order_id = oi.order_id
+LEFT JOIN products AS p ON p.product_id = oi.product_id
+WHERE u.user_id IS NOT NULL
+  AND u.name IS NOT NULL
+  AND p.name IS NOT NULL
+  AND p.price IS NOT NULL
+  AND o.order_date IS NOT NULL
+  AND sd.address_line IS NOT NULL
+  AND sd.city IS NOT NULL
+  AND sd.state IS NOT NULL
+ORDER BY u.user_id, o.order_date DESC;
+
+SELECT u.user_id, u.name, COUNT(o.order_id) AS order_count
+FROM user AS u
+LEFT JOIN shipping_address AS sd ON u.address_id = sd.address_id
+LEFT JOIN orders AS o ON sd.address_id = o.address_id
+LEFT JOIN order_items AS oi ON o.order_id = oi.order_id
+LEFT JOIN products AS p ON p.product_id = oi.product_id
+WHERE o.order_date >= DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 30 DAY)
+  AND u.user_id IS NOT NULL
+  AND u.name IS NOT NULL
+GROUP BY u.user_id
+ORDER BY u.user_id, u.name DESC;
 
 
 --Display the top 10 Shoppers who generated maximum number of revenue in last 30 days.
 
-
 --Display top 20 Products which are ordered most in last 60 days along with numbers.
-
 
 --Display Monthly sales revenue of the StoreFront for last 6 months. It should display each month’s sale.
 
-
 --Mark the products as Inactive which are not ordered in last 90 days.
 
-
---Given a category search keyword, display all the Products present in this category/categories. 
-
+--Given a category search keyword, display all the Products present in this category/categories.
 
 --Display top 10 Items which were cancelled most.
+-- SQLBook: Code
+-- Assignment 4:
+-- Consider a form where providing a Zip Code populates associated City and
+-- State. Create appropriate tables and relationships for the same and write a SQL
+--          query for that returns a Resultset containing Zip Code, City Names and
+--          States ordered by State Name and City Name.
+-- 	(Create 3 tables to store State, District/City & Zip code separately)
+
+CREATE TABLE ZIPCODE ( zipcode INT PRIMARY KEY);
+CREATE TABLE city (
+    zipcode INT, city VARCHAR(50),
+    FOREIGN KEY(zipcode) REFERENCES ZIPCODE(zipcode));
+CREATE TABLE state (
+    zipcode INT, state VARCHAR(50),
+    FOREIGN KEY(zipcode) REFERENCES ZIPCODE(zipcode));
+
+
+INSERT INTO ZIPCODE (zipcode) VALUES
+  (110001), (110002), (110003), (110004), (110005),
+  (400001), (400002), (400003), (400004), (400005),
+  (560001), (560002), (560003), (560004), (560005),
+  (380001), (380002), (380003), (380004), (380005);
+
+INSERT INTO city (zipcode, city) VALUES
+  (110001, 'New Delhi'), (110002, 'New Delhi'), (110003, 'New Delhi'), (110004, 'New Delhi'), (110005, 'New Delhi'),
+  (400001, 'Mumbai'), (400002, 'Mumbai'), (400003, 'Mumbai'), (400004, 'Mumbai'), (400005, 'Mumbai'),
+  (560001, 'Bangalore'), (560002, 'Bangalore'), (560003, 'Bangalore'), (560004, 'Bangalore'), (560005, 'Bangalore'),
+  (380001, 'Ahmedabad'), (380002, 'Ahmedabad'), (380003, 'Ahmedabad'), (380004, 'Ahmedabad'), (380005, 'Ahmedabad');
+
+  INSERT INTO state (zipcode, state) VALUES
+  (110001, 'Delhi'), (110002, 'Delhi'), (110003, 'Delhi'), (110004, 'Delhi'), (110005, 'Delhi'),
+  (400001, 'Maharashtra'), (400002, 'Maharashtra'), (400003, 'Maharashtra'), (400004, 'Maharashtra'), (400005, 'Maharashtra'),
+  (560001, 'Karnataka'), (560002, 'Karnataka'), (560003, 'Karnataka'), (560004, 'Karnataka'), (560005, 'Karnataka'),
+  (380001, 'Gujarat'), (380002, 'Gujarat'), (380003, 'Gujarat'), (380004, 'Gujarat'), (380005, 'Gujarat');
+
+  select z.zipcode , c.city,s.state 
+  from ZIPCODE as z 
+  LEFT JOIN city as c ON z.zipcode = c.zipcode
+  LEFT JOIN state as s ON z.zipcode = s.zipcode
+  ORDER BY z.zipcode;  
+-- SQLBook: Code
+--Assignment 5:
+
+-- Create a view displaying the order information (Id, Title, Price, Shopper’s name, Email, Orderdate, Status) with latest ordered items should be displayed first for last 60 days.
+
+create view order_information as
+SELECT o.order_id,p.name as product_name ,u.name as user_name,o.order_date, o.status
+FROM user AS u
+LEFT JOIN shipping_address AS sd ON u.address_id = sd.address_id
+LEFT JOIN orders AS o ON sd.address_id = o.address_id
+LEFT JOIN order_items AS oi ON o.order_id = oi.order_id
+LEFT JOIN products AS p ON p.product_id = oi.product_id
+WHERE o.order_id IS NOT NULL
+  AND u.name IS NOT NULL
+  AND p.name IS NOT NULL
+  AND o.order_date IS NOT NULL
+  AND o.status IS NOT NULL
+  AND o.order_date >= DATE_SUB(CURRENT_TIMESTAMP(), INTERVAL 60 DAY)
+ORDER BY  o.order_date DESC;
+
+select * from order_information;
+
+
+-- Use the above view to display the Products(Items) which are in ‘shipped’ state.
+ select product_name ,status 
+ from order_information
+ where status = "delivered";
+
+-- Use the above view to display the top 5 most selling products.
+select product_name , COUNT(product_name) as frequency
+from order_information
+WHERE status = "delivered"
+GROUP BY product_name
+ORDER BY frequency desc;
