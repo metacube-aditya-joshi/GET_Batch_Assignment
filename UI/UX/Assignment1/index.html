@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MetaCube Parking System</title>
+  </head>
+  <body>
+    <nav>
+      <a href="#Employee"> Add Employee</a>
+      <br>
+      <a href="#Vehicle"> Add Vehicle</a>
+      <br>
+      <a href="#FeedBack"> Give FeedBack</a>
+      <br>
+      <a href="#Pricing"> Pricing</a>
+      <br>
+
+      <div id="image-section"></div>
+
+    </nav>
+    <div id="Employee">
+      <form action="submit">
+        <fieldset>
+          <legend>Employee Data Form</legend>
+          <br />
+
+          <label for="fullName">Enter Full Name :</label><br />
+          <input type="text" required id="fullName" placeholder="Full Name" />
+          <br /><br />
+          <span>Choose your gender :</span>
+          <input type="radio" required id="genderMale" value="male" />
+          <label for="genderMale">Male</label>
+
+          <input type="radio" required id="genderFemale" value="female" />
+          <label for="genderFemale">Female</label>
+          <br /><br />
+
+          <label for="email">Enter Email :</label><br />
+          <input type="email" required id="email" placeholder="Email" />
+          <br /><br />
+
+          <label for="password">Enter Password :</label><br />
+          <input
+            type="password"
+            required
+            minlength="8"
+            id="password"
+            placeholder="Password"
+          />
+          <br /><br />
+
+          <label for="cnfpassword">Enter Confirm Password :</label><br />
+          <input
+            type="password"
+            required
+            id="cnfpassword"
+            minlength="8"
+            placeholder="Password"
+          />
+          <br /><br />
+
+          <label for="mobileNumber">Enter Mobile Number :</label><br />
+          <!-- drop down menu for selection of country-->
+          <input
+            type="tel"
+            id="mobileNumber"
+            maxlength="10"
+            placeholder="Mobile Number"
+          />
+          <br /><br />
+
+          <input type="submit" value="Submit" />
+        </fieldset>
+      </form>
+    </div>
+
+    <div id="Vehicle">
+      <form action="submit">
+        <fieldset>
+          <legend>Vehicle Data Form</legend>
+          <br />
+
+          <label for="vehicleCompany" required
+            >Enter vehicle Company Name :</label
+          ><br />
+          <input type="text" id="vehicleCompany" placeholder="Name" />
+          <br /><br />
+
+          <label for="model" required>Enter Model Number :</label><br />
+          <input type="text" id="model" placeholder="model number" />
+          <br /><br />
+
+          <label for="type">Select the type of vehicle :</label><br />
+          <select id="type" required placeholder="None">
+            <option value="Two Wheeler">Two Wheeler</option>
+            <option value="Four Wheeler">Four Wheeler</option>
+            <option value="None">None</option>
+          </select>
+          <br /><br />
+
+          <label for="vehicleNumber" required length="8"
+            >Enter Vehicle Number :</label
+          ><br />
+          <input
+            type="text"
+            required
+            id="vehicleNumber"
+            placeholder="Vehicle Number"
+          />
+          <br /><br />
+
+          <label for="EmpId">Enter Confirm Password :</label><br />
+          <input
+            type="text"
+            minlength="5"
+            maxlength="5"
+            required
+            id="EmpId"
+            placeholder="Password"
+          />
+          <br /><br />
+
+          <label for="Identification">Enter Mobile Number :</label><br />
+          <textarea id="Identification" placeholder="Identification"></textarea>
+          <br /><br />
+
+          <input type="submit" value="Submit" />
+        </fieldset>
+      </form>
+    </div>
+
+    <div id="FeedBack">
+      <form>
+        <fieldset>
+          <legend>Enter the feedback :</legend>
+          <br />
+
+          <input
+            type="text"
+            minlength="5"
+            maxlength="15"
+            required
+            placeholder=" Name"
+            id="formName"
+          />
+          <br /><br />
+
+          <input
+            type="email"
+            minlength="10"
+            maxlength="25"
+            required
+            placeholder=" Email"
+            id="formEmail"
+          />
+          <br /><br />
+
+          <input
+            type="text"
+            minlength="5"
+            maxlength="15"
+            required
+            placeholder="Subject"
+            id="formSubject"
+          />
+          <br /><br />
+
+          <textarea
+            minlength="5"
+            required
+            placeholder="Message"
+            autocomplete
+          ></textarea>
+          <br><br>
+
+          <input type="submit" value="Submit" />
+        </fieldset>
+      </form>
+    </div>
+
+    <div id="Pricing">
+      <fieldset>
+        <h2>Pricing :</h2>
+        <table class="pricing-table">
+          <thead>
+            <tr>
+              <th>Vehicle Type</th>
+              <th>Daily</th>
+              <th>Monthly</th>
+              <th>Yearly</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="cycle-pricing">
+              <td>Cycle</td>
+              <td>$5</td>
+              <td>$100</td>
+              <td>$500</td>
+            </tr>
+            <tr class="motorcycle-pricing">
+              <td>Motorcycle</td>
+              <td>$10</td>
+              <td>$200</td>
+              <td>$1000</td>
+            </tr>
+            <tr class="four-wheeler-pricing">
+              <td>Four Wheelers</td>
+              <td>$20</td>
+              <td>$500</td>
+              <td>$3500</td>
+            </tr>
+          </tbody>
+        </table>
+        <br /><br />
+
+        <label for="vehicle-type-select">Select Vehicle Type:</label>
+        <select id="vehicle-type-select" name="vehicle-type-select">
+          <option value="">Select Vehicle Type</option>
+          <option value="cycle">Cycle</option>
+          <option value="motorcycle">Motorcycle</option>
+          <option value="four-wheeler">Four Wheelers</option>
+        </select>
+        <br /><br />
+
+        <label for="plan-type-select">Select Plan Type:</label>
+        <select id="plan-type-select" name="plan-type-select">
+          <option value="">Select Plan Type</option>
+          <option value="cycle">Cycle</option>
+          <option value="motorcycle">Motorcycle</option>
+          <option value="four-wheeler">Four Wheelers</option>
+        </select>
+        <br /><br />
+
+        <input type="submit" value="Submit" />
+      </fieldset>
+    </div>
+  </body>
+</html>
