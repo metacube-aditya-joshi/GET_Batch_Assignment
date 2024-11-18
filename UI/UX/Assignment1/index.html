@@ -6,41 +6,54 @@
     <title>MetaCube Parking System</title>
   </head>
   <body>
+    <!-- This is the navigation section and could rediredt to the particular section by clicking on respective nav -->
     <nav>
       <a href="#Employee"> Add Employee</a>
-      <br>
+      <br />
       <a href="#Vehicle"> Add Vehicle</a>
-      <br>
+      <br />
       <a href="#FeedBack"> Give FeedBack</a>
-      <br>
+      <br />
       <a href="#Pricing"> Pricing</a>
-      <br>
+      <br />
 
       <div id="image-section"></div>
-
     </nav>
+    <!-- This is the section for employee form -->
     <div id="Employee">
+      <!-- This form  take user name , gender ,email, password ,confirm password and telephone number -->
       <form action="submit">
         <fieldset>
           <legend>Employee Data Form</legend>
           <br />
-
-          <label for="fullName">Enter Full Name :</label><br />
+          <label for="fullName">Enter Full Name:</label><br />
           <input type="text" required id="fullName" placeholder="Full Name" />
           <br /><br />
-          <span>Choose your gender :</span>
-          <input type="radio" required id="genderMale" value="male" />
-          <label for="genderMale">Male</label>
 
-          <input type="radio" required id="genderFemale" value="female" />
+          <span>Choose your gender:</span>
+          <input
+            type="radio"
+            required
+            name="gender"
+            id="genderMale"
+            value="male"
+          />
+          <label for="genderMale">Male</label>
+          <input
+            type="radio"
+            required
+            name="gender"
+            id="genderFemale"
+            value="female"
+          />
           <label for="genderFemale">Female</label>
           <br /><br />
 
-          <label for="email">Enter Email :</label><br />
+          <label for="email">Enter Email:</label><br />
           <input type="email" required id="email" placeholder="Email" />
           <br /><br />
 
-          <label for="password">Enter Password :</label><br />
+          <label for="password">Enter Password:</label><br />
           <input
             type="password"
             required
@@ -50,7 +63,7 @@
           />
           <br /><br />
 
-          <label for="cnfpassword">Enter Confirm Password :</label><br />
+          <label for="cnfpassword">Enter Confirm Password:</label><br />
           <input
             type="password"
             required
@@ -60,7 +73,7 @@
           />
           <br /><br />
 
-          <label for="mobileNumber">Enter Mobile Number :</label><br />
+          <label for="mobileNumber">Enter Mobile Number:</label><br />
           <!-- drop down menu for selection of country-->
           <input
             type="tel"
@@ -74,8 +87,9 @@
         </fieldset>
       </form>
     </div>
-
+    <!-- This is the section for Vehicle form -->
     <div id="Vehicle">
+      <!-- This form  take user id , Vehicle Comapnay , model , type of vehicle , vehicle number -->
       <form action="submit">
         <fieldset>
           <legend>Vehicle Data Form</legend>
@@ -110,28 +124,14 @@
           />
           <br /><br />
 
-          <label for="EmpId">Enter Confirm Password :</label><br />
-          <input
-            type="text"
-            minlength="5"
-            maxlength="5"
-            required
-            id="EmpId"
-            placeholder="Password"
-          />
-          <br /><br />
-
-          <label for="Identification">Enter Mobile Number :</label><br />
-          <textarea id="Identification" placeholder="Identification"></textarea>
-          <br /><br />
-
           <input type="submit" value="Submit" />
         </fieldset>
       </form>
     </div>
-
+    <!-- This is the section for FeedBack form -->
     <div id="FeedBack">
       <form>
+        <!-- This form  take user name , email , subject and message to be delivered-->
         <fieldset>
           <legend>Enter the feedback :</legend>
           <br />
@@ -172,15 +172,16 @@
             placeholder="Message"
             autocomplete
           ></textarea>
-          <br><br>
+          <br /><br />
 
           <input type="submit" value="Submit" />
         </fieldset>
       </form>
     </div>
-
+    <!-- This is the section for Pricing form -->
     <div id="Pricing">
       <fieldset>
+        <!-- This is a selection area where user can subscribe to parking system according to there needs -->
         <h2>Pricing :</h2>
         <table class="pricing-table">
           <thead>
@@ -226,9 +227,9 @@
         <label for="plan-type-select">Select Plan Type:</label>
         <select id="plan-type-select" name="plan-type-select">
           <option value="">Select Plan Type</option>
-          <option value="cycle">Cycle</option>
-          <option value="motorcycle">Motorcycle</option>
-          <option value="four-wheeler">Four Wheelers</option>
+          <option value="cycle">Daily</option>
+          <option value="motorcycle">Monthly</option>
+          <option value="four-wheeler">Yearly</option>
         </select>
         <br /><br />
 

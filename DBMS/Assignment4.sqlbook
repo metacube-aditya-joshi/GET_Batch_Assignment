@@ -44,6 +44,7 @@ END
 -- SQLBook: Code
 
 -- Assignment 2:
+
 Create VIew product_full_details As
     SELECT 
     p.product_id,
@@ -61,42 +62,41 @@ GROUP BY
     p.product_id, p.name, MONTH(o.order_date), YEAR(o.order_date), p.price,DAY(o.order_date)
 
 -- Create a Stored procedure to retrieve average sales of each product in a month. Month and year will be input parameter to function.
-CREATE PROCEDURE GetProductSalesAverage
-    @Month INT,
-    @Year INT
-AS
+DELIMITER //
+CREATE PROCEDURE GetProductSalesAverage(IN input_month INT, IN input_year INT)
 BEGIN
     SELECT 
         ProductName
     FROM 
         product_full_details
     WHERE
-        OrderMonth = @Month
-    AND OrderYear = @Year
+        OrderMonth = input_month
+    AND OrderYear = input_year
     GROUP BY
         ProductName;
-END;
+END //
+DELIMITER;
 
+CALL GetProductSalesAverage(11, 2024);
    
 
 -- SQLBook: Code
 -- Create a stored procedure to retrieve table having order detail with status for a given period. Start date and end date will be input parameter. Put validation on input dates like start date is less than end date. If start date is greater than end date take first date of month as start date.
-
+DELIMITER //
 CREATE Procedure getProductsAccordingDate(
-    @startDate INT,
-    @endDate INT
+    IN startDate INT,
+    IN endDate INT
 )
-AS
 BEGIN 
-    IF @startDate < 1 OR @startDate > 31 AND @endDate < 1 OR @endDate > 31
+    IF startDate < 1 OR startDate > 31 AND endDate < 1 OR endDate > 31
     BEGIN
-        RAISERROR('Invalid month value. Month must be between 1 and 12.', 16, 1);
-        RETURN;
-    END
     SELECT *
     FROM product_full_details
-    WHERE `OrderDay` BETWEEN @startDate AND @endDate
-END;
+    WHERE OrderDay BETWEEN startDate AND endDate
+END //
+DELIMITER;
+
+CALL getProductsAccordingDate(11, 2024);
 -- SQLBook: Code
 -- Assignment 3:
 
