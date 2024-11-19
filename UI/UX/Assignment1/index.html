@@ -4,237 +4,147 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MetaCube Parking System</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- This is the navigation section and could rediredt to the particular section by clicking on respective nav -->
     <nav>
-      <a href="#Employee"> Add Employee</a>
-      <br />
-      <a href="#Vehicle"> Add Vehicle</a>
-      <br />
-      <a href="#FeedBack"> Give FeedBack</a>
-      <br />
-      <a href="#Pricing"> Pricing</a>
-      <br />
-
-      <div id="image-section"></div>
+      <a href="#Employee">Add Employee</a> <a href="#Vehicle">Add Vehicle</a>
+      <a href="#FeedBack">Give Feedback</a> <a href="#Pricing">Pricing</a>
     </nav>
-    <!-- This is the section for employee form -->
-    <div id="Employee">
-      <!-- This form  take user name , gender ,email, password ,confirm password and telephone number -->
-      <form action="submit">
-        <fieldset>
-          <legend>Employee Data Form</legend>
-          <br />
-          <label for="fullName">Enter Full Name:</label><br />
-          <input type="text" required id="fullName" placeholder="Full Name" />
-          <br /><br />
-
-          <span>Choose your gender:</span>
+    <div id="Employee" class="collapsible-container">
+      <div class="collapsible-header">Employee Data Form</div>
+      <div class="collapsible-body">
+        <form action="submit">
+          <label for="fullName">Enter Full Name:</label>
+          <input type="text" id="fullName" placeholder="Full Name" required />
+          <span>Choose your gender:</span><br />
           <input
             type="radio"
-            required
             name="gender"
             id="genderMale"
             value="male"
+            required
           />
           <label for="genderMale">Male</label>
           <input
             type="radio"
-            required
             name="gender"
             id="genderFemale"
             value="female"
+            required
           />
           <label for="genderFemale">Female</label>
-          <br /><br />
-
-          <label for="email">Enter Email:</label><br />
-          <input type="email" required id="email" placeholder="Email" />
-          <br /><br />
-
-          <label for="password">Enter Password:</label><br />
+          <label for="email">Enter Email:</label>
+          <input type="email" id="email" placeholder="Email" required />
+          <label for="password">Enter Password:</label>
           <input
             type="password"
-            required
-            minlength="8"
             id="password"
             placeholder="Password"
+            required
+            minlength="8"
           />
-          <br /><br />
-
-          <label for="cnfpassword">Enter Confirm Password:</label><br />
+          <label for="cnfpassword">Confirm Password:</label>
           <input
             type="password"
-            required
             id="cnfpassword"
-            minlength="8"
             placeholder="Password"
+            required
+            minlength="8"
           />
-          <br /><br />
-
-          <label for="mobileNumber">Enter Mobile Number:</label><br />
-          <!-- drop down menu for selection of country-->
+          <label for="mobileNumber">Enter Mobile Number:</label>
           <input
             type="tel"
             id="mobileNumber"
-            maxlength="10"
             placeholder="Mobile Number"
+            maxlength="10"
           />
-          <br /><br />
-
           <input type="submit" value="Submit" />
-        </fieldset>
-      </form>
+        </form>
+      </div>
     </div>
-    <!-- This is the section for Vehicle form -->
-    <div id="Vehicle">
-      <!-- This form  take user id , Vehicle Comapnay , model , type of vehicle , vehicle number -->
-      <form action="submit">
-        <fieldset>
-          <legend>Vehicle Data Form</legend>
-          <br />
-
-          <label for="vehicleCompany" required
-            >Enter vehicle Company Name :</label
-          ><br />
-          <input type="text" id="vehicleCompany" placeholder="Name" />
-          <br /><br />
-
-          <label for="model" required>Enter Model Number :</label><br />
-          <input type="text" id="model" placeholder="model number" />
-          <br /><br />
-
-          <label for="type">Select the type of vehicle :</label><br />
-          <select id="type" required placeholder="None">
+    <div id="Vehicle" class="collapsible-container">
+      <div class="collapsible-header">Vehicle Data Form</div>
+      <div class="collapsible-body">
+        <form action="submit">
+          <label for="vehicleCompany">Enter Vehicle Company Name:</label>
+          <input type="text" id="vehicleCompany" placeholder="Name" required />
+          <label for="model">Enter Model Number:</label>
+          <input type="text" id="model" placeholder="Model Number" required />
+          <label for="type">Select the Type of Vehicle:</label>
+          <select id="type" required>
             <option value="Two Wheeler">Two Wheeler</option>
             <option value="Four Wheeler">Four Wheeler</option>
             <option value="None">None</option>
           </select>
-          <br /><br />
-
-          <label for="vehicleNumber" required length="8"
-            >Enter Vehicle Number :</label
-          ><br />
+          <label for="vehicleNumber">Enter Vehicle Number:</label>
           <input
             type="text"
-            required
             id="vehicleNumber"
             placeholder="Vehicle Number"
+            required
+            maxlength="8"
           />
-          <br /><br />
-
           <input type="submit" value="Submit" />
-        </fieldset>
-      </form>
+        </form>
+      </div>
     </div>
-    <!-- This is the section for FeedBack form -->
-    <div id="FeedBack">
-      <form>
-        <!-- This form  take user name , email , subject and message to be delivered-->
-        <fieldset>
-          <legend>Enter the feedback :</legend>
-          <br />
-
+    <div id="FeedBack" class="collapsible-container">
+      <div class="collapsible-header">Feedback Form</div>
+      <div class="collapsible-body">
+        <form>
           <input
             type="text"
+            id="formName"
+            placeholder="Name"
             minlength="5"
             maxlength="15"
             required
-            placeholder=" Name"
-            id="formName"
           />
-          <br /><br />
-
           <input
             type="email"
+            id="formEmail"
+            placeholder="Email"
             minlength="10"
             maxlength="25"
             required
-            placeholder=" Email"
-            id="formEmail"
           />
-          <br /><br />
-
           <input
             type="text"
+            id="formSubject"
+            placeholder="Subject"
             minlength="5"
             maxlength="15"
             required
-            placeholder="Subject"
-            id="formSubject"
           />
-          <br /><br />
-
-          <textarea
-            minlength="5"
-            required
-            placeholder="Message"
-            autocomplete
-          ></textarea>
-          <br /><br />
-
+          <textarea placeholder="Message" required></textarea>
           <input type="submit" value="Submit" />
-        </fieldset>
-      </form>
+        </form>
+      </div>
     </div>
-    <!-- This is the section for Pricing form -->
     <div id="Pricing">
-      <fieldset>
-        <!-- This is a selection area where user can subscribe to parking system according to there needs -->
-        <h2>Pricing :</h2>
-        <table class="pricing-table">
-          <thead>
-            <tr>
-              <th>Vehicle Type</th>
-              <th>Daily</th>
-              <th>Monthly</th>
-              <th>Yearly</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="cycle-pricing">
-              <td>Cycle</td>
-              <td>$5</td>
-              <td>$100</td>
-              <td>$500</td>
-            </tr>
-            <tr class="motorcycle-pricing">
-              <td>Motorcycle</td>
-              <td>$10</td>
-              <td>$200</td>
-              <td>$1000</td>
-            </tr>
-            <tr class="four-wheeler-pricing">
-              <td>Four Wheelers</td>
-              <td>$20</td>
-              <td>$500</td>
-              <td>$3500</td>
-            </tr>
-          </tbody>
-        </table>
-        <br /><br />
-
-        <label for="vehicle-type-select">Select Vehicle Type:</label>
-        <select id="vehicle-type-select" name="vehicle-type-select">
-          <option value="">Select Vehicle Type</option>
-          <option value="cycle">Cycle</option>
-          <option value="motorcycle">Motorcycle</option>
-          <option value="four-wheeler">Four Wheelers</option>
-        </select>
-        <br /><br />
-
-        <label for="plan-type-select">Select Plan Type:</label>
-        <select id="plan-type-select" name="plan-type-select">
-          <option value="">Select Plan Type</option>
-          <option value="cycle">Daily</option>
-          <option value="motorcycle">Monthly</option>
-          <option value="four-wheeler">Yearly</option>
-        </select>
-        <br /><br />
-
-        <input type="submit" value="Submit" />
-      </fieldset>
+      <h2>Pricing Section</h2>
+      <div class="pricing-cards">
+        <div class="pricing-card">
+          <h3>Cycle</h3>
+          <p><strong>$100</strong>/month</p>
+          <p>$5 Daily<br />$300 Monthly<br />$1000 Yearly</p>
+          <button>Purchase Now</button>
+        </div>
+        <div class="pricing-card">
+          <h3>Motorcycle</h3>
+          <p><strong>$200</strong>/month</p>
+          <p>$10 Daily<br />$500 Monthly<br />$1200 Yearly</p>
+          <button>Purchase Now</button>
+        </div>
+        <div class="pricing-card">
+          <h3>Four Wheeler</h3>
+          <p><strong>$500</strong>/month</p>
+          <p>$20 Daily<br />$700 Monthly<br />$2000 Yearly</p>
+          <button>Purchase Now</button>
+        </div>
+      </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
