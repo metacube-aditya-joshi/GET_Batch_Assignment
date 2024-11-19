@@ -5,8 +5,20 @@ body {
     background-color: #f4f4f4;
   }
   
-  nav {
+  .navigation-bar {
     margin-bottom: 20px;
+    display: flex;
+    list-style: none;
+   justify-content: space-around;
+   background-color: #007BFF;
+   align-items: center;
+   a{
+    color: #f9f9f9;
+   }
+   padding-bottom: 2%;
+   padding-top: 2%;
+   border-radius: 1rem;
+   font-weight: bold;
   }
   
   nav a {
