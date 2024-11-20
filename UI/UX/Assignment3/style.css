@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  
+}
+
+
+header{
+    background-image: url(images/homebg.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 1500px;
+    padding: 2rem;
+}
+
+.header-navigation{
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+.header-title{
+    width: 20%;
+    
+    align-items: center;
+}
+
+.header-nav{
+    width: 60%;
+    display: flex;
+    color: white;
+    gap: 4rem;
+    justify-content: center;
+}
+
+.header-icons{
+    justify-content: end;
+    display: flex;
+    gap: 2rem;
+    width: 20%;
+}
+.home{
+    display: flex;
+       height: 50%;
+        margin-top: 5rem;
+        justify-content: space-evenly;
+        padding: 0 5rem 0 5rem;
+}
+.home-section{
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+}
+
+.nav-heading{
+   display: flex;
+   align-items: center;
+   gap: 2rem;
+
+}

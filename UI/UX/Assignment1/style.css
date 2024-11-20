@@ -109,7 +109,7 @@ body {
     color: #007BFF;
     border: solid 4px;
     border-color: #0056b3;
-    border-radius:100%;
+    border-radius:50%;
     padding: 2rem;
   }
   
@@ -126,3 +126,13 @@ body {
     background-color: #0056b3;
   }
   
+  #FeedBack .collapsible-body{
+    display: flex;
+    justify-content: space-between;
+    
+    
+    .image{
+      height: 100%;
+      align-self: center;
+    }
+  }

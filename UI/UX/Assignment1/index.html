@@ -18,12 +18,12 @@
           <label for="fullName">Enter Full Name:</label>
           <input type="text" id="fullName" placeholder="Full Name" required />
           <span>Choose your gender:</span><br />
-          <input
+          <input 
             type="radio"
             name="gender"
             id="genderMale"
             value="male"
-            required
+            required style="margin: 0%"
           />
           <label for="genderMale">Male</label>
           <input
@@ -32,8 +32,9 @@
             id="genderFemale"
             value="female"
             required
-          />
+          style="margin: 0%;"/>
           <label for="genderFemale">Female</label>
+          <br><br>
           <label for="email">Enter Email:</label>
           <input type="email" id="email" placeholder="Email" required />
           <label for="password">Enter Password:</label>
@@ -92,6 +93,9 @@
     <div id="FeedBack" class="collapsible-container">
       <div class="collapsible-header">Feedback Form</div>
       <div class="collapsible-body">
+        <div class="image">
+          <img src="feedback.png">
+        </div>
         <form>
           <input
             type="text"
