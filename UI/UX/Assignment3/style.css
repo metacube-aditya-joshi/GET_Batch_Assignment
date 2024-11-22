@@ -108,11 +108,25 @@ header {
     padding-bottom: 1rem;
 }
 .feature-heading-child{
-    
+    text-align: center;
+    color: gray;
 }
 
-.feature-descrription{
-
+.feature-description{
+display: flex;
+justify-content: space-evenly;
+gap: 5rem;
+}
+.feature-description{
+ div{
+    width: 310px;
+    padding-bottom: 1rem;
+    padding-right: 2rem;
+ }
+}
+.feature-heading-title{
+    font-size: 20px;
+    font-weight: 600;
 }
 /* Screenshots*/
 .screenshots{
@@ -171,7 +185,20 @@ gap: 16rem;
       
     }
 }
+.inner-feature{
+    display: flex;
+   
+}
+.icons{
+    padding :5px;
+    padding-right: 8px;
+}
 
+.feature-image{
+    img{
+        width: 600px;
+    }
+}
 /* Reviews */
 .reviews{
    
@@ -184,6 +211,7 @@ gap: 16rem;
     font-size: x-large;
     color:cornflowerblue;
     font-weight:bolder;
+    padding-top: 2rem;
 }
 .reviews-container{
     display: flex;
