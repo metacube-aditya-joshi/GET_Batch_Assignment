@@ -1,0 +1,51 @@
+.custom_left_side{
+    height: 100vh;
+    width: 20vw;
+    background-color: #313a46;
+    border-radius: 0;
+}
+ul> li >a{
+        color: white !important;
+        text-decoration: none;
+}
+
+.app-dropdown{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+    row-gap: 10px;
+
+    p{
+        color: rgb(168, 168, 168);
+    }
+}
+
+.rightbar{
+    background-color: rgba(240, 239, 239, 0.336);
+}
+
+.stats-cards{
+    background-color: white;
+}
+
+.second-content-card{
+    background-color: white;
+    border-radius: 10px;
+    height: 400px;
+}
+
+
+.just-append{
+    width: 50px;
+}
+
+.closedbar{
+    display: none;
+    background-color: #313a46; width: 3.5vw; height: 100vh; position: absolute; flex-direction: column;
+    p{
+        
+        color: rgba(240, 239, 239, 0.651);
+        padding-left: 10px;
+        padding-top: 10px;
+    }
+}

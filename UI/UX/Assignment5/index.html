@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="d-flex w-auto">
+    <div class="closedbar" id="closedbar">
+
+        <img src="image/logo2.png" width="30px" alt="logo" class="mt-4 mb-4 ps-2">
+
+        <p><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+        <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4z"/>
+      </svg></p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
+      </svg></p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-chat-right" viewBox="0 0 16 16">
+        <path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/>
+      </svg></p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-speedometer2" viewBox="0 0 16 16">
+        <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4M3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707M2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10m9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5m.754-4.246a.39.39 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.39.39 0 0 0-.029-.518z"/>
+        <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A8 8 0 0 1 0 10m8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3"/>
+      </svg></p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-shop-window" viewBox="0 0 16 16">
+        <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.37 2.37 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0M1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5m2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5"/>
+      </svg></p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+      </svg></p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
+        <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
+      </svg></p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-wifi" viewBox="0 0 16 16">
+        <path d="M15.384 6.115a.485.485 0 0 0-.047-.736A12.44 12.44 0 0 0 8 3C5.259 3 2.723 3.882.663 5.379a.485.485 0 0 0-.048.736.52.52 0 0 0 .668.05A11.45 11.45 0 0 1 8 4c2.507 0 4.827.802 6.716 2.164.205.148.49.13.668-.049"/>
+        <path d="M13.229 8.271a.482.482 0 0 0-.063-.745A9.46 9.46 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.576 1.336c.206.132.48.108.653-.065m-2.183 2.183c.226-.226.185-.605-.1-.75A6.5 6.5 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.407.19.611.09A5.5 5.5 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.61-.091zM9.06 12.44c.196-.196.198-.52-.04-.66A2 2 0 0 0 8 11.5a2 2 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .707 0l.707-.707z"/>
+      </svg></p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-clipboard-minus" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M5.5 9.5A.5.5 0 0 1 6 9h4a.5.5 0 0 1 0 1H6a.5.5 0 0 1-.5-.5"/>
+        <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"/>
+        <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"/>
+      </svg></p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-folder2" viewBox="0 0 16 16">
+        <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h2.764c.958 0 1.76.56 2.311 1.184C7.985 3.648 8.48 4 9 4h4.5A1.5 1.5 0 0 1 15 5.5v7a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 12.5zM2.5 3a.5.5 0 0 0-.5.5V6h12v-.5a.5.5 0 0 0-.5-.5H9c-.964 0-1.71-.629-2.174-1.154C6.374 3.334 5.82 3 5.264 3zM14 7H2v5.5a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5z"/>
+      </svg></p>
+      <p><svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16">
+        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/>
+      </svg></p>
+    </div>
+      <div class="leftbar ">
+        
+            <div style="min-height: 120px;">
+              <!-- <div class="collapse collapse-horizontal leftbardemo" id="collapseWidthExample"> -->
+              <div class="collapse-demo" id="collapseWidthExample">
+                <div class="custom_left_side p-l m-0" id="custom_left_side">
+                  <div class="logodiv text-center" id="logodiv">
+                      <img  src="image/logo.png" width="50%" alt="logo">
+                  </div>
+                  <div class="navigation text-white" id="navigation">
+                      <p>Navigation</p>
+                      <ul class="list-unstyled ps-0">
+                          <li class="mb-1">
+                            <button class="btn btn-toggle align-items-center rounded text-white collapsed" data-bs-toggle="collapse" data-bs-target="#Dashboard-collapse" aria-expanded="true">
+                              Dashboard
+                            </button>
+                            <div class="collapse show" id="Dashboard-collapse">
+                              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
+                                <li><a href="#" class="rounded">Analytics</a></li>
+                                <li><a href="#" class="rounded">Ecommerce</a></li>
+                                <li><a href="#" class="rounded">Projects</a></li>
+                                <li><a href="#" class="rounded">CRM</a></li>
+                                <li><a href="#" class="rounded">E-Wallet</a></li>
+                              </ul>
+                            </div>
+                          </li>
+                        </ul>
+                  </div>
+                  <div class="apps" id="apps">
+                      <p class="text-white">APPS</p>
+                      <ul  class="list-unstyled ps-0">
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded text-white">
+                                Calendar
+                              </button>
+                          </li>
+
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded text-white">
+                                Chat
+                              </button>
+                          </li>
+
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded text-white">
+                                CRM
+                              </button>
+                          </li>
+
+                          
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#Ecommerce-collapse" aria-expanded="false">
+                                Ecommerce
+                              </button>
+                              <div class="collapse" id="Ecommerce-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
+                                  <li><a href="#" class=" rounded">Products</a></li>
+                                  <li><a href="#" class=" rounded">Prouct Details</a></li>
+                                  <li><a href="#" class=" rounded">Orders</a></li>
+                                  <li><a href="#" class=" rounded">Order Details</a></li>
+                                  <li><a href="#" class="rounded">Customers</a></li>
+                                  <li><a href="#" class="rounded">Shopping Cart</a></li>
+                                  <li><a href="#" class="rounded">Checkout</a></li>
+                                  <li><a href="#" class="rounded">Sellers</a></li>
+                                </ul>
+                              </div>
+                          </li>
+
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#Email-collapse" aria-expanded="false">
+                                Email
+                              </button>
+                              <div class="collapse" id="Email-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
+                                  <li><a href="#" class=" rounded">Inbox</a></li>
+                                  <li><a href="#" class=" rounded">Read Email</a></li>
+                                </ul>
+                              </div>
+                          </li>
+
+                          
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#Projects-collapse" aria-expanded="false">
+                                Projects
+                              </button>
+                              <div class="collapse" id="Projects-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
+                                  <li><a href="#" class=" rounded">List</a></li>
+                                  <li><a href="#" class=" rounded">Details</a></li>
+                                  <li><a href="#" class=" rounded">Gantt</a></li>
+                                  <li><a href="#" class=" rounded">Create Project</a></li>
+                                </ul>
+                              </div>
+                          </li>
+
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed text-white">
+                                Social Feed
+                              </button>
+                          </li>
+
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#Tasks-collapse" aria-expanded="false">
+                                Tasks
+                              </button>
+                              <div class="collapse" id="Tasks-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
+                                  <li><a href="#" class=" rounded">List</a></li>
+                                  <li><a href="#" class=" rounded">Details</a></li>
+                                  <li><a href="#" class=" rounded">Kanban Board</a></li>
+                                </ul>
+                              </div>
+                          </li>
+
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed text-white">
+                                File Manager
+                              </button>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="custom" id="custom">
+                      <p class="text-white">Custom</p>
+                      <ul  class="list-unstyled ps-0">
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#Pages-collapse" aria-expanded="false">
+                                Pages
+                              </button>
+                              <div class="collapse" id="Pages-collapse">
+                                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
+                                  <li><a href="#" class=" rounded">Profile</a></li>
+                                  <li><a href="#" class=" rounded">Profile 2</a></li>
+                                  <li><a href="#" class=" rounded">Invoice</a></li>
+                                  <li><a href="#" class=" rounded">Pricing</a></li>
+                                  <li><a href="#" class="rounded">FAQ</a></li>
+                                  <li><a href="#" class="rounded">Maintenance</a></li>
+                                  <li class="mb-1">
+                                      <button class="btn btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#Authentication-collapse" aria-expanded="false">
+                                        Authentication
+                                      </button>
+                                      <div class="collapse" id="Authentication-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
+                                          <li><a href="#" class=" rounded">Login</a></li>
+                                          <li><a href="#" class=" rounded">Login 2</a></li>
+                                          <li><a href="#" class=" rounded">Register</a></li>
+                                          <li><a href="#" class=" rounded">Register 2</a></li>
+                                          <li><a href="#" class="rounded">Logout</a></li>
+                                          <li><a href="#" class="rounded">Logout 2</a></li>
+                                          <li><a href="#" class="rounded">Recover Password</a></li>
+                                          <li><a href="#" class="rounded">Recover Password 2</a></li>
+                                          <li><a href="#" class="rounded">Lock Screen</a></li>
+                                          <li><a href="#" class="rounded">Lock Screen 2</a></li>
+                                          <li><a href="#" class="rounded">Confirm Mail</a></li>
+                                          <li><a href="#" class="rounded">Confirm Mail 2</a></li>
+                                        </ul>
+                                      </div>
+                                  </li>
+                                  <li class="mb-1">
+                                      <button class="btn btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#Error-collapse" aria-expanded="false">
+                                        Error
+                                      </button>
+                                      <div class="collapse" id="Error-collapse">
+                                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
+                                          <li><a href="#" class=" rounded">Error 404</a></li>
+                                          <li><a href="#" class=" rounded">Error 404-alt</a></li>
+                                          <li><a href="#" class=" rounded">Error 500</a></li>
+                                        </ul>
+                                      </div>
+                                  </li>
+                                  <li class="mb-1">
+                                      <button class="btn btn-toggle align-items-center rounded text-white">
+                                        Starter Page
+                                      </button>
+                                  </li>
+                                  <li class="mb-1">
+                                      <button class="btn btn-toggle align-items-center rounded text-white">
+                                        With preloader
+                                      </button>
+                                  </li>
+                                  <li class="mb-1">
+                                      <button class="btn btn-toggle align-items-center rounded text-white">
+                                        Timeline
+                                      </button>
+                                  </li>
+                                </ul>
+                              </div>
+                          </li>
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded text-white">
+                                Landing
+                              </button>
+                          </li>
+                          <li class="mb-1">
+                              <button class="btn btn-toggle align-items-center rounded collapsed text-white" data-bs-toggle="collapse" data-bs-target="#Layouts-collapse" aria-expanded="false">
+                                Layouts
+                              </button>
+                              <div class="collapse" id="Pages-collapse">
+                                  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small text-white">
+                                      <li><a href="#" class=" rounded">Horizontal</a></li>
+                                      <li><a href="#" class=" rounded">Detached</a></li>
+                                      <li><a href="#" class=" rounded">Full View</a></li>
+                                      <li><a href="#" class=" rounded">Full Screen View</a></li>
+                                      <li><a href="#" class="rounded">Hover menu</a></li>
+                                      <li><a href="#" class="rounded">Compact</a></li>
+                                      <li><a href="#" class="rounded">Icon view</a></li>
+                                  </ul>
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="rightbar " style="height: 100vh; width: 100vw;">
+          <div class="navbar-right d-flex align-items-center justify-content-between py-2" style="box-shadow: 0px 0px 35px 0px rgba(154, 161, 171, 0.1); background-color: white;">
+              <div class="left-navbar d-flex align-items-center">
+                  <!-- <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample"> -->
+                    <button class="btn btn-light collpase-bt" id="toggleButton"  type="button">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                      </svg>
+                  </button>
+                  <div class="input-group ">
+                      <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="button-addon2">
+                      <button class="btn btn-primary" type="button" id="button-addon2">Search</button>
+                  </div>
+              </div>
+              <div class="right-navbar d-flex align-items-center gap-3 pe-3">
+                  <div class="dropdown-flag nav-icon">
+                      <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        English
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li><a class="link-dark dropdown-item" href="#">Germal</a></li>
+                        <li><a class="link-dark dropdown-item" href="#">Italian</a></li>
+                        <li><a class="link-dark dropdown-item" href="#">Russian</a></li>
+                      </ul>
+                  </div>
+                  <div class="notification-menu nav-icon">
+                      <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                              <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+                          </svg>
+                      </button>
+                      <div class="dropdown-menu" style="width: 350px; border: 2px solid rgba(128, 128, 128, 0.219);">
+                          <div class="w-100 d-flex justify-content-between px-2 pb-2" style="border-bottom: 1px dashed rgba(214, 214, 214, 0.479);">
+                              <span>Notification</span>
+                              <a href="#">Clear All</a>
+                          </div>
+                          <div class="px-3 ">
+                            <p class="pt-3 text-secondary-emphasis text-left">Today</p>
+                            <div class="p-2 pt-1 d-flex align-items-center justify-content-center notification-card rounded" style="background-color: rgba(226, 224, 224, 0.288)">
+                              <div style="width: 20%;" class="text-center">
+                                <img src="image/avatar-2.jpg" alt="notification-logo" style="border-radius: 50%;" width="40px" height="40px">
+                              </div>
+                              <div style="width: 80%;">
+                                <p class="mb-0">Datacorp <span class="ps-3 text-muted " style="font-size: 13px;">1 min ago</span></p>
+                                <p class="mb-0 text-muted" style="font-size: 13px;">Caleb Flaker commented on Admin</p>
+                              </div>
+                            </div>
+                            <div class="p-2 pt-1 mt-2 d-flex align-items-center justify-content-center notification-card rounded" style="background-color: rgba(226, 224, 224, 0.288)">
+                              <div style="width: 20%;" class="text-center">
+                                <img src="image/avatar-2.jpg" alt="notification-logo" style="border-radius: 50%;" width="40px" height="40px">
+                              </div>
+                              <div style="width: 80%;">
+                                <p class="mb-0">Datacorp <span class="ps-3 text-muted " style="font-size: 13px;">1 min ago</span></p>
+                                <p class="mb-0 text-muted" style="font-size: 13px;">Caleb Flaker commented on Admin</p>
+                              </div>
+                            </div>
+                            <p class="pt-3 text-secondary-emphasis text-left">Yesterday</p>
+                            <div class="p-2 pt-1 d-flex align-items-center justify-content-center notification-card rounded" style="background-color: rgba(226, 224, 224, 0.288)">
+                              <div style="width: 20%;" class="text-center">
+                                <img src="image/avatar-2.jpg" alt="notification-logo" style="border-radius: 50%;" width="40px" height="40px">
+                              </div>
+                              <div style="width: 80%;">
+                                <p class="mb-0">Datacorp <span class="ps-3 text-muted " style="font-size: 13px;">1 min ago</span></p>
+                                <p class="mb-0 text-muted" style="font-size: 13px;">Caleb Flaker commented on Admin</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="text-center mt-2 py-1" style="border-top: 1px solid rgba(214, 214, 214, 0.479);;">
+                            <span class="text-primary m-auto">View All</span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="apps-menu nav-icon">
+                    <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid" viewBox="0 0 16 16">
+                        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z"/>
+                      </svg>
+                    </button>
+                    <div class="dropdown-menu" style="width: 350px; border: 2px solid rgba(128, 128, 128, 0.219);">
+                      <div class="app-dropdown py-3">
+                        <div class="text-center">
+                          <img src="image/githublogo.png" width="25px" height="25px" alt="logo">
+                          <p>Slack</p>
+                        </div>
+                        <div class="text-center">
+                          <img src="image/githublogo.png" width="25px" height="25px" alt="logo">
+                          <p>GitHub</p>
+                        </div>
+                        <div class="text-center">
+                          <img src="image/githublogo.png" width="25px" height="25px" alt="logo">
+                          <p>Dribbble</p>
+                        </div>
+                        <div class="text-center">
+                          <img src="image/githublogo.png" width="25px" height="25px" alt="logo">
+                          <p>Bitbucket</p>
+                        </div>
+                        <div class="text-center">
+                          <img src="image/githublogo.png" width="25px" height="25px" alt="logo">
+                          <p>Dropbox</p>
+                        </div>
+                        <div class="text-center">
+                          <img src="image/githublogo.png" width="25px" height="25px" alt="logo">
+                          <p>G Suite</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="setting-menu nav-icon">
+                    <a class="text-secondary" data-bs-toggle="offcanvas" href="#offcanvasRight" role="button" aria-controls="offcanvasRight">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                        <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                        <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+                      </svg>
+                    </a>
+                    
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                      <div class="offcanvas-header bg-primary text-white">
+                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Theme Setting</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                      </div>
+                      <div class="offcanvas-body p-0">
+                        <div class="mt-4 px-4">
+                          <h6>Choose Layout</h6>
+                          <div class="mt-3 d-flex align-items-center gap-3">
+                            <div class="text-center">
+                              <img src="image/setting-menu-image.png" alt="setting icon" style="cursor: pointer;">
+                              <p class="text-muted">Vertical</p>
+                            </div>
+                            <div class="text-center">
+                              <img src="image/setting-menu-image.png" alt="setting icon" style="cursor: pointer;">
+                              <p class="text-muted">Horizontal</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mt-2 px-4">
+                          <h6>Color Scheme</h6>
+                          <div class="mt-3 d-flex align-items-center gap-3">
+                            <div class="text-center">
+                              <img src="image/setting-menu-image.png" alt="setting icon" style="cursor: pointer;">
+                              <p class="text-muted">Light</p>
+                            </div>
+                            <div class="text-center">
+                              <img src="image/setting-menu-image.png" alt="setting icon" style="cursor: pointer;">
+                              <p class="text-muted">Dark</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mt-2 px-4" style="border-bottom: 1px solid rgb(207, 207, 207);">
+                          <h6>Layout Mode</h6>
+                          <div class="mt-3 d-flex align-items-center gap-3">
+                            <div class="text-center">
+                              <img src="image/setting-menu-image.png" alt="setting icon" style="cursor: pointer;">
+                              <p class="text-muted">Fluid</p>
+                            </div>
+                            <div class="text-center">
+                              <img src="image/setting-menu-image.png" alt="setting icon" style="cursor: pointer;">
+                              <p class="text-muted">Boxed</p>
+                            </div>
+                            <div class="text-center">
+                              <img src="image/setting-menu-image.png" alt="setting icon" style="cursor: pointer;">
+                              <p class="text-muted">Detached</p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                          <div class="w-100 text-center pt-3">  
+                            <button type="button" class="btn btn-light px-5">Reset</button>
+                            <button type="button" class="btn btn-primary px-5">Buy Now</button>
+                          </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-icon nav-icon" style="cursor: pointer;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon" viewBox="0 0 16 16">
+                      <path d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278M4.858 1.311A7.27 7.27 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.32 7.32 0 0 0 5.205-2.162q-.506.063-1.029.063c-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286"/>
+                    </svg>
+                  </div>
+                  <div class="theme-icon nav-icon" style="cursor: pointer;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fullscreen" viewBox="0 0 16 16">
+                      <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5M.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5"/>
+                    </svg>
+                  </div>
+                  <div class="profile-menu nav-icon ">
+                    <button class="btn dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <div class="m-0  d-flex align-items-center justify-content-center notification-card rounded gap-3" style="background-color: rgba(226, 224, 224, 0.288)">
+                        <div style="width: 20%;" class="text-center">
+                          <img src="image/avatar-2.jpg" alt="notification-logo" style="border-radius: 50%;" width="40px" height="40px">
+                        </div>
+                        <div style="width: 80%;">
+                          <p class="mb-0 fw-bold fs-6 ">Domanic keller </p>
+                          <span class="ps-3 text-muted " style="font-size: 13px;">Founder</span>
+                        </div>
+                      </div>
+                    </button>
+                    <div class="dropdown-menu text-secondary" style="width: 20px; border: 2px solid rgba(128, 128, 128, 0.219);">
+                      <p class="ps-2  fw-bold" > Welcome!</p>
+                      <ul class="list-unstyled">
+                        <li><a class="link-dark dropdown-item text-secondary" href="#">My Account</a></li>
+                        <li><a class="link-dark dropdown-item text-secondary" href="#">Setting</a></li>
+                        <li><a class="link-dark dropdown-item text-secondary" href="#">Suport</a></li>
+                        <li><a class="link-dark dropdown-item text-secondary" href="#">Lock Screen</a></li>
+                        <li><a class="link-dark dropdown-item text-secondary" href="#">Logout</a></li>
+                      </ul>
+                    </div>
+                </div>
+              </div>
+          </div>
+          <div class="main-content">
+            <div class="col-lg-12 mt-4 top-content">
+              <div>
+                <h5 class="ps-5 text-muted mb-4">Projects</h5>
+              </div>
+              <div class="d-flex stats-cards" style="box-shadow: 0px 0px 35px 0px rgba(154, 161, 171, 0.1);">
+                <div class="col-lg-3 text-center py-4" style="border-right: 1px solid rgb(185, 185, 185);">
+                  <!-- Brief case logo -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
+                    <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
+                  </svg>
+                  <p class="text-muted fw-bold mb-0 fs-2">29</p>
+                  <p class="text-muted fw-semibold mb-0 fs-4">Total Projects</p>
+                </div>
+                <div class="col-lg-3 text-center py-4" style="border-right: 1px solid rgb(185, 185, 185);;">
+                  <!-- Brief case logo -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
+                    <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
+                  </svg>
+                  <p class="text-muted fw-bold mb-0 fs-2">29</p>
+                  <p class="text-muted fw-semibold mb-0 fs-4">Total Projects</p>
+                </div>
+                <div class="col-lg-3 text-center py-4" style="border-right: 1px solid rgb(185, 185, 185);">
+                  <!-- Brief case logo -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
+                    <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
+                  </svg>
+                  <p class="text-muted fw-bold mb-0 fs-2">29</p>
+                  <p class="text-muted fw-semibold mb-0 fs-4">Total Projects</p>
+                </div>
+                <div class="col-lg-3 text-center py-4">
+                  <!-- Brief case logo -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-briefcase" viewBox="0 0 16 16">
+                    <path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v8A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5m1.886 6.914L15 7.151V12.5a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5V7.15l6.614 1.764a1.5 1.5 0 0 0 .772 0M1.5 4h13a.5.5 0 0 1 .5.5v1.616L8.129 7.948a.5.5 0 0 1-.258 0L1 6.116V4.5a.5.5 0 0 1 .5-.5"/>
+                  </svg>
+                  <p class="text-muted fw-bold mb-0 fs-2">29</p>
+                  <p class="text-muted fw-semibold mb-0 fs-4">Total Projects</p>
+                </div>
+              </div> 
+            </div>
+            <div class="second-content">
+              <div class="col-lg-4 second-content-card">
+                <div class="d-flex justify-content-between">
+                  <span class="text-secondary">PROJECT STATUS</span>
+                  <span class="text-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+                    </svg>
+                  </span>
+                </div>
+                <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+              </div>
+              <div class="col-lg-8"></div>
+            </div>
+          </div>
+      </div>
+  </div>
+  <script>
+      function createChart() {
+          var xValues = ["Completed", "In-Progress", "Behind"];
+          var yValues = [64, 26, 10];
+          var barColors = ["#0acf97","#727cf5","#fa5c7c"];
+          new Chart("myChart", {
+              type: "doughnut",
+              data: {
+                  labels: xValues,
+                  datasets: [{
+                      backgroundColor: barColors,
+                      data: yValues
+                  }]
+              },
+              options: {
+                  title: {
+                      display: true,
+                      text: "Project Status"
+                  }
+              }
+          });
+      }
+
+      // Call the createChart function after the Chart.js library is loaded
+      window.onload = createChart;
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

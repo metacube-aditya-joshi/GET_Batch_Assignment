@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MetaCube Parking System</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <nav class="navigation-bar">
@@ -15,52 +20,78 @@
       <div class="collapsible-header">Employee Data Form</div>
       <div class="collapsible-body">
         <form action="submit">
-          <label for="fullName">Enter Full Name:</label>
-          <input type="text" id="fullName" placeholder="Full Name" required />
-          <span>Choose your gender:</span><br />
-          <input 
-            type="radio"
-            name="gender"
-            id="genderMale"
-            value="male"
-            required style="margin: 0%"
-          />
-          <label for="genderMale">Male</label>
-          <input
-            type="radio"
-            name="gender"
-            id="genderFemale"
-            value="female"
-            required
-          style="margin: 0%;"/>
-          <label for="genderFemale">Female</label>
-          <br><br>
-          <label for="email">Enter Email:</label>
-          <input type="email" id="email" placeholder="Email" required />
-          <label for="password">Enter Password:</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            required
-            minlength="8"
-          />
-          <label for="cnfpassword">Confirm Password:</label>
-          <input
-            type="password"
-            id="cnfpassword"
-            placeholder="Password"
-            required
-            minlength="8"
-          />
-          <label for="mobileNumber">Enter Mobile Number:</label>
-          <input
-            type="tel"
-            id="mobileNumber"
-            placeholder="Mobile Number"
-            maxlength="10"
-          />
-          <input type="submit" value="Submit" />
+          <div class="nameContainer">
+            <label for="fullName">Enter Full Name:</label>
+            <input type="text" id="fullName" placeholder="Full Name" required />
+          </div>
+          <div id="genderContainer" class="hidden">
+            <span >Choose your gender:</span><br />
+            <label for="genderMale">Male</label>
+              <input
+                type="radio"
+                name="gender"
+                id="genderMale"
+                value="male"
+                required
+                style="margin: 0%"
+              />
+              <br>
+              <label for="genderFemale">Female</label>
+              <input
+                type="radio"
+                name="gender"
+                id="genderFemale"
+                value="female"
+                required
+                style="margin: 0%"
+              />
+            
+            </div>
+          
+          <br /><br />
+          <div class="emailContainer">
+            <label for="email" class="hidden">Enter Email:</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              required
+              class="hidden"
+            />
+          </div>
+          <div class="passwordContainer">
+            <label for="password" class="hidden">Enter Password:</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              required
+              minlength="8"
+              class="hidden"
+            />
+            <label for="cnfpassword" class="hidden">Confirm Password:</label>
+            <input
+              type="password"
+              id="cnfpassword"
+              placeholder="Password"
+              required
+              minlength="8"
+              class="hidden"
+            />
+          </div>
+          <div class="mobileContainer">
+            <label for="mobileNumber" class="hidden"
+              >Enter Mobile Number:</label
+            >
+            <input
+              type="tel"
+              id="mobileNumber"
+              placeholder="Mobile Number"
+              maxlength="10"
+              class="hidden"
+            />
+          </div>
+          <input type="submit" value="Submit" class="hidden" />
         </form>
       </div>
     </div>
@@ -94,7 +125,7 @@
       <div class="collapsible-header">Feedback Form</div>
       <div class="collapsible-body">
         <div class="image">
-          <img src="feedback.png">
+          <img src="feedback.png" />
         </div>
         <form>
           <input
@@ -130,25 +161,27 @@
       <h2>Pricing Section</h2>
       <div class="pricing-cards">
         <div class="pricing-card">
-          <h3 >Cycle</h3>
+          <h3>Cycle</h3>
           <p><strong>$100</strong>/month</p>
           <p>$5 Daily<br />$300 Monthly<br />$1000 Yearly</p>
           <button>Purchase Now</button>
         </div>
         <div class="pricing-card">
-          <h3 >Motorcycle</h3>
+          <h3>Motorcycle</h3>
           <p><strong>$200</strong>/month</p>
           <p>$10 Daily<br />$500 Monthly<br />$1200 Yearly</p>
           <button>Purchase Now</button>
         </div>
         <div class="pricing-card">
-          <h3 >Four Wheeler</h3>
+          <h3>Four Wheeler</h3>
           <p><strong>$500</strong>/month</p>
           <p>$20 Daily<br />$700 Monthly<br />$2000 Yearly</p>
           <button>Purchase Now</button>
         </div>
       </div>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js">
+      
+    </script>
   </body>
 </html>
