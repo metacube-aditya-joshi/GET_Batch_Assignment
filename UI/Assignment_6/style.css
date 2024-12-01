@@ -1,0 +1,26 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.link{
+    text-decoration: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight:900;
+    font-size: large;
+    color: white;
+}
+
+nav{
+    display:flex;
+    height:calc(12vh);
+    justify-content: space-around;
+    align-items: center;
+    background-color: blue;
+}
+
+#employee{
+    margin-top: 1rem;
+    background-color: blue;
+     
+}
