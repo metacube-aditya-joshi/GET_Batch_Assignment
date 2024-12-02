@@ -4,38 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <style>
-        .hidden{
-            display: none;
-        }
+      .hidden {
+        display: none;
+      }
     </style>
   </head>
   <body>
     <header>
-      <nav>
+      <nav  class="navigation-bar">
         <a href="#employee" class="link">Add Employee</a>
         <a href="#vehicle" class="link">Add Vehicle</a>
-        <a href="#feedback" class="link">Give FeedBack</a>
         <a href="#pricing" class="link">Pricing</a>
       </nav>
     </header>
     <main>
-        <div id="employee ">
-            <p>Employee Section</p>
-            <div class="form-label"></div>
-            <div class="form-input"></div>
+      <div id="employee" class="collapsible-container">
+        <div class="collapsible-header">Employee Data Form</div>
+        <div class="collapsible-body" id="employeeBody">
+          <div class="form-label"></div>
+          <div class="form-input"></div>
         </div>
-        <div id="vehicle">
-          <p>Vehicle Section</p>
-            <div class="form-label"></div>
-            <div class="form-input"></div>
+      </div>
+      <div id="vehicle" class="collapsible-container">
+        <div class="collapsible-header">Vehicle Data Form</div>
+        <div class="collapsible-body">
+          <div class="form-label"></div>
+          <div class="form-input"></div>
         </div>
-        <div id="feedback"></div>
-        <div id="pricing"></div>
+      </div>
+      <div id="pricing">
+        <h2>Pricing Section</h2>
+        <div class="pricing-card">
+          <h4 class="title"></h4>
+          <img src="" alt="" id="pricing_vehicle">
+         <div class="pricing-menu"></div>
+         <button onclick="onButtonClick()">Purchase Now </button>
+        </div>
+      </div>
     </main>
-    <script src="script.js">
-        
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

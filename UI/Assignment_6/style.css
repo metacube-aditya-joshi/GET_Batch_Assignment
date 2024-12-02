@@ -1,26 +1,105 @@
-*{
-    box-sizing: border-box;
+body {
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-}
-.link{
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .navigation-bar {
+    margin-bottom: 20px;
+    display: flex;
+    list-style: none;
+   justify-content: space-around;
+   background-color: #007BFF;
+   align-items: center;
+   a{
+    color: #f9f9f9;
+   }
+   padding-bottom: 2%;
+   padding-top: 2%;
+   border-radius: 1rem;
+   font-weight: bold;
+  }
+  
+  nav a {
+    display: block;
+    margin: 5px 0;
+    color: #007BFF;
     text-decoration: none;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight:900;
-    font-size: large;
-    color: white;
+  }
+  
+  nav a:hover {
+    transform: scale(1.125);
+    text-shadow: black 5px 5px 5px;
+  }
+
+.collapsible-container {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .collapsible-header {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .collapsible-header:hover {
+    background-color: #0056b3;
+  }
+  
+  .collapsible-body {
+    display: none;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: auto;
+    background-color: #fff;
+
+  }
+  .collapsible-body div{
+    padding: 4px;
+  }
+  /* Styles for password strength */
+.input-weak {
+    border: 2px solid red; /* Weak password */
+    background-color: #ffe6e6; /* Light red background */
 }
 
-nav{
-    display:flex;
-    height:calc(12vh);
-    justify-content: space-around;
+.input-medium {
+    border: 2px solid orange; /* Medium password */
+    background-color: #fff3e6; /* Light orange background */
+}
+
+.input-strong {
+    border: 2px solid green; /* Strong password */
+    background-color: #e6ffe6; /* Light green background */
+}
+
+#pricing h2{
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 8px;
+    gap: 1rem;
+    
+}
+#pricing h2:hover {
+    background-color: #0056b3;
+  }
+  .pricing-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background-color: blue;
-}
+  }
 
-#employee{
-    margin-top: 1rem;
-    background-color: blue;
-     
+#pricing_vehicle{
+    border-radius: 50%;
 }
