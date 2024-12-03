@@ -1,4 +1,5 @@
 import { vehicle } from "./vehicle.js";
+import { displaySubscriptionPlan } from "./subscription.js";
 const pricing = {
     Cycle: {
       daily: 5,
@@ -76,7 +77,7 @@ const pricing = {
     });
   };
   const onButtonClick = () => {
-  
+    displaySubscriptionPlan();
     console.log(subscriptionPlan);
     alert(
       `Subscription Plan Saved:\nVehicle Type: ${subscriptionPlan.vehicleType}\nPlan Type: ${subscriptionPlan.planType}\nPrice: ${subscriptionPlan.price}`

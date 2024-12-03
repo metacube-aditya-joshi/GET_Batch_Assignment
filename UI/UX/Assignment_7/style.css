@@ -104,3 +104,11 @@ body {
 #pricing_vehicle{
     border-radius: 50%;
 }
+.subscribed{
+  background-color: blanchedalmond;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
