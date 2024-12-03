@@ -13,7 +13,7 @@
   </head>
   <body>
     <header>
-      <nav  class="navigation-bar">
+      <nav class="navigation-bar">
         <a href="#employee" class="link">Add Employee</a>
         <a href="#vehicle" class="link">Add Vehicle</a>
         <a href="#pricing" class="link">Pricing</a>
@@ -38,13 +38,18 @@
         <h2>Pricing Section</h2>
         <div class="pricing-card hidden">
           <h4 class="title"></h4>
-          <img src="" alt="" id="pricing_vehicle">
-         <div class="pricing-menu"></div>
-         <button onclick="onButtonClick()">Purchase Now </button>
+          <img src="" alt="" id="pricing_vehicle" />
+          <div class="pricing-menu"></div>
+          <button id="purchaseButton">Purchase Now</button>
         </div>
       </div>
     </main>
-    
-    <script src="script.js"></script>
+    <script type="module">
+      import { displayEmployee } from "./js/employee.js";
+      displayEmployee();
+
+      import { onButtonClick } from "./js/pricing.js";
+      document.getElementById("purchaseButton").addEventListener("click", onButtonClick);
+    </script>
   </body>
 </html>

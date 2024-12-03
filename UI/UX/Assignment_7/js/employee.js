@@ -1,4 +1,5 @@
-const employee = {};
+import { displayVehicle } from "./vehicle.js";
+const employee={};
 document.querySelectorAll(".collapsible-header").forEach((header) => {
   header.addEventListener("click", () => {
     const body = header.nextElementSibling;
@@ -7,7 +8,7 @@ document.querySelectorAll(".collapsible-header").forEach((header) => {
   });
 });
 
-(function displayEmp() {
+const displayEmployee = ()=> {
   const form_input = document.querySelector("#employee .form-input");
   const label = document.querySelector("#employee .form-label");
   if (!form_input || !label) {
@@ -36,9 +37,9 @@ document.querySelectorAll(".collapsible-header").forEach((header) => {
       displayEmp(); // Re-display the input for correction
     }
   });
-})();
+};
 
-function getGender(form_input, label, name) {
+const getGender=(form_input, label, name) =>{
   label.innerHTML = `Hello ${name}, please select your gender:`;
 
   form_input.innerHTML = `
@@ -58,7 +59,7 @@ function getGender(form_input, label, name) {
   });
 }
 
-function getEmail(form_input, label, name) {
+const getEmail=(form_input, label, name) =>{
   label.innerHTML = `Hello ${name}, please enter your email:`;
   form_input.innerHTML = `
         <label for="email">Email:</label>
@@ -88,7 +89,7 @@ function getEmail(form_input, label, name) {
   });
 }
 
-function getPassword(form_input, label, name) {
+const getPassword=(form_input, label, name) =>{
   label.innerHTML = `Hello ${name}, please enter your password :`;
   form_input.innerHTML = `
         <label for="password">Password:</label>
@@ -127,7 +128,7 @@ function getPassword(form_input, label, name) {
     }
   });
 }
-function getCNFPassword(form_input, label, name, password) {
+const getCNFPassword=(form_input, label, name, password)=> {
   label.innerHTML = `Hello ${name}, please enter your confirm password :`;
   form_input.innerHTML = `
     <label for="cnfpassword">Confirm Password:</label>
@@ -167,7 +168,7 @@ function getCNFPassword(form_input, label, name, password) {
     }
   });
 }
-function getMobile(form_input, label, name) {
+const getMobile=(form_input, label, name)=>{
   label.innerHTML = `Hello ${name}, please enter your mobile number :`;
   form_input.innerHTML = `
     <label for="mobile">Mobile Number:</label>
@@ -209,7 +210,7 @@ function getMobile(form_input, label, name) {
     }
   });
 }
-function validatePassword(password, cnfPassword) {
+const validatePassword=(password, cnfPassword)=>{
   // Check if passwords match
   if (password !== cnfPassword) {
     alert("Passwords do not match!");
@@ -227,7 +228,7 @@ function validatePassword(password, cnfPassword) {
 
   return true;
 }
-function checkPasswordStrength(password) {
+const checkPasswordStrength=(password) =>{
   let strength = "Weak";
   const lengthCriteria = password.length >= 8;
   const numberCriteria = /[0-9]/.test(password);
@@ -261,219 +262,4 @@ function isValidFullName(name) {
   return name.length >= 2 && namePattern.test(name);
 }
 
-const vehicle = {};
-
-function displayVehicle() {
-  document.querySelector("#employee").classList.add("hidden");
-  const form_input = document.querySelector("#vehicle .form-input");
-  const label = document.querySelector("#vehicle .form-label");
-
-  // Set up the manufacturer name input
-  form_input.innerHTML =
-    "<input type='text' id='name' placeholder='Manufacturer Name' required />";
-  label.innerHTML = '<label for="name">Enter Manufacturer Name:</label>';
-
-  const inputField = document.querySelector("#name");
-  inputField.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-
-      const name = inputField.value; // Get value from the input field
-      console.log(name);
-      if (name) {
-        vehicle.fullName = name; // Save manufacturer name to vehicle object
-        getType(form_input, label); // Proceed to getType
-        return;
-      }
-
-      alert("Enter name !!");
-    }
-  });
-}
-
-function getType(form_input, label) {
-  label.innerHTML = `Select the Type of Vehicle:`;
-
-  // Set up the vehicle type selection
-  form_input.innerHTML = `
-    <select id='type' required>
-      <option value=''>--Select Vehicle Type--</option>
-      <option value='Two Wheeler'>Two Wheeler</option>
-      <option value='Four Wheeler'>Four Wheeler</option>
-      <option value='Cycle'>Cycle</option>
-    </select>`;
-
-  const selectElement = document.getElementById("type");
-
-  // Add an event listener for the 'change' event
-  selectElement.addEventListener("change", function () {
-    const selectedValue = selectElement.value; // Get the selected value
-    if (selectedValue) {
-      vehicle.type = selectedValue; // Save vehicle type to vehicle object
-      alert("Type of vehicle selected: " + selectedValue);
-      getVehicleNumber(form_input, label); // Proceed to getVehicleNumber
-    } else {
-      alert("Please select the type of vehicle."); // Prompt if no selection
-    }
-  });
-}
-
-function getVehicleNumber(form_input, label) {
-  label.innerHTML = `Enter Vehicle Number:`;
-
-  // Set up the vehicle number input
-  form_input.innerHTML = `
-    <input
-      type="text"
-      id="vehicleNumber"
-      placeholder="Vehicle Number"
-      required
-      maxlength="8"
-    />
-  `;
-
-  const inputField = document.getElementById("vehicleNumber");
-  inputField.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-
-      const vehicleNumber = inputField.value; // Get the value of the vehicle number input
-      if (vehicleNumber) {
-        vehicle.vehicleNumber = vehicleNumber; // Save vehicle number to vehicle object
-        alert("Vehicle number entered: " + vehicleNumber);
-        getEmpId(form_input, label);
-        // You can proceed with further actions here
-      } else {
-        alert("Please enter the vehicle number.");
-      }
-    }
-  });
-}
-function getEmpId(form_input, label) {
-  label.innerHTML = `Enter Employee ID:`;
-
-  // Set up the employee ID input and submit button
-  form_input.innerHTML = `
-      <input
-          type="text"
-          id="empId"
-          placeholder="Employee ID"
-          required
-      />
-      <button id="submitEmpIdBtn">Submit</button>
-  `;
-
-  const inputField = document.getElementById("empId");
-  const submitBtn = document.getElementById("submitEmpIdBtn");
-
-  // Add event listener for the submit button
-  submitBtn.addEventListener("click", function () {
-    const empId = inputField.value; // Get the value of the employee ID input
-    if (empId) {
-      vehicle.empId = empId; // Save employee ID to vehicle object
-      displayPricing();
-      alert(
-        `Vehicle Manufacterer Name : ${vehicle.name}` +
-          `Vechile type : ${vehicle.type}` +
-          `Vehicle number : ${vehicle.vehicleNumber}` +
-          "Employee ID entered: " +
-          vehicle.empId
-      );
-      // You can proceed with further actions here
-    } else {
-      alert("Please enter the Employee ID.");
-    }
-  });
-
-  // Add event listener for the input field to handle Enter key
-  inputField.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      submitBtn.click(); // Trigger the click event of the submit button
-    }
-  });
-}
-
-const pricing = {
-  Cycle: {
-    daily: 5,
-    monthly: 100,
-    yearly: 500,
-  },
-  "Two Wheeler": {
-    daily: 10,
-    monthly: 200,
-    yearly: 1000,
-  },
-  "Four Wheeler": {
-    daily: 20,
-    monthly: 500,
-    yearly: 3500,
-  },
-};
-
-const setImage = (type) => {
-  const image = document.getElementById("pricing_vehicle");
-
-  if (type == "Cycle") {
-    image.src = "cycle.png";
-  } else if (type == "Two Wheeler") {
-    image.src = "bike.png";
-  } else if ((type = "Four Wheeler")) {
-    image.src = "car.png";
-  }
-};
-const subscriptionPlan = {};
-const displayPricing = () => {
-  document.querySelector("#vehicle").classList.add("hidden");
-  document.querySelector('.pricing-card').classList.remove('hidden');
-  const vehicle_type = vehicle.type;
-  document.querySelector(".title").innerHTML = vehicle_type;
-  setImage(vehicle_type);
-  let pricingMenuHTML = `<select id='type'  class="dropdown" required>
-  <option value='' class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled>--Select Subscription Duration--</option>`;
-
-  if (vehicle_type === "Cycle") {
-    pricingMenuHTML += `
-      <option value="daily" data-price="${pricing.Cycle.daily}">Daily : ${pricing.Cycle.daily}</option>
-      <option value="monthly" data-price="${pricing.Cycle.monthly}">Monthly : ${pricing.Cycle.monthly}</option>
-      <option value="yearly" data-price="${pricing.Cycle.yearly}">Yearly : ${pricing.Cycle.yearly}</option>`;
-  } else if (vehicle_type === "Two Wheeler") {
-    pricingMenuHTML += `
-      <option value="daily" data-price="${pricing["Two Wheeler"].daily}">Daily : ${pricing["Two Wheeler"].daily}</option>
-      <option value="monthly" data-price="${pricing["Two Wheeler"].monthly}">Monthly : ${pricing["Two Wheeler"].monthly}</option>
-      <option value="yearly" data-price="${pricing["Two Wheeler"].yearly}">Yearly : ${pricing["Two Wheeler"].yearly}</option>`;
-  } else if (vehicle_type === "Four Wheeler") {
-    pricingMenuHTML += `
-      <option value="daily" data-price="${pricing["Four Wheeler"].daily}">Daily : ${pricing["Four Wheeler"].daily}</option>
-      <option value="monthly" data-price="${pricing["Four Wheeler"].monthly}">Monthly : ${pricing["Four Wheeler"].monthly}</option>
-      <option value="yearly" data-price="${pricing["Four Wheeler"].yearly}">Yearly : ${pricing["Four Wheeler"].yearly}</option>`;
-  }
-
-  pricingMenuHTML += `</select>`;
-  document.querySelector(".pricing-menu").innerHTML = pricingMenuHTML;
-
-  console.log(document.querySelector("#type").value);
-
-  const selectedPlan = document.querySelector("#type");
-  selectedPlan.addEventListener("change", function () {
-    const selectedValue = selectedPlan.value;
-    const selectedOption = selectedPlan.options[selectedPlan.selectedIndex];
-    console.log(selectedOption);
-    if (selectedValue) {
-      const price = selectedOption.getAttribute("data-price");
-      subscriptionPlan.vehicleType = vehicle_type;
-      subscriptionPlan.planType = selectedValue;
-      subscriptionPlan.price = price;
-    } else {
-      alert("Please select a subscription duration!");
-    }
-  });
-};
-const onButtonClick = () => {
-
-  console.log(subscriptionPlan);
-  alert(
-    `Subscription Plan Saved:\nVehicle Type: ${subscriptionPlan.vehicleType}\nPlan Type: ${subscriptionPlan.planType}\nPrice: ${subscriptionPlan.price}`
-  );
-};
+export  {employee,displayEmployee} ;
