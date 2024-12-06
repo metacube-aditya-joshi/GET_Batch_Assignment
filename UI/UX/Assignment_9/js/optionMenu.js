@@ -70,7 +70,8 @@ function handleOptionInput() {
         submitButton.addEventListener("click", (event) => {
             event.preventDefault(); // Prevent form submission
             const empId = inputField.value;
-            const employeeExists = employees.some(employee => employee.employeeId === empId);
+            let exisitingEmployees = JSON.parse(localStorage.getItem("employees"));
+            const employeeExists = exisitingEmployees.some(employee => employee.employeeId === empId);
             console.log(employeeExists);
             if (employeeExists) {
                 // If employee ID exists, proceed to VehicleForm

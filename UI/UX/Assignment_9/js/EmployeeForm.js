@@ -190,8 +190,10 @@ export class EmployeeForm {
     }
     submitEmployee() {
         this.employees.push(this.employee);
+        localStorage.setItem("employees",   JSON.stringify(this.employees));
         console.log("Employee Information:", this.employee);
         console.log("Employee's List:", this.employees);
+        console.log(JSON.parse(localStorage.getItem("employees")))
         alertify.success("Employee information collected successfully!");
         // Hide the Employee Form
         const formContainer = document.querySelector("#form-container");

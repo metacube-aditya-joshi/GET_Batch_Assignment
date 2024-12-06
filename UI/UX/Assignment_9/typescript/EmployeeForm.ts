@@ -2,7 +2,7 @@ import { Employee } from "./employee";
 // import { VehicleForm } from "./VechileForm";
 import { generateOptionMenu } from "./optionMenu";
 import { Vehicle } from "./vehicle";
-import swal from "../js/sweetalert/typings/core";
+
 export class EmployeeForm {
     private employee: Employee;
     private currentStep: number;
