@@ -1,5 +1,4 @@
-import { EmployeeForm } from "./EmployeeForm";
-
+import { generateOptionMenu } from "./optionMenu";
 window.onload = () => {
-    new EmployeeForm();
+    generateOptionMenu();
 };

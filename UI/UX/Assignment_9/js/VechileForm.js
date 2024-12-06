@@ -1,19 +1,13 @@
-import { Vehicle } from "./vehicle"; // Assuming Vehicle class is defined in vehicle.ts
-import { PricingForm } from "./PricingForm"; // Assuming PricingForm is defined in pricingForm.ts
-
+import { Vehicle } from "./vehicle.js"; // Assuming Vehicle class is defined in vehicle.ts
+import { PricingForm } from "./PricingForm.js"; // Assuming PricingForm is defined in pricingForm.ts
 export class VehicleForm {
-    private vehicle: Vehicle;
-    private currentStep: number;
-    private vehicles: Vehicle[];
-
-    constructor(vehicles: Vehicle[]) {
+    constructor(vehicles) {
         this.vehicle = new Vehicle("", "", "", "", "");
         this.currentStep = 0;
         this.displayNextField();
         this.vehicles = vehicles;
     }
-
-    private displayNextField(): void {
+    displayNextField() {
         switch (this.currentStep) {
             case 0:
                 this.createInputField("name", "Enter Vehicle Name:");
@@ -35,17 +29,14 @@ export class VehicleForm {
                 break;
         }
     }
-
-    private createVehicleTypeField(): void {
+    createVehicleTypeField() {
         const formContainer = document.querySelector("#form-container");
-        if (!formContainer) return;
-
+        if (!formContainer)
+            return;
         formContainer.innerHTML = ''; // Clear previous input
-
         const inputLabel = document.createElement("label");
         inputLabel.textContent = "Select Vehicle Type:";
         formContainer.appendChild(inputLabel);
-
         const vehicleTypeSelect = document.createElement("select");
         vehicleTypeSelect.id = "vehicleType";
         vehicleTypeSelect.innerHTML = `
@@ -56,63 +47,52 @@ export class VehicleForm {
         `;
         vehicleTypeSelect.onchange = () => this.handleVehicleTypeChange(vehicleTypeSelect.value);
         formContainer.appendChild(vehicleTypeSelect);
-
         const submitButton = document.createElement("button");
         submitButton.textContent = "Next";
         submitButton.onclick = () => this.handleInput("type", vehicleTypeSelect.value);
         formContainer.appendChild(submitButton);
     }
-
-    private handleVehicleTypeChange(value: string): void {
+    handleVehicleTypeChange(value) {
         this.vehicle.type = value; // Set the vehicle type
         this.currentStep++; // Move to the next step
         this.displayNextField(); // Display the next field
     }
-
-    private createInputField(field: string, label: string): void {
+    createInputField(field, label) {
         const formContainer = document.querySelector("#form-container");
-        if (!formContainer) return;
-
+        if (!formContainer)
+            return;
         formContainer.innerHTML = ''; // Clear previous input
-
         const inputLabel = document.createElement("label");
         inputLabel.textContent = label;
         formContainer.appendChild(inputLabel);
-
         const inputField = document.createElement("input");
         inputField.type = "text"; // All fields are text for simplicity
         inputField.id = field;
         inputField.placeholder = label;
         formContainer.appendChild(inputField);
-
         const submitButton = document.createElement("button");
         submitButton.textContent = "Next";
         submitButton.onclick = () => this.handleInput(field, inputField.value);
         formContainer.appendChild(submitButton);
     }
-
-    private createTextareaField(field: string, label: string): void {
+    createTextareaField(field, label) {
         const formContainer = document.querySelector("#form-container");
-        if (!formContainer) return;
-
+        if (!formContainer)
+            return;
         formContainer.innerHTML = ''; // Clear previous input
-
         const inputLabel = document.createElement("label");
         inputLabel.textContent = label;
         formContainer.appendChild(inputLabel);
-
         const textareaField = document.createElement("textarea");
         textareaField.id = field;
         textareaField.placeholder = label;
         formContainer.appendChild(textareaField);
-
         const submitButton = document.createElement("button");
         submitButton.textContent = "Submit";
         submitButton.onclick = () => this.handleInput(field, textareaField.value);
         formContainer.appendChild(submitButton);
     }
-
-    private handleInput(field: string, value: string): void {
+    handleInput(field, value) {
         switch (field) {
             case "name":
                 this.vehicle.name = value;
@@ -127,21 +107,13 @@ export class VehicleForm {
                 this.vehicle.identification = value;
                 break;
         }
-
         this.currentStep++;
         this.displayNextField();
     }
-
-    private submitVehicle(): void {
+    submitVehicle() {
         console.log("Vehicle Information:", this.vehicle);
         alert("Vehicle information collected successfully!");
-
         // Now we will show the pricing options based on the vehicle type
         new PricingForm(this.vehicle); // Pass the vehicle object to the PricingForm
-
-
     }
-
-
 }
-
