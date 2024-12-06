@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "alertifyjs": "^1.14.0",
+    "sweetalert": "^2.1.2",
     "typescript": "^5.7.2"
   }
 }

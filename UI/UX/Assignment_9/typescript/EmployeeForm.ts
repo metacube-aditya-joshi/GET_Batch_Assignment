@@ -2,6 +2,7 @@ import { Employee } from "./employee";
 // import { VehicleForm } from "./VechileForm";
 import { generateOptionMenu } from "./optionMenu";
 import { Vehicle } from "./vehicle";
+import swal from "../js/sweetalert/typings/core";
 export class EmployeeForm {
     private employee: Employee;
     private currentStep: number;
@@ -148,7 +149,7 @@ export class EmployeeForm {
             this.currentStep++;
             this.displayNextField();
         } else {
-            alert(`Invalid input for ${field}. Please try again.`);
+            swal(`Invalid input for ${field}. Please try again.`);
         }
     }
     private validateName(name: string): boolean {
@@ -212,7 +213,7 @@ export class EmployeeForm {
         this.employees.push(this.employee);
         console.log("Employee Information:", this.employee);
         console.log("Employee's List:", this.employees);
-        alert("Employee information collected successfully!");
+        swal("Employee information collected successfully!");
 
         // Hide the Employee Form
         const formContainer = document.querySelector("#form-container") as HTMLElement;

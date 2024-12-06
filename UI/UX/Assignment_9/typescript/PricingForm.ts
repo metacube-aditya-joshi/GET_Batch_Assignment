@@ -1,5 +1,6 @@
 import { Vehicle } from "./vehicle"; // Assuming Vehicle class is defined in vehicle.ts
 import { Pricing } from "./Pricing"; // Assuming Pricing class is defined in pricing.ts
+import swal from "../js/sweetalert/typings/core";
 import { generateOptionMenu } from "./optionMenu";
 export class PricingForm {
     private vehicle: Vehicle;
@@ -22,7 +23,7 @@ export class PricingForm {
         console.log("Prices Retrieved:", prices); // Debugging line
 
         if (!prices) {
-            alert("Invalid vehicle type. Please enter a valid type.");
+            swal("Invalid vehicle type. Please enter a valid type.");
             return;
         }
 
@@ -68,7 +69,7 @@ export class PricingForm {
                 this.showPassDetails();
             }
         } else {
-            alert("Please select a pass plan.");
+            swal("Please select a pass plan.");
         }
     }
 

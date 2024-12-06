@@ -16,7 +16,7 @@ export class PricingForm {
         const prices = this.pricing.getPrices(vehicleType);
         console.log("Prices Retrieved:", prices); // Debugging line
         if (!prices) {
-            alert("Invalid vehicle type. Please enter a valid type.");
+            alertify.error("Invalid vehicle type. Please enter a valid type.");
             return;
         }
         console.log("Form is being generated");
@@ -58,7 +58,7 @@ export class PricingForm {
             }
         }
         else {
-            alert("Please select a pass plan.");
+            alertify.error("Please select a pass plan.");
         }
     }
     showPassDetails() {

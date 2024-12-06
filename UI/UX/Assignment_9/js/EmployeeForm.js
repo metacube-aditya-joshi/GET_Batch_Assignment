@@ -1,5 +1,4 @@
 import { Employee } from "./employee.js";
-// import { VehicleForm } from "./VechileForm";
 import { generateOptionMenu } from "./optionMenu.js";
 export class EmployeeForm {
     constructor(employees, vehicles) {
@@ -132,7 +131,7 @@ export class EmployeeForm {
             this.displayNextField();
         }
         else {
-            alert(`Invalid input for ${field}. Please try again.`);
+            alertify.error(`Invalid input for ${field}. Please try again.`);
         }
     }
     validateName(name) {
@@ -193,13 +192,13 @@ export class EmployeeForm {
         this.employees.push(this.employee);
         console.log("Employee Information:", this.employee);
         console.log("Employee's List:", this.employees);
-        alert("Employee information collected successfully!");
+        alertify.success("Employee information collected successfully!");
         // Hide the Employee Form
         const formContainer = document.querySelector("#form-container");
         if (formContainer) {
             formContainer.innerHTML = ''; // Clear the form
         }
-        formContainer.innerHTML='';
+        formContainer.innerHTML = '';
         // Show the Vehicle Form
         //new VehicleForm(this.vehicles); // Instantiate VehicleForm
         generateOptionMenu();

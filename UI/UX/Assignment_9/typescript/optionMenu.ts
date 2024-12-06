@@ -2,6 +2,7 @@ import { Employee } from "./employee";
 import { Vehicle } from "./vehicle";
 import { EmployeeForm } from "./EmployeeForm";
 import { VehicleForm } from "./VechileForm";
+import swal from "../js/sweetalert/typings/core";
 
 const employees: Employee[] = [];
 const vehicles: Vehicle[] = [];
@@ -56,7 +57,7 @@ function handleOptionInput(): void {
                 break;
             }
             default:{
-                alert("Choose correct option!!");
+                swal("Choose correct option!!");
                 generateOptionMenu();
             }
                 
@@ -91,11 +92,11 @@ function handleOptionInput(): void {
         
             if (employeeExists) {
                 // If employee ID exists, proceed to VehicleForm
-                alert(`Employee ID: ${empId} exists. Proceeding to Vehicle Form.`);
+                swal(`Employee ID: ${empId} exists. Proceeding to Vehicle Form.`);
                 new VehicleForm(vehicles);
             } else {
-                // If employee ID does not exist, alert the user and show EmployeeForm
-                alert(`Employee ID: ${empId} doesn't exist. Please fill out the employee form.`);
+                // If employee ID does not exist, swal the user and show EmployeeForm
+                swal(`Employee ID: ${empId} doesn't exist. Please fill out the employee form.`);
                 new EmployeeForm(employees, vehicles);
             }
         });

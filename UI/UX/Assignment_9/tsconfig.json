@@ -8,6 +8,6 @@
       "strict": true,                           // Enable all strict type-checking options.
       "skipLibCheck": true                      // Skip type checking all .d.ts files.
   },
-  "include": ["typescript/**/*"],               // Include all TypeScript files in the typescript directory.
+  "include": ["typescript/**/*","js/**/*"],               // Include all TypeScript files in the typescript directory.
   "exclude": ["node_modules"]                   // Exclude node_modules from the compilation.
 }

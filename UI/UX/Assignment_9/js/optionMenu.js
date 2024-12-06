@@ -47,17 +47,16 @@ function handleOptionInput() {
                 break;
             }
             default: {
-                alert("Choose correct option!!");
+                alertify.error("Choose correct option!!");
                 generateOptionMenu();
             }
         }
     }
     function checkForEmployee() {
-        
         const formContainer = document.querySelector("#form-container");
         if (!formContainer)
             return;
-        formContainer.innerHTML='';
+        formContainer.innerHTML = '';
         const inputLabel = document.createElement("h4");
         inputLabel.textContent = "Enter the employee id :";
         formContainer.appendChild(inputLabel);
@@ -72,15 +71,15 @@ function handleOptionInput() {
             event.preventDefault(); // Prevent form submission
             const empId = inputField.value;
             const employeeExists = employees.some(employee => employee.employeeId === empId);
-          
+            console.log(employeeExists);
             if (employeeExists) {
                 // If employee ID exists, proceed to VehicleForm
-                alert(`Employee ID: ${empId} exists. Proceeding to Vehicle Form.`);
+                alertify.success(`Employee ID: ${empId} exists. Proceeding to Vehicle Form.`);
                 new VehicleForm(vehicles);
             }
             else {
-                // If employee ID does not exist, alert the user and show EmployeeForm
-                alert(`Employee ID: ${empId} doesn't exist. Please fill out the employee form.`);
+                // If employee ID does not exist, alertify.myAlert the user and show EmployeeForm
+                alertify.error(`Employee ID: ${empId} doesn't exist. \nPlease fill out the employee form.`);
                 new EmployeeForm(employees, vehicles);
             }
         });

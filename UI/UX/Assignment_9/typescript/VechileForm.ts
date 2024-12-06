@@ -1,5 +1,6 @@
 import { Vehicle } from "./vehicle"; // Assuming Vehicle class is defined in vehicle.ts
 import { PricingForm } from "./PricingForm"; // Assuming PricingForm is defined in pricingForm.ts
+import swal from "../js/sweetalert/typings/core";
 
 export class VehicleForm {
     private vehicle: Vehicle;
@@ -134,7 +135,7 @@ export class VehicleForm {
 
     private submitVehicle(): void {
         console.log("Vehicle Information:", this.vehicle);
-        alert("Vehicle information collected successfully!");
+        swal("Vehicle information collected successfully!");
 
         // Now we will show the pricing options based on the vehicle type
         new PricingForm(this.vehicle); // Pass the vehicle object to the PricingForm
