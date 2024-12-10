@@ -17,3 +17,12 @@
     padding-top: 1rem;
     flex-wrap: wrap;
 }
+.section in-progress-tasks completed-tasks new-tasks div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+}

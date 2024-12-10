@@ -16,7 +16,8 @@ export default function Task({ task, onDelete }) {
   };
 
   return (
-    <div style={{ border: `2px solid ${getPriorityColor(task.priority)}` }}>
+    <div style={{
+       border: `2px solid ${getPriorityColor(task.priority)}`,width:'fit-Content',padding:'5px' }}>
       <h3>{task.title}</h3>
       <p>{task.description}</p>
       <p>Status: {task.status}</p>

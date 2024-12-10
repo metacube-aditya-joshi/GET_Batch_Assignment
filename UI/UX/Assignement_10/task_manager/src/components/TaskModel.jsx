@@ -1,4 +1,5 @@
 // TaskModal.jsx
+import '../styles/TaskModal.css'
 import React, { useState } from "react";
 
 export default function TaskModal({ onClose, onAdd }) {
